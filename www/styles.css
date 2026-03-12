@@ -1,0 +1,338 @@
+/* =========================================================
+   AMR Dashboard — styles.css (CLEAN / FINAL)
+   Focus: correct height propagation for KPI grid
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   1) Design tokens
+   --------------------------------------------------------- */
+:root{
+  --amr-blue: #2F6FA3;
+  --amr-blue-light: #6EA6CF;
+
+  --amr-bg: #F3F6FA;
+  --amr-band: #EEF3F8;
+
+  --amr-card: #FFFFFF;
+  --amr-border: #E3E8EF;
+
+  --amr-text: #1F2D3D;
+  --amr-title: #1F3B63;
+  --amr-muted: #6B7C93;
+
+  --amr-green: #2EAD65;
+  --amr-red: #D04B45;
+
+  --radius: 14px;
+  --shadow: 0 10px 24px rgba(31,45,61,.08);
+
+  /* Hoogte van bovenste rij (grafiek + KPI) */
+  --toprow-height: 360px;
+}
+
+/* ---------------------------------------------------------
+   2) Base
+   --------------------------------------------------------- */
+html, body{
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+body,
+.content-wrapper,
+.right-side{
+  background: var(--amr-bg) !important;
+}
+
+.content{
+  padding: 18px;
+}
+
+.plotly.html-widget{
+  width:100% !important;
+}
+
+/* ---------------------------------------------------------
+   3) Layout – sidebar volledig uit
+   --------------------------------------------------------- */
+.main-sidebar,
+.left-side{
+  display:none !important;
+}
+
+.content-wrapper,
+.right-side,
+.main-footer,
+.main-header .navbar{
+  margin-left:0 !important;
+}
+
+.sidebar-toggle{
+  display:none !important;
+}
+
+/* ---------------------------------------------------------
+   4) Header — full width, vlak
+   --------------------------------------------------------- */
+.main-header{
+  background:#FFFFFF !important;
+}
+
+.skin-blue .main-header .navbar{
+  background:#FFFFFF !important;
+  border-bottom:1px solid var(--amr-border) !important;
+  box-shadow:none !important;
+  min-height:86px;
+  padding:0 24px;
+  display:flex;
+  align-items:center;
+}
+
+.main-header .logo{
+  display:none !important;
+}
+
+/* Branding (injectie via JS) */
+.amr-header-brand{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.amr-logo-link{
+  display:flex;
+  align-items:center;
+  padding-right:18px;
+  border-right:1px solid var(--amr-border);
+  text-decoration:none;
+}
+
+.amr-logo{
+  height:48px;
+  width:auto;
+}
+
+.amr-header-text{
+  display:flex;
+  flex-direction:column;
+}
+
+.amr-header-title{
+  font-size:24px;
+  font-weight:800;
+  color:var(--amr-title);
+}
+
+.amr-header-subtitle{
+  font-size:14px;
+  font-weight:600;
+  color:var(--amr-muted);
+  margin-top:4px;
+}
+
+/* ---------------------------------------------------------
+   5) Tabs band
+   --------------------------------------------------------- */
+.amr-tabs{
+  background:var(--amr-band);
+  padding:14px 18px 10px 18px;
+  border-bottom:1px solid var(--amr-border);
+}
+
+.amr-tabs .nav{
+  margin:0;
+}
+
+.amr-tabs .nav>li>a{
+  background:#FFFFFF !important;
+  border:1px solid var(--amr-border) !important;
+  border-radius:10px !important;
+
+  font-size:15px !important;
+  font-weight:800 !important;
+  color:var(--amr-title) !important;
+
+  padding:10px 16px !important;
+  margin-right:10px !important;
+
+  display:flex;
+  align-items:center;
+}
+
+.amr-tabs .nav>li.active>a,
+.amr-tabs .nav>li>a:hover{
+  background:var(--amr-blue) !important;
+  border-color:var(--amr-blue) !important;
+  color:#FFFFFF !important;
+}
+
+/* ---------------------------------------------------------
+   6) Cards
+   --------------------------------------------------------- */
+.box{
+  background:var(--amr-card);
+  border:1px solid var(--amr-border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+
+.box-header{
+  padding:14px 16px;
+  border-bottom:1px solid var(--amr-border);
+}
+
+.box-header .box-title{
+  font-size:18px;
+  font-weight:800;
+  color:var(--amr-title);
+}
+
+.box-body{
+  padding:16px;
+  padding-bottom:20px;
+}
+
+.amr-subtitle{
+  font-size:14px;
+  font-weight:600;
+  color:var(--amr-muted);
+  margin:-4px 0 10px 0;
+}
+
+/* =========================================================
+   7) TOP ROW — hoogte synchronisatie
+   ========================================================= */
+
+/* Hele bovenste rij */
+.amr-top-row{
+  align-items: stretch;
+}
+
+/* Linker grafiek-box */
+.amr-top-row .amr-fixed-box{
+  height: var(--toprow-height);
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+}
+
+.amr-top-row .amr-fixed-box .box-body{
+  flex:1;
+  min-height:0;
+}
+
+/* Rechter KPI-kolom */
+.amr-top-row .amr-kpi-col{
+  height: var(--toprow-height);
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+}
+
+/* 🔑 Shiny uiOutput wrapper */
+.amr-top-row .amr-kpi-col > .shiny-html-output{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+}
+
+/* =========================================================
+   8) KPI GRID — vult hoogte exact
+   ========================================================= */
+
+.amr-kpi-grid{
+  flex:1;
+  min-height:0;
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:1fr 1fr;
+  gap:14px;
+}
+
+.amr-kpi{
+  height:100%;
+  min-height:0;
+
+  position:relative;
+  background:#FFFFFF;
+  border:1px solid var(--amr-border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+
+  padding:12px 14px 36px 14px;
+  overflow:hidden;
+}
+
+/* Accentlijn */
+.amr-kpi::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:4px;
+  background:var(--amr-blue);
+}
+.amr-kpi.green::before{ background:var(--amr-green); }
+.amr-kpi.red::before{ background:var(--amr-red); }
+
+.amr-kpi .kpi-title{
+  font-size:14px;
+  font-weight:800;
+  color:var(--amr-title);
+  margin-bottom:4px;
+}
+
+.amr-kpi .kpi-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+}
+
+.amr-kpi .kpi-value{
+  font-size:30px;
+  font-weight:900;
+  color:var(--amr-text);
+}
+
+.amr-kpi .kpi-trend{
+  font-size:15px;
+  font-weight:800;
+}
+
+.amr-kpi .up{ color:var(--amr-green); }
+.amr-kpi .down{ color:var(--amr-red); }
+
+/* Sparkline */
+.amr-kpi .kpi-spark{
+  position:absolute;
+  left:14px;
+  right:14px;
+  bottom:10px;
+  height:22px;
+  pointer-events:none;
+}
+
+/* ---------------------------------------------------------
+   9) Footer
+   --------------------------------------------------------- */
+.amr-footer{
+  margin-top:16px;
+  padding-bottom:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:12px;
+  font-weight:600;
+  color:#7A8CA6;
+}
+
+.amr-footer .left,
+.amr-footer .right{
+  white-space:nowrap;
+}

@@ -1,0 +1,5 @@
+key,title,value,trend,dir,accent
+brmo,BRMO meldingen,"1.034","▲ 11%",up,blue
+esbl,ESBL incidentie,"14,1","▲ 7%",up,green
+mrsa,MRSA incidentie,"2,7","▲ 7%",up,green
+cpe,CPE incidentie,"0,8","▼ 4%",down,red

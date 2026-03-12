@@ -1,0 +1,15 @@
+sources:
+  trend:
+    type: csv
+    path: data/trend.csv
+  micro:
+    type: csv
+    path: data/micro.csv
+  kpi:
+    type: csv
+    path: data/kpi.csv
+  regio:
+    type: geojson
+    path: data/regio.geojson
+
+refresh_seconds: 300
