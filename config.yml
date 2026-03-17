@@ -1,0 +1,42 @@
+app:
+  title: "AMR Dashboard"
+  font_family: "Inter"
+
+colors:
+  trend_line: "#6EA6CF"
+  landelijk_gem: "#B9C6D6"
+  grid: "#E9EEF5"
+  axis: "#6B7C93"
+  label_dark: "#1F3B63"
+
+  trend_gradient_rgb: [110, 166, 207]
+  trend_gradient_bands: 50
+  trend_gradient_alpha: 0.30
+
+  map_bins:
+    - "#79C38A"
+    - "#C7DA6B"
+    - "#E2C15F"
+    - "#6EA6CF"
+
+  micro:
+    ESBL: "#6BB6E8"
+    MRSA: "#79C38A"
+    VRE: "#C7DA6B"
+    CPE: "#E2C15F"
+    Overig: "#C9D6E8"
+
+constants:
+  landelijk_gemiddelde: 12.0
+
+geo:
+  noord_provincies:
+    - Groningen
+    - Friesland
+    - Drenthe
+
+paths:
+  trend: "data/trend.csv"
+  micro: "data/micro.csv"
+  regio: "data/regio_incidentie.csv"
+  shape: "data/provinces.geojson"

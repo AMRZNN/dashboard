@@ -336,3 +336,29 @@ body,
 .amr-footer .right{
   white-space:nowrap;
 }
+
+
+/* ---------------------------------------------------------
+   10) Kaartobject
+   --------------------------------------------------------- */
+.leaflet-container {
+  background: #ffffff !important;
+  border-radius: 12px;
+}
+
+/* Maak alleen de kaart-box wit */
+#regio_map {
+  background: #ffffff !important;
+}
+
+#regio_map .leaflet-container {
+  background: #ffffff !important;
+}
+
+.box-body .leaflet-container {
+  background: #ffffff !important;
+}
+
+#trend_mini_map .leaflet-container {
+  background: linear-gradient(135deg, rgba(47,111,163,.08), rgba(110,166,207,.06)) !important;
+}
