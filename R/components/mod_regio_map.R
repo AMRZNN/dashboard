@@ -22,13 +22,13 @@ mod_regio_map_server <- function(id, data, cfg) {
     output$map <- renderLeaflet({
       
       shp <- data$shape() %>%
-        filter(name %in% cfg$geo$noord_provincies)
+        filter(provincie %in% cfg$geo$noord_provincies)
       
       dat <- data$regio() %>%
         filter(regio %in% cfg$geo$noord_provincies)
       
       df <- shp %>%
-        left_join(dat, by = c("name"="regio"))
+        left_join(dat, by = c("provincie"="regio"))
       
       pal <- colorBin(
         palette = cfg$colors$map_bins,
@@ -49,7 +49,7 @@ mod_regio_map_server <- function(id, data, cfg) {
           color = "white",
           fillOpacity = 0.9,
           label = ~paste0(
-            "<strong>", name, "</strong><br>",
+            "<strong>", provincie, "</strong><br>",
             "Incidentie: ", round(incidentie,1),
             " per 100.000"
           ) %>% lapply(htmltools::HTML)

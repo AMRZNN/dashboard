@@ -17,7 +17,13 @@ data_service <- function(cfg) {
   })
   
   shape <- reactive({
-    sf::st_read(cfg$paths$shape, quiet = TRUE)
+    shp <- readRDS(cfg$paths$shape)
+    
+    # Transformeer naar WGS84 voor leaflet
+    if (sf::st_crs(shp)$epsg != 4326) {
+      shp <- sf::st_transform(shp, 4326)
+    }
+    shp
   })
   
   list(

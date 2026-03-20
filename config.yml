@@ -39,4 +39,4 @@ paths:
   trend: "data/trend.csv"
   micro: "data/micro.csv"
   regio: "data/regio_incidentie.csv"
-  shape: "data/provinces.geojson"
+  shape: "data/geo_provincies.rds"

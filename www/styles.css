@@ -43,7 +43,7 @@ html, body{
 body,
 .content-wrapper,
 .right-side{
-  background: var(--amr-bg) !important;
+  background: var(--amr-band) !important;
 }
 
 .content{
@@ -111,7 +111,7 @@ body,
 }
 
 .amr-logo{
-  height:48px;
+  height:86px;
   width:auto;
 }
 
@@ -133,6 +133,7 @@ body,
   margin-top:4px;
 }
 
+
 /* ---------------------------------------------------------
    5) Tabs band
    --------------------------------------------------------- */
@@ -151,7 +152,7 @@ body,
   border:1px solid var(--amr-border) !important;
   border-radius:10px !important;
 
-  font-size:15px !important;
+  font-size:20px !important;
   font-weight:800 !important;
   color:var(--amr-title) !important;
 
@@ -185,7 +186,7 @@ body,
 }
 
 .box-header .box-title{
-  font-size:18px;
+  font-size:25px;
   font-weight:800;
   color:var(--amr-title);
 }
@@ -196,7 +197,7 @@ body,
 }
 
 .amr-subtitle{
-  font-size:14px;
+  font-size:20px;
   font-weight:600;
   color:var(--amr-muted);
   margin:-4px 0 10px 0;
@@ -282,7 +283,7 @@ body,
 .amr-kpi.red::before{ background:var(--amr-red); }
 
 .amr-kpi .kpi-title{
-  font-size:14px;
+  font-size:20px;
   font-weight:800;
   color:var(--amr-title);
   margin-bottom:4px;
@@ -301,7 +302,7 @@ body,
 }
 
 .amr-kpi .kpi-trend{
-  font-size:15px;
+  font-size:25px;
   font-weight:800;
 }
 
@@ -361,4 +362,111 @@ body,
 
 #trend_mini_map .leaflet-container {
   background: linear-gradient(135deg, rgba(47,111,163,.08), rgba(110,166,207,.06)) !important;
+}
+
+/* ======================================
+   Trend + Mini Map Layout Fix
+====================================== */
+
+.trend-flex-row {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.trend-flex-main {
+  flex: 3;
+}
+
+.trend-flex-mini {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+}
+
+.mini-map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.trend-flex-mini .leaflet-container {
+  width: 100% !important;
+  height: 100% !important;
+  background: white !important;
+}
+
+/* Jaartal badge */
+
+.mini-map-year {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* =========================================
+   Remove box-body padding
+========================================= */
+
+.trend-box > .box-body {
+  padding: 0 !important;
+}
+
+/* =========================================
+   Absolute Layout System
+========================================= */
+
+.trend-absolute-wrapper {
+  position: relative;
+  height: 320px;
+  padding: 15px;
+}
+
+/* Plot takes 75% width */
+
+.trend-plot-area {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  bottom: 15px;
+  width: calc(75% - 15px);
+}
+
+/* Map takes 25% width */
+
+.trend-map-area {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  bottom: 15px;
+  width: calc(25% - 15px);
+}
+
+/* Force widgets to fully fill container */
+
+.trend-plot-area .plotly,
+.trend-map-area .leaflet-container {
+  width: 100% !important;
+  height: 100% !important;
+  background: white !important;
+}
+
+/* Year badge */
+
+.mini-map-year {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
