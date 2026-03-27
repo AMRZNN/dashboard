@@ -9,10 +9,10 @@ spark_svg <- function(values,
                       cfg,
                       width = 220,
                       height = 26
-                      ) {
+) {
   
   line_col <- cfg$colors$trend_line
-
+  
   v <- as.numeric(values)
   v <- v[is.finite(v)]
   if (length(v) < 2)

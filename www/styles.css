@@ -76,98 +76,89 @@ body,
 /* ---------------------------------------------------------
    4) Header — full width, vlak
    --------------------------------------------------------- */
-.main-header{
-  background:#FFFFFF !important;
+/* verberg default header */
+.main-header {
+  display: none !important;
 }
 
-.skin-blue .main-header .navbar{
-  background:#FFFFFF !important;
-  border-bottom:1px solid var(--amr-border) !important;
-  box-shadow:none !important;
-  min-height:86px;
-  padding:0 24px;
-  display:flex;
-  align-items:center;
+/* nieuwe header */
+.amr-header-bar {
+  height: 86px;
+  background: #ffffff;
+  border-bottom: 1px solid var(--amr-border);
+  
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  
+  padding: 0 24px;
 }
 
-.main-header .logo{
-  display:none !important;
+.amr-logo {
+  height: 86px;
 }
 
-/* Branding (injectie via JS) */
-.amr-header-brand{
-  width:100%;
-  display:flex;
-  align-items:center;
-  gap:18px;
+.amr-header-text {
+  display: flex;
+  flex-direction: column;
 }
 
-.amr-logo-link{
-  display:flex;
-  align-items:center;
-  padding-right:18px;
-  border-right:1px solid var(--amr-border);
-  text-decoration:none;
+.amr-header-title {
+  font-size: 22px;
+  font-weight: 800;
 }
 
-.amr-logo{
-  height:86px;
-  width:auto;
-}
-
-.amr-header-text{
-  display:flex;
-  flex-direction:column;
-}
-
-.amr-header-title{
-  font-size:24px;
-  font-weight:800;
-  color:var(--amr-title);
-}
-
-.amr-header-subtitle{
-  font-size:14px;
-  font-weight:600;
-  color:var(--amr-muted);
-  margin-top:4px;
+.amr-header-link {
+  font-size: 14px;
+  color: var(--amr-muted);
+  text-decoration: none;
 }
 
 
-/* ---------------------------------------------------------
-   5) Tabs band
-   --------------------------------------------------------- */
-.amr-tabs{
-  background:var(--amr-band);
-  padding:14px 18px 10px 18px;
-  border-bottom:1px solid var(--amr-border);
+/* =========================
+   TABS — FINAL
+========================= */
+
+.amr-tabs-nav {
+  display: flex;
+  gap: 12px;
+  padding: 14px 18px;
+  background: var(--amr-band);
+  border-bottom: 1px solid var(--amr-border);
+  margin: 0;
 }
 
-.amr-tabs .nav{
-  margin:0;
+/* remove bootstrap spacing */
+.amr-tabs-nav > li {
+  margin: 0;
 }
 
-.amr-tabs .nav>li>a{
-  background:#FFFFFF !important;
-  border:1px solid var(--amr-border) !important;
-  border-radius:10px !important;
+.amr-tabs-nav > li > a {
+  background: #F4F7FB;
+  border: 1px solid var(--amr-border);
+  border-radius: 12px;
 
-  font-size:20px !important;
-  font-weight:800 !important;
-  color:var(--amr-title) !important;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--amr-title);
 
-  padding:10px 16px !important;
-  margin-right:10px !important;
+  padding: 10px 18px;
+  line-height: 1;
 
-  display:flex;
-  align-items:center;
+  display: block;
 }
 
-.amr-tabs .nav>li.active>a,
-.amr-tabs .nav>li>a:hover{
-  background:var(--amr-blue) !important;
-  border-color:var(--amr-blue) !important;
-  color:#FFFFFF !important;
+/* ACTIVE TAB */
+.amr-tabs-nav > li.active > a {
+  background: var(--amr-blue);
+  color: #fff;
+  border-color: var(--amr-blue);
+}
+
+/* HOVER */
+.amr-tabs-nav > li > a:hover {
+  background: var(--amr-blue-light);
+  color: #fff;
 }
 
 /* ---------------------------------------------------------
@@ -328,7 +319,7 @@ body,
   display:flex;
   justify-content:space-between;
   align-items:center;
-  font-size:12px;
+  font-size:18px;
   font-weight:600;
   color:#7A8CA6;
 }
