@@ -7,7 +7,7 @@ mod_trend_ui <- function(id) {
   ns <- NS(id)
   
   box(
-    width = 8,
+    width = 7,
     class = "amr-fixed-box trend-box",
     title = "Incidentie van BRMO meldingen",
     

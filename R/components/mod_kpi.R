@@ -5,10 +5,10 @@ library(dplyr)
 # Sparkline SVG
 # -----------------------------
 
-spark_svg <- function(values,
-                      cfg,
-                      width = 220,
-                      height = 26
+spark_svg <- function(values, 
+                      cfg, 
+                      width = 220, 
+                      height = 60 # Verhoogd van 40 naar 60 voor meer verticale ruimte
 ) {
   
   line_col <- cfg$colors$trend_line
@@ -18,15 +18,24 @@ spark_svg <- function(values,
   if (length(v) < 2)
     return(tags$svg(width="100%", height="100%"))
   
-  pad_x <- 2; pad_y <- 2
+  # VERGR GROTE FIX: Grotere padding boven en onder 
+  # Dit creëert 'ruimte' voor de lijn om verticaal te groeien.
+  pad_x <- 2; pad_y <- 5 # pad_y verhoogd van 2 naar 5
   
   x <- seq(0, 1, length.out = length(v))
   ymin <- min(v); ymax <- max(v)
   if (ymax == ymin) ymax <- ymin + 1
   
   sx <- function(t) pad_x + t * (width - 2 * pad_x)
-  sy <- function(val) pad_y + (1 - (val - ymin)/(ymax - ymin)) *
-    (height - 2 * pad_y)
+  
+  # VERGR GROTE FIX: Oprekken van de schaal
+  # We vermenigvuldigen de schaal met een factor (bijv. 1.8) om de lijn prominenter te maken.
+  scale_factor <- 1.8
+  sy <- function(val) {
+    base_sy <- pad_y + (1 - (val - ymin)/(ymax - ymin)) * (height - 2 * pad_y)
+    # Rek de lijn verticaal uit, met de bovenkant als ankerpunt
+    pad_y + (base_sy - pad_y) / scale_factor
+  }
   
   xs <- sx(x); ys <- sy(v)
   
@@ -77,7 +86,7 @@ mod_kpi_ui <- function(id) {
   ns <- NS(id)
   
   column(
-    width = 4,
+    width = 5,
     class = "amr-kpi-col",
     uiOutput(ns("kpi_grid"))
   )

@@ -9,10 +9,8 @@ app_ui <- function(cfg) {
     # ==============================
     # HEADER
     # ==============================
-    dashboardHeader(
-      title = NULL
-    ),
-    
+    dashboardHeader(disable = TRUE),
+
     # ==============================
     # SIDEBAR (leeg, verplicht)
     # ==============================
@@ -26,6 +24,18 @@ app_ui <- function(cfg) {
     dashboardBody(
       includeCSS("www/styles.css"),
       includeScript("www/scripts.js"),
+      
+      # ==============================
+      # HEAD
+      # ==============================
+      tags$head(
+        tags$link(rel="preconnect", href="https://fonts.googleapis.com"),
+        tags$link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin=NA),
+        tags$link(
+          rel="stylesheet",
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        )
+      ),
       
       tags$div(
         class = "amr-header-bar",
@@ -99,18 +109,6 @@ app_ui <- function(cfg) {
                      mod_tab_verpleeghuizen_ui("vh"))
           )
         )
-      )
-    ),
-    
-    # ==============================
-    # HEAD
-    # ==============================
-    tags$head(
-      tags$link(rel="preconnect", href="https://fonts.googleapis.com"),
-      tags$link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin=NA),
-      tags$link(
-        rel="stylesheet",
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       )
     )
   )

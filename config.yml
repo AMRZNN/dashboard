@@ -14,17 +14,17 @@ colors:
   trend_gradient_alpha: 0.30
 
   map_bins:
-    - "#79C38A"
-    - "#C7DA6B"
-    - "#E2C15F"
     - "#6EA6CF"
+    - "#99C5D3"
+    - "#B7D9B1"
+    - "#D1E6C9"
 
   micro:
-    ESBL: "#6BB6E8"
-    MRSA: "#79C38A"
-    VRE: "#C7DA6B"
-    CPE: "#E2C15F"
-    Overig: "#C9D6E8"
+    ESBL: "#6EA6CF"
+    MRSA: "#95B9C7"
+    VRE: "#ACCCBB"
+    CPE: "#C2DEAF"
+    Overig: "#D1E6C9"
 
 constants:
   landelijk_gemiddelde: 12.0

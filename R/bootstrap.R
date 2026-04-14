@@ -12,7 +12,9 @@ required_packages <- c(
   "readr",
   "sf",
   "yaml",
-  "htmlwidgets"
+  "htmlwidgets",
+  "ggiraph",
+  "ggplot2"
 )
 
 install_if_missing <- function(packages) {

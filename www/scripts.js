@@ -4,8 +4,8 @@
    ========================================================= */
 
 /* Scaling baseline (matches your layout composition) */
-const BASE_W = 1400;
-const BASE_H = 1080;
+const BASE_W = 1920;
+const BASE_H = 1200;
 
 (function () {
   function scaleDashboard(){
