@@ -36,7 +36,7 @@
 html, body{
   height: 100%;
   margin: 0;
-  overflow: hidden;
+  overflow-x: hidden;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 }
 
@@ -50,9 +50,6 @@ body,
   padding: 18px;
 }
 
-.plotly.html-widget{
-  width:100% !important;
-}
 
 /* ---------------------------------------------------------
    3) Layout – sidebar volledig uit
@@ -183,8 +180,11 @@ body,
 }
 
 .box-body{
-  padding:16px;
-  padding-bottom:20px;
+  padding:16px 16px 20px 16px;
+}
+
+.trend-box .box-body {
+  padding: 0;
 }
 
 .amr-subtitle{
@@ -329,93 +329,13 @@ body,
   white-space:nowrap;
 }
 
-
-/* ---------------------------------------------------------
-   10) Kaartobject
-   --------------------------------------------------------- */
-.leaflet-container {
-  background: #ffffff !important;
-  border-radius: 12px;
-}
-
-/* Maak alleen de kaart-box wit */
-#regio_map {
-  background: #ffffff !important;
-}
-
-#regio_map .leaflet-container {
-  background: #ffffff !important;
-}
-
-.box-body .leaflet-container {
-  background: #ffffff !important;
-}
-
-#trend_mini_map .leaflet-container {
-  background: linear-gradient(135deg, rgba(47,111,163,.08), rgba(110,166,207,.06)) !important;
-}
-
-/* ======================================
-   Trend + Mini Map Layout Fix
-====================================== */
-
-.trend-flex-row {
-  display: flex;
-  gap: 20px;
-  align-items: stretch;
-}
-
-.trend-flex-main {
-  flex: 3;
-}
-
-.trend-flex-mini {
-  flex: 1;
-  display: flex;
-  align-items: stretch;
-}
-
-.mini-map-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.trend-flex-mini .leaflet-container {
-  width: 100% !important;
-  height: 100% !important;
-  background: white !important;
-}
-
-/* Jaartal badge */
-
-.mini-map-year {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: white;
-  padding: 6px 10px;
-  border-radius: 6px;
-  font-weight: 700;
-  font-size: 14px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
-
-/* =========================================
-   Remove box-body padding
-========================================= */
-
-.trend-box > .box-body {
-  padding: 0 !important;
-}
-
 /* =========================================
    Absolute Layout System
 ========================================= */
 
 .trend-absolute-wrapper {
   position: relative;
-  height: 320px;
+  height: 360px;
   padding: 15px;
 }
 
@@ -427,6 +347,7 @@ body,
   top: 15px;
   bottom: 15px;
   width: calc(75% - 15px);
+  overflow: hidden;
 }
 
 /* Map takes 25% width */
@@ -439,25 +360,25 @@ body,
   width: calc(25% - 15px);
 }
 
-/* Force widgets to fully fill container */
 
-.trend-plot-area .plotly,
-.trend-map-area .leaflet-container {
+.trend-map-area .shiny-plot-output {
   width: 100% !important;
   height: 100% !important;
-  background: white !important;
 }
 
-/* Year badge */
-
-.mini-map-year {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: white;
-  padding: 6px 10px;
-  border-radius: 6px;
-  font-weight: 700;
-  font-size: 14px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+.trend-map-area img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
 }
+
+/* ===============================
+   FIX: Trendgrafiek overflow
+=============================== */
+
+.trend-plot-area .girafe,
+.trend-plot-area svg {
+  width: 100% !important;
+  height: 100% !important;
+}
+

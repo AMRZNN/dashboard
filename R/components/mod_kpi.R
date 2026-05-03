@@ -2,25 +2,21 @@ library(shiny)
 library(dplyr)
 
 # -----------------------------
-# Sparkline SVG
+# Sparkline SVG (met gradient)
 # -----------------------------
-
 spark_svg <- function(values, 
-                      cfg, 
                       width = 220, 
-                      height = 60 # Verhoogd van 40 naar 60 voor meer verticale ruimte
-) {
+                      height = 60) {
   
-  line_col <- cfg$colors$trend_line
+  # 🔥 vaste trendkleur (consistent met hoofdgrafiek)
+  base_col <- "#6EA6CF"
   
   v <- as.numeric(values)
   v <- v[is.finite(v)]
   if (length(v) < 2)
     return(tags$svg(width="100%", height="100%"))
   
-  # VERGR GROTE FIX: Grotere padding boven en onder 
-  # Dit creëert 'ruimte' voor de lijn om verticaal te groeien.
-  pad_x <- 2; pad_y <- 5 # pad_y verhoogd van 2 naar 5
+  pad_x <- 2; pad_y <- 5
   
   x <- seq(0, 1, length.out = length(v))
   ymin <- min(v); ymax <- max(v)
@@ -28,30 +24,67 @@ spark_svg <- function(values,
   
   sx <- function(t) pad_x + t * (width - 2 * pad_x)
   
-  # VERGR GROTE FIX: Oprekken van de schaal
-  # We vermenigvuldigen de schaal met een factor (bijv. 1.8) om de lijn prominenter te maken.
   scale_factor <- 1.8
   sy <- function(val) {
     base_sy <- pad_y + (1 - (val - ymin)/(ymax - ymin)) * (height - 2 * pad_y)
-    # Rek de lijn verticaal uit, met de bovenkant als ankerpunt
     pad_y + (base_sy - pad_y) / scale_factor
   }
   
   xs <- sx(x); ys <- sy(v)
   
+  # lijn pad
   line_path <- paste0(
     "M ", sprintf("%.2f %.2f", xs[1], ys[1]),
     paste0(" L ", sprintf("%.2f %.2f", xs[-1], ys[-1]), collapse="")
   )
   
+  # area (voor gradient)
+  area_path <- paste0(
+    "M ", sprintf("%.2f %.2f", xs[1], height),
+    " L ", sprintf("%.2f %.2f", xs[1], ys[1]),
+    paste0(" L ", sprintf("%.2f %.2f", xs[-1], ys[-1]), collapse=""),
+    " L ", sprintf("%.2f %.2f", tail(xs,1), height),
+    " Z"
+  )
+  
+  gradient_id <- paste0("grad_", sample(1e6,1))
+  
   tags$svg(
     viewBox = paste("0 0", width, height),
     preserveAspectRatio = "none",
+    
+    tags$defs(
+      tags$linearGradient(
+        id = gradient_id,
+        x1 = "0%", y1 = "0%",
+        x2 = "0%", y2 = "100%",
+        
+        tags$stop(
+          offset = "0%",
+          `stop-color` = base_col,
+          `stop-opacity` = "0.35"
+        ),
+        
+        tags$stop(
+          offset = "100%",
+          `stop-color` = base_col,
+          `stop-opacity` = "0"
+        )
+      )
+    ),
+    
+    # gradient fill
+    tags$path(
+      d = area_path,
+      fill = paste0("url(#", gradient_id, ")")
+    ),
+    
+    # lijn
     tags$path(
       d = line_path,
       fill = "none",
-      stroke = line_col,
-      `stroke-width` = 3,
+      stroke = base_col,
+      `stroke-width` = 2.5,
       `stroke-linecap` = "round",
       `stroke-linejoin` = "round"
     )
@@ -61,9 +94,8 @@ spark_svg <- function(values,
 # -----------------------------
 # KPI Tile
 # -----------------------------
-
 kpi_tile <- function(title, value, trend, dir = "up",
-                     accent = "blue", spark_vals, cfg) {
+                     accent = "blue", spark_vals) {
   
   arrow <- ifelse(dir == "up", "▲", "▼")
   
@@ -73,15 +105,16 @@ kpi_tile <- function(title, value, trend, dir = "up",
     tags$div(class="kpi-value", value),
     tags$div(class=paste("kpi-trend", dir),
              paste0(arrow," ",trend)),
-    tags$div(class="kpi-spark",
-             spark_svg(spark_vals, cfg))
+    tags$div(
+      class="kpi-spark",
+      spark_svg(spark_vals)
+    )
   )
 }
 
 # -----------------------------
 # UI
 # -----------------------------
-
 mod_kpi_ui <- function(id) {
   ns <- NS(id)
   
@@ -95,7 +128,6 @@ mod_kpi_ui <- function(id) {
 # -----------------------------
 # SERVER
 # -----------------------------
-
 mod_kpi_server <- function(id, data, cfg) {
   moduleServer(id, function(input, output, session) {
     
@@ -121,8 +153,7 @@ mod_kpi_server <- function(id, data, cfg) {
           paste0(abs(change), "%"),
           dir = dir_main,
           accent = accent_main,
-          spark_vals = spark_vals,
-          cfg = cfg
+          spark_vals = spark_vals
         ),
         
         kpi_tile(
@@ -131,8 +162,7 @@ mod_kpi_server <- function(id, data, cfg) {
           "7%",
           dir = "up",
           accent = "green",
-          spark_vals = spark_vals,
-          cfg = cfg
+          spark_vals = spark_vals
         ),
         
         kpi_tile(
@@ -141,8 +171,7 @@ mod_kpi_server <- function(id, data, cfg) {
           "7%",
           dir = "up",
           accent = "green",
-          spark_vals = spark_vals,
-          cfg = cfg
+          spark_vals = spark_vals
         ),
         
         kpi_tile(
@@ -151,8 +180,7 @@ mod_kpi_server <- function(id, data, cfg) {
           "4%",
           dir = "down",
           accent = "red",
-          spark_vals = spark_vals,
-          cfg = cfg
+          spark_vals = spark_vals
         )
       )
     })
