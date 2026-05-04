@@ -1,5 +1,4 @@
-library(shiny)
-library(shinydashboard)
+library(here)
 
 app_ui <- function(cfg) {
   
@@ -22,8 +21,8 @@ app_ui <- function(cfg) {
     # BODY
     # ==============================
     dashboardBody(
-      includeCSS("www/styles.css"),
-      includeScript("www/scripts.js"),
+      includeCSS(here("www", "styles.css")),
+      includeScript(here("www", "scripts.js")),
       
       # ==============================
       # HEAD

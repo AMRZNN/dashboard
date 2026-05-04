@@ -1,12 +1,19 @@
 # ---------------------------------------------------------
 # Bootstrap: package management
 # ---------------------------------------------------------
+# Alle packages worden hier eenmalig geladen.
+# Individuele R-bestanden roepen GEEN library() aan.
+#
+# Voor reproduceerbare omgevingen: gebruik {renv}.
+#   renv::init()   — initialiseer lockfile
+#   renv::restore() — herstel exacte versies op andere machine
+# ---------------------------------------------------------
 
 required_packages <- c(
+  "here",
   "shiny",
   "shinydashboard",
   "plotly",
-  "leaflet",
   "dplyr",
   "tidyr",
   "readr",
@@ -17,21 +24,20 @@ required_packages <- c(
   "ggplot2"
 )
 
-install_if_missing <- function(packages) {
-  
-  installed <- installed.packages()[, "Package"]
-  
-  for (pkg in packages) {
-    
-    if (!pkg %in% installed) {
-      message("Installing missing package: ", pkg)
-      install.packages(pkg, dependencies = TRUE)
-    }
-    
+.bootstrap_packages <- function(packages) {
+  missing_pkgs <- packages[!packages %in% rownames(installed.packages())]
+
+  if (length(missing_pkgs) > 0) {
+    message("Ontbrekende packages worden geïnstalleerd: ",
+            paste(missing_pkgs, collapse = ", "))
+    install.packages(missing_pkgs, dependencies = TRUE)
+  }
+
+  invisible(lapply(packages, function(pkg) {
     suppressPackageStartupMessages(
       library(pkg, character.only = TRUE)
     )
-  }
+  }))
 }
 
-install_if_missing(required_packages)
+.bootstrap_packages(required_packages)

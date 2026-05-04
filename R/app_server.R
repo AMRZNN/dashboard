@@ -1,10 +1,12 @@
-source("R/data_service.R")
+library(here)
 
-source("R/mod_tab_ggd.R")
-source("R/mod_tab_ziekenhuizen.R")
-source("R/mod_tab_laboratoria.R")
-source("R/mod_tab_huisartsen.R")
-source("R/mod_tab_verpleeghuizen.R")
+source(here("R", "data_service.R"))
+
+source(here("R", "mod_tab_ggd.R"))
+source(here("R", "mod_tab_ziekenhuizen.R"))
+source(here("R", "mod_tab_laboratoria.R"))
+source(here("R", "mod_tab_huisartsen.R"))
+source(here("R", "mod_tab_verpleeghuizen.R"))
 
 app_server <- function(input, output, session, cfg) {
   

@@ -1,6 +1,3 @@
-library(ggplot2)
-library(sf)
-library(dplyr)
 
 mod_regio_map_ui <- function(id) {
   ns <- NS(id)
@@ -29,15 +26,15 @@ mod_regio_map_server <- function(id, data, cfg) {
     output$map_plot <- renderPlot({
       
       # Data ophalen en filteren
-      shp <- data$shape() %>%
-        filter(provincie %in% cfg$geo$noord_provincies)
-      
-      dat <- data$regio() %>%
-        filter(regio %in% cfg$geo$noord_provincies)
+      req(!is.null(data$shape))
+      shp <- dplyr::filter(data$shape,
+                           provincie %in% cfg$geo$noord_provincies)
+
+      dat <- dplyr::filter(data$regio(),
+                           regio %in% cfg$geo$noord_provincies)
       
       # Koppelen van geometrie aan data
-      df <- shp %>%
-        left_join(dat, by = c("provincie" = "regio"))
+      df <- dplyr::left_join(shp, dat, by = c("provincie" = "regio"))
       
       ggplot(data = df) +
         # STAP 1: Voeg 'key_glyph = draw_key_dotplot' toe

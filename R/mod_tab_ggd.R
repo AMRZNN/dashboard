@@ -1,9 +1,9 @@
-library(shiny)
+library(here)
 
-source("R/components/mod_trend.R")
-source("R/components/mod_micro.R")
-source("R/components/mod_regio_map.R")
-source("R/components/mod_kpi.R")
+source(here("R", "components", "mod_trend.R"))
+source(here("R", "components", "mod_micro.R"))
+source(here("R", "components", "mod_regio_map.R"))
+source(here("R", "components", "mod_kpi.R"))
 
 mod_tab_ggd_ui <- function(id) {
   ns <- NS(id)

@@ -1,8 +1,10 @@
-source("R/bootstrap.R")
+if (!requireNamespace("here", quietly = TRUE)) install.packages("here")
+library(here)
 
-source("R/config_loader.R")
-source("R/app_ui.R")
-source("R/app_server.R")
+source(here("R", "bootstrap.R"))
+source(here("R", "config_loader.R"))
+source(here("R", "app_ui.R"))
+source(here("R", "app_server.R"))
 
 cfg <- load_config()
 

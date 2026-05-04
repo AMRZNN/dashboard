@@ -1,8 +1,3 @@
-library(shiny)
-library(ggplot2)
-library(dplyr)
-library(ggiraph)
-library(sf)
 
 # =========================
 # UI
@@ -157,11 +152,12 @@ mod_trend_server <- function(id, data, cfg) {
     # -------------------------
     output$mini_map <- renderPlot({
       
-      shp <- data$shape()
+      shp <- data$shape
+      req(!is.null(shp))
       dat <- data$regio()
+      req(!is.null(dat))
       
-      df <- shp %>%
-        left_join(dat, by = c("provincie" = "regio"))
+      df <- dplyr::left_join(shp, dat, by = c("provincie" = "regio"))
       
       ggplot(df) +
         geom_sf(
