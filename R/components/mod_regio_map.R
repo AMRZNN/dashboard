@@ -1,27 +1,36 @@
+
+# =========================
+# UI
+# =========================
 mod_regio_map_ui <- function(id) {
   ns <- NS(id)
   
   box(
     width = 5,
+    class = "amr-regio-box",
     title = "BRMO incidentie per regio",
+    
     tags$div(
-      style = "display: flex; flex-direction: column;",
-      tags$div(
-        class = "amr-subtitle",
-        style = "width: 100%; text-align: left;",
-        "Aantal meldingen per 100.000 inwoners"
-      ),
-      plotOutput(ns("map_plot"), height = "412px", width = "100%")
+      style = "height: 280px; display:flex; flex-direction:column;",
+      
+      tags$div(class = "amr-subtitle",
+               "Aantal meldingen per 100.000 inwoners"),
+      
+      leafletOutput(ns("map_plot"), height = "100%", width = "100%")
     )
   )
 }
 
+# =========================
+# SERVER
+# =========================
 mod_regio_map_server <- function(id, data, cfg) {
   moduleServer(id, function(input, output, session) {
     
-    output$map_plot <- renderPlot({
+    output$map_plot <- renderLeaflet({
       
-      req(!is.null(data$shape))
+      req(data$shape)
+      req(data$regio())
       
       shp <- dplyr::filter(data$shape,
                            provincie %in% cfg$geo$noord_provincies)
@@ -29,61 +38,97 @@ mod_regio_map_server <- function(id, data, cfg) {
                            regio %in% cfg$geo$noord_provincies)
       
       df <- dplyr::left_join(shp, dat, by = c("provincie" = "regio"))
+      df <- sf::st_transform(df, 4326)
       
-      # Normaliseer geometrie naar 0-1 ruimte zodat coord_sf geen
-      # vaste geografische aspect-ratio oplegt
-      bbox  <- sf::st_bbox(df)
-      x_range <- bbox["xmax"] - bbox["xmin"]
-      y_range <- bbox["ymax"] - bbox["ymin"]
-      df <- df |>
-        dplyr::mutate(
-          geometry = (geometry - c(bbox["xmin"], bbox["ymin"])) /
-            max(x_range, y_range)
-        )
+      pal <- leaflet::colorBin(
+        palette  = cfg$colors$map_bins,
+        domain   = df$incidentie,
+        bins     = 4,
+        na.color = "#E5E9F0"
+      )
       
-      ggplot(data = df) +
-        geom_sf(
-          aes(fill = incidentie),
-          color = "white",
-          linewidth = 0.5,
-          key_glyph = draw_key_dotplot
-        ) +
-        coord_sf(expand = FALSE) +
-        scale_fill_stepsn(
-          colors   = cfg$colors$map_bins,
-          n.breaks = 4,
-          na.value = "#E5E9F0",
-          name     = "Incidentie",
-          guide    = guide_legend(
-            direction      = "horizontal",
-            title.position = "top",
-            override.aes   = list(
-              shape  = 21,
-              size   = 5,
-              stroke = 0.5,
-              color  = "white"
-            )
+      bbox <- sf::st_bbox(df)
+      
+      leaflet::leaflet(df,
+                       options = leaflet::leafletOptions(
+                         zoomControl        = FALSE,
+                         scrollWheelZoom    = FALSE,
+                         doubleClickZoom    = FALSE,
+                         dragging           = FALSE,
+                         touchZoom          = FALSE,
+                         attributionControl = FALSE
+                       )
+      ) |>
+        leaflet::addPolygons(
+          fillColor    = ~pal(incidentie),
+          fillOpacity  = 0.9,
+          color        = "white",
+          weight       = 1.5,
+          smoothFactor = 1,
+          layerId      = ~provincie,
+          highlight    = leaflet::highlightOptions(
+            weight       = 2.5,
+            color        = "#1F3B63",
+            fillOpacity  = 1,
+            bringToFront = TRUE
           )
-        ) +
-        theme_void() +
-        theme(
-          text                  = element_text(family = "Inter"),
-          legend.position       = "bottom",
-          legend.justification  = "center",
-          legend.direction      = "horizontal",
-          legend.key            = element_blank(),
-          legend.title          = element_text(
-            size   = 11,
-            face   = "bold",
-            hjust  = 0.5,
-            margin = margin(b = 6)
-          ),
-          legend.text           = element_text(size = 10),
-          legend.spacing.x      = unit(8, "pt"),
-          plot.margin           = margin(t = 5, r = 5, b = 5, l = 5, unit = "pt"),
-          legend.background     = element_blank()
+        ) |>
+        leaflet::addLegend(
+          position  = "bottomright",
+          pal       = pal,
+          values    = ~incidentie,
+          title     = "Incidentie",
+          opacity   = 0.9,
+          labFormat = leaflet::labelFormat(digits = 1)
+        ) |>
+        leaflet::fitBounds(
+          lng1 = bbox[["xmin"]], lat1 = bbox[["ymin"]],
+          lng2 = bbox[["xmax"]], lat2 = bbox[["ymax"]]
         )
+    })
+    
+    # Popup via Shiny click-event ipv leaflet popup
+    observeEvent(input$map_plot_shape_click, {
+      click <- input$map_plot_shape_click
+      req(click)
       
-    }, res = 96, bg = "transparent")
+      shp <- dplyr::filter(data$shape,
+                           provincie %in% cfg$geo$noord_provincies)
+      dat <- dplyr::filter(data$regio(),
+                           regio %in% cfg$geo$noord_provincies)
+      df  <- dplyr::left_join(shp, dat, by = c("provincie" = "regio"))
+      df  <- sf::st_transform(df, 4326)
+      
+      rij <- df[df$provincie == click$id, ]
+      
+      # Centroïde van de provincie als ankerpunt voor de popup
+      centroid <- sf::st_centroid(rij$geometry)
+      coords   <- sf::st_coordinates(centroid)
+      bbox     <- sf::st_bbox(df)
+      
+      leaflet::leafletProxy("map_plot", session) |>
+        leaflet::clearPopups() |>
+        leaflet::fitBounds(
+          lng1 = bbox[["xmin"]], lat1 = bbox[["ymin"]],
+          lng2 = bbox[["xmax"]], lat2 = bbox[["ymax"]]
+        ) |>
+        leaflet::addPopups(
+          lng     = coords[1, "X"],
+          lat     = coords[1, "Y"],
+          popup   = sprintf(
+            "<div style='font-family:Inter,sans-serif;font-size:14px;padding:4px 2px;'>
+              <strong style='font-size:15px;'>%s</strong><br/>
+              <span style='color:#6B7C93;'>Incidentie:</span>
+              <strong>%.1f</strong>
+            </div>",
+            rij$provincie, rij$incidentie
+          ),
+          options = leaflet::popupOptions(
+            closeButton = TRUE,
+            maxWidth    = 220,
+            minWidth    = 160
+          )
+        )
+    })
   })
 }

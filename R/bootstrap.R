@@ -13,6 +13,7 @@ required_packages <- c(
   "here",
   "shiny",
   "shinydashboard",
+  "leaflet",
   "plotly",
   "dplyr",
   "tidyr",

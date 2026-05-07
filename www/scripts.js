@@ -1,47 +1,45 @@
-/* =========================================================
-   AMR Dashboard — scripts.js (clean, mockup-aligned)
-   - Auto-scale to viewport (width + height)
-   ========================================================= */
+(function() {
 
-/* Scaling baseline (matches your layout composition) */
-const BASE_W = 1920;
-const BASE_H = 1200;
+  function fixHeights() {
 
-(function () {
-  function scaleDashboard(){
-    const root = document.getElementById("amr-scale-root");
-    if(!root) return;
+    // --- KPI grid ---
+    var kpiBox    = document.querySelector('.amr-kpi-box');
+    var kpiOutput = document.getElementById('ggd-kpi-kpi_grid');
+    var kpiGrid   = kpiOutput ? kpiOutput.querySelector('.amr-kpi-grid') : null;
 
-    const header = document.querySelector(".main-header");
-    const headerH = header ? header.offsetHeight : 0;
+    if (kpiBox && kpiOutput) {
+      var kpiAvail = kpiBox.offsetHeight - 20;
+      kpiOutput.style.height = kpiAvail + 'px';
+      kpiOutput.style.display = 'block';
+      if (kpiGrid) kpiGrid.style.height = kpiAvail + 'px';
+    }
 
-    const availW = window.innerWidth;
-    const SAFE_BOTTOM = 60; // taakbalk/browsers UI buffer (pas aan indien nodig)
-    const availH = window.innerHeight - headerH - SAFE_BOTTOM;
+    // --- Micro staafgrafiek ---
+    var microBox     = document.querySelector('.amr-micro-box');
+    var microWrapper = microBox ? microBox.querySelector('.amr-micro-plot-wrapper') : null;
+    var microOutput  = microWrapper ? microWrapper.querySelector('.shiny-html-output') : null;
 
+    if (microBox && microWrapper) {
+      var boxH      = microBox.offsetHeight;
+      var headerH   = microBox.querySelector('.box-header') ? microBox.querySelector('.box-header').offsetHeight : 0;
+      var subtitleH = microBox.querySelector('.amr-subtitle') ? microBox.querySelector('.amr-subtitle').offsetHeight : 0;
+      var padding   = 36;
+      var microAvail = boxH - headerH - subtitleH - padding;
 
-    const sW = availW / BASE_W;
-    const sH = availH / BASE_H;
-    const scale = Math.min(sW, sH, 1);
+      microWrapper.style.height = microAvail + 'px';
+      if (microOutput) microOutput.style.height = microAvail + 'px';
 
-    root.style.transformOrigin = "top left";
-    root.style.transform = "scale(" + scale.toFixed(4) + ")";
-    root.style.width = (100 / scale) + "%";
-    root.style.height = (100 / scale) + "%";
+      // Shiny girafe output heeft ook een inner div
+      var girafe = microWrapper.querySelector('.girafe');
+      if (girafe) girafe.style.height = microAvail + 'px';
+    }
   }
 
-  function boot(){
-    // scale after injection to prevent clipping
-    setTimeout(scaleDashboard, 20);
-    setTimeout(scaleDashboard, 120);
-  }
+  document.addEventListener('shiny:connected', fixHeights);
+  document.addEventListener('shiny:idle',      fixHeights);
+  document.addEventListener('shiny:value',     function() { setTimeout(fixHeights, 50); });
+  window.addEventListener('resize',            fixHeights);
+  setTimeout(fixHeights, 300);
+  setTimeout(fixHeights, 1000);
 
-  window.addEventListener("resize", scaleDashboard);
-  window.addEventListener("load", boot);
-
-  // Shiny reconnect hook
-  document.addEventListener("shiny:connected", boot);
-
-  // fallback
-  setTimeout(boot, 60);
 })();

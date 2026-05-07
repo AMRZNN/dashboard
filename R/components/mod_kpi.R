@@ -118,9 +118,9 @@ kpi_tile <- function(title, value, trend, dir = "up",
 mod_kpi_ui <- function(id) {
   ns <- NS(id)
   
-  column(
+  box(
     width = 5,
-    class = "amr-kpi-col",
+    class = "amr-kpi-box",
     uiOutput(ns("kpi_grid"))
   )
 }
