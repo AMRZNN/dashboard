@@ -44,10 +44,26 @@ data_service <- function(cfg) {
     NULL
   })
   
+  # --- Certe laboratorium data: live van GitHub ---
+  certe <- reactiveFileReader(
+    300000, NULL,  # elke 5 minuten checken
+    filePath = cfg$paths$certe,
+    readFunc = function(path) {
+      tryCatch(
+        readr::read_csv(path, show_col_types = FALSE),
+        error = function(e) {
+          warning("Kon Certe-data niet ophalen: ", conditionMessage(e))
+          NULL
+        }
+      )
+    }
+  )
+  
   list(
     trend = trend,
     micro = micro,
     regio = regio,
-    shape = shape
+    shape = shape,
+    certe = certe
   )
 }

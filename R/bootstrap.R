@@ -21,19 +21,18 @@ required_packages <- c(
   "sf",
   "yaml",
   "htmlwidgets",
-  "ggiraph",
   "ggplot2"
 )
 
 .bootstrap_packages <- function(packages) {
   missing_pkgs <- packages[!packages %in% rownames(installed.packages())]
-
+  
   if (length(missing_pkgs) > 0) {
     message("Ontbrekende packages worden geïnstalleerd: ",
             paste(missing_pkgs, collapse = ", "))
     install.packages(missing_pkgs, dependencies = TRUE)
   }
-
+  
   invisible(lapply(packages, function(pkg) {
     suppressPackageStartupMessages(
       library(pkg, character.only = TRUE)

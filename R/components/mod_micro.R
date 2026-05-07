@@ -16,7 +16,7 @@ mod_micro_ui <- function(id) {
     
     tags$div(
       class = "amr-micro-plot-wrapper",
-      girafeOutput(ns("plot"), width = "100%", height = "100%")
+      plotlyOutput(ns("plot"), width = "100%", height = "100%")
     )
   )
 }
@@ -27,40 +27,51 @@ mod_micro_ui <- function(id) {
 mod_micro_server <- function(id, data, cfg) {
   moduleServer(id, function(input, output, session) {
     
-    output$plot <- renderGirafe({
+    output$plot <- renderPlotly({
       df <- data$micro()
       req(!is.null(df), nrow(df) > 0)
       
       kleur <- unlist(cfg$colors$micro)
+      types <- names(kleur)
       
-      p <- ggplot(df, aes(x = factor(jaar), y = waarde,
-                          fill = type,
-                          tooltip = paste0(type, ": ", waarde),
-                          data_id = paste0(jaar, type))) +
-        geom_col_interactive(position = "stack", width = 0.7) +
-        scale_fill_manual(values = kleur, name = NULL) +
-        scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
-        theme_minimal() +
-        theme(
-          text            = element_text(family = "Inter"),
-          axis.title      = element_blank(),
-          panel.grid.minor = element_blank(),
-          panel.grid.major.x = element_blank(),
-          legend.position = "right",
-          legend.text     = element_text(size = 10),
-          plot.margin     = margin(5, 5, 2, 5)
+      # Bouw gestapelde staafgrafiek per type
+      p <- plotly::plot_ly()
+      for (type in types) {
+        sub <- dplyr::filter(df, type == !!type)
+        p <- plotly::add_trace(p,
+                               data = sub,
+                               x = ~factor(jaar), y = ~waarde,
+                               type = "bar", name = type,
+                               marker = list(color = kleur[[type]]),
+                               hovertemplate = paste0(type, ": %{y}<extra></extra>")
         )
+      }
       
-      girafe(
-        ggobj = p,
-        width_svg  = 6,
-        height_svg = 3,
-        options = list(
-          opts_sizing(rescale = TRUE),
-          opts_toolbar(saveaspng = FALSE),
-          opts_hover(css = "opacity:0.8;")
-        )
-      )
+      p |>
+        plotly::layout(
+          barmode = "stack",
+          xaxis = list(
+            title = "",
+            tickfont = list(family = "Inter", size = 11, color = "#6B7C93"),
+            showgrid = FALSE
+          ),
+          yaxis = list(
+            title = "",
+            tickfont = list(family = "Inter", size = 11, color = "#6B7C93"),
+            gridcolor = "#E9EEF5",
+            zeroline = FALSE
+          ),
+          legend = list(
+            orientation = "v",
+            font = list(family = "Inter", size = 11),
+            bgcolor = "rgba(0,0,0,0)"
+          ),
+          margin = list(t = 5, r = 10, b = 30, l = 35),
+          paper_bgcolor = "rgba(0,0,0,0)",
+          plot_bgcolor  = "rgba(0,0,0,0)",
+          font = list(family = "Inter")
+        ) |>
+        plotly::config(displayModeBar = FALSE)
     })
   })
 }

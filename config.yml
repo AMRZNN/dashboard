@@ -14,10 +14,10 @@ colors:
   trend_gradient_alpha: 0.30
 
   map_bins:
-    - "#6EA6CF"
-    - "#99C5D3"
-    - "#B7D9B1"
     - "#D1E6C9"
+    - "#B7D9B1"
+    - "#99C5D3"
+    - "#6EA6CF"
 
   micro:
     ESBL: "#6EA6CF"
@@ -40,3 +40,4 @@ paths:
   micro: "data/micro.csv"
   regio: "data/regio_incidentie.csv"
   shape: "data/geo_provincies.rds"
+  certe: "https://raw.githubusercontent.com/AMRZNN/dashboard_data/main/certe/brmo_maand.csv"

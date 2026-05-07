@@ -133,55 +133,55 @@ mod_kpi_server <- function(id, data, cfg) {
     
     output$kpi_grid <- renderUI({
       
-      df <- data$trend() %>% arrange(jaar)
+      # --- Modus 1: per-categorie data (data$kpi aanwezig) ---
+      if (!is.null(data$kpi)) {
+        df <- data$kpi()
+        req(!is.null(df), nrow(df) >= 2)
+        
+        make_kpi <- function(col, label) {
+          vals    <- df[[col]]
+          latest  <- tail(vals, 1)
+          prev    <- tail(vals, 2)[1]
+          change  <- if (!is.na(prev) && prev > 0)
+            round((latest - prev) / prev * 100, 1)
+          else NA
+          dir     <- if (!is.na(change) && change >= 0) "up" else "down"
+          accent  <- if (!is.na(change) && change >= 0) "green" else "red"
+          trend_txt <- if (is.na(change)) "–" else paste0(abs(change), "%")
+          spark   <- tail(vals, 10)
+          kpi_tile(label, latest, trend_txt, dir = dir, accent = accent, spark_vals = spark)
+        }
+        
+        return(tags$div(
+          class = "amr-kpi-grid",
+          make_kpi("ESBL", "ESBL"),
+          make_kpi("MRSA", "MRSA"),
+          make_kpi("VRE",  "VRE"),
+          make_kpi("CPE",  "CPE")
+        ))
+      }
       
-      latest <- tail(df$incidentie, 1)
+      # --- Modus 2: jaardata via data$trend (GGD standaard) ---
+      df <- data$trend() %>% dplyr::arrange(jaar)
+      
+      latest   <- tail(df$incidentie, 1)
       previous <- tail(df$incidentie, 2)[1]
-      change <- round((latest - previous)/previous * 100, 1)
-      
-      dir_main <- ifelse(change >= 0, "up", "down")
+      change   <- round((latest - previous) / previous * 100, 1)
+      dir_main    <- ifelse(change >= 0, "up", "down")
       accent_main <- ifelse(change >= 0, "green", "red")
-      
-      spark_vals <- tail(df$incidentie, 10)
+      spark_vals  <- tail(df$incidentie, 10)
       
       tags$div(
         class = "amr-kpi-grid",
-        
-        kpi_tile(
-          "BRMO meldingen",
-          round(latest,1),
-          paste0(abs(change), "%"),
-          dir = dir_main,
-          accent = accent_main,
-          spark_vals = spark_vals
-        ),
-        
-        kpi_tile(
-          "ESBL incidentie",
-          "14,1",
-          "7%",
-          dir = "up",
-          accent = "green",
-          spark_vals = spark_vals
-        ),
-        
-        kpi_tile(
-          "MRSA incidentie",
-          "2,7",
-          "7%",
-          dir = "up",
-          accent = "green",
-          spark_vals = spark_vals
-        ),
-        
-        kpi_tile(
-          "CPE incidentie",
-          "0,8",
-          "4%",
-          dir = "down",
-          accent = "red",
-          spark_vals = spark_vals
-        )
+        kpi_tile("BRMO meldingen", round(latest, 1),
+                 paste0(abs(change), "%"),
+                 dir = dir_main, accent = accent_main, spark_vals = spark_vals),
+        kpi_tile("ESBL incidentie", "14,1", "7%",
+                 dir = "up",   accent = "green", spark_vals = spark_vals),
+        kpi_tile("MRSA incidentie", "2,7",  "7%",
+                 dir = "up",   accent = "green", spark_vals = spark_vals),
+        kpi_tile("CPE incidentie",  "0,8",  "4%",
+                 dir = "down", accent = "red",   spark_vals = spark_vals)
       )
     })
   })

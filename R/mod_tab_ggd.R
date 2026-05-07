@@ -15,7 +15,7 @@ mod_tab_ggd_ui <- function(id) {
       mod_trend_ui(ns("trend")),
       mod_kpi_ui(ns("kpi"))
     ),
-
+    
     fluidRow(
       class = "amr-row2",
       mod_micro_ui(ns("micro")),

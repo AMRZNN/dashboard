@@ -150,21 +150,30 @@ body, .content-wrapper, .right-side { background: var(--amr-band) !important; }
   overflow: hidden;
 }
 .trend-plot-area {
-  flex: 3;
+  flex: 2;
   min-width: 0;
   min-height: 0;
   overflow: hidden;
 }
 .trend-map-area {
-  flex: 0 0 180px;   /* vaste breedte, niet krimpen */
+  flex: 0 0 200px;
   min-height: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
-.trend-plot-area .girafe,
-.trend-plot-area svg,
-.trend-plot-area .shiny-html-output { width: 100% !important; height: 100% !important; }
+.trend-plot-area .shiny-html-output,
+.trend-plot-area .js-plotly-plot { width: 100% !important; height: 100% !important; }
 
-.trend-map-area .leaflet-container  { background: transparent !important; }
+.trend-map-year {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--amr-muted);
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.trend-map-area .leaflet-container  { background: transparent !important; flex: 1; }
 .trend-map-area .shiny-html-output,
 .trend-map-area .leaflet            { width: 100% !important; height: 100% !important; }
 
@@ -218,9 +227,9 @@ body, .content-wrapper, .right-side { background: var(--amr-band) !important; }
 .amr-kpi.green::before { background: var(--amr-green); }
 .amr-kpi.red::before   { background: var(--amr-red); }
 
-.amr-kpi .kpi-title { font-size: 0.75rem; font-weight: 800; color: var(--amr-title); margin-bottom: 4px; }
-.amr-kpi .kpi-value { font-size: 1.4rem;  font-weight: 900; color: var(--amr-text); }
-.amr-kpi .kpi-trend { font-size: 1rem;    font-weight: 800; }
+.amr-kpi .kpi-title { font-size: 15px; font-weight: 800; color: var(--amr-title); margin-bottom: 4px; }
+.amr-kpi .kpi-value { font-size: 1.7rem;  font-weight: 900; color: var(--amr-text); }
+.amr-kpi .kpi-trend { font-size: 1.3rem;  font-weight: 800; }
 .amr-kpi .kpi-row   { display: flex; justify-content: space-between; align-items: baseline; }
 .amr-kpi .up        { color: var(--amr-green); }
 .amr-kpi .down      { color: var(--amr-red); }
@@ -258,8 +267,7 @@ body, .content-wrapper, .right-side { background: var(--amr-band) !important; }
   overflow: hidden;
 }
 .amr-micro-plot-wrapper .shiny-html-output,
-.amr-micro-plot-wrapper .girafe,
-.amr-micro-plot-wrapper svg { width: 100% !important; height: 100% !important; }
+.amr-micro-plot-wrapper .js-plotly-plot { width: 100% !important; height: 100% !important; }
 
 /* Regio leaflet */
 .amr-regio-box .leaflet,
