@@ -39,5 +39,5 @@ paths:
   trend: "data/trend.csv"
   micro: "data/micro.csv"
   regio: "data/regio_incidentie.csv"
-  shape: "data/geo_provincies.rds"
+  shape: "data/geo_nuts3.rds"
   certe: "https://raw.githubusercontent.com/AMRZNN/dashboard_data/main/certe/brmo_maand.csv"

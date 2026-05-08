@@ -16,6 +16,14 @@ mod_tab_laboratoria_ui <- function(id) {
       class = "amr-row2",
       mod_micro_ui(ns("micro")),
       mod_regio_map_ui(ns("map"))
+    ),
+    
+    tags$div(
+      class = "amr-footer",
+      tags$div(class = "left",
+               "© AMR Zorgnetwerk Noord-Nederland, 2024. Bron: Certe laboratorium. BRMO = bijzonder resistente micro-organismen."),
+      tags$div(class = "right",
+               "Meldplichtig: ESBL, MRSA, VRE, CPE.")
     )
   )
 }
@@ -121,7 +129,7 @@ mod_tab_laboratoria_server <- function(id, data, cfg) {
           dplyr::across(c(esbl, mrsa, vre, cpe, mrpa,
                           facre, cre, fara, cpa, ca)), na.rm = TRUE)) |>
         dplyr::filter(datum == max(datum, na.rm = TRUE)) |>
-        dplyr::group_by(regio = provincie) |>
+        dplyr::group_by(regio = nuts3) |>
         dplyr::summarise(incidentie = sum(totaal, na.rm = TRUE), .groups = "drop")
     })
     
@@ -135,7 +143,7 @@ mod_tab_laboratoria_server <- function(id, data, cfg) {
       kpi         = lab_kpi
     )
     
-    mod_trend_server("trend",   lab_data, cfg)
+    mod_trend_server("trend",   lab_data, cfg, eenheid = "absoluut")
     mod_kpi_server("kpi",       lab_data, cfg)
     mod_micro_server("micro",   lab_data, cfg)
     mod_regio_map_server("map", lab_data, cfg)

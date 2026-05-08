@@ -231,8 +231,8 @@ body, .content-wrapper, .right-side { background: var(--amr-band) !important; }
 .amr-kpi .kpi-value { font-size: 1.7rem;  font-weight: 900; color: var(--amr-text); }
 .amr-kpi .kpi-trend { font-size: 1.3rem;  font-weight: 800; }
 .amr-kpi .kpi-row   { display: flex; justify-content: space-between; align-items: baseline; }
-.amr-kpi .up        { color: var(--amr-green); }
-.amr-kpi .down      { color: var(--amr-red); }
+.amr-kpi .up        { color: var(--amr-red); }
+.amr-kpi .down      { color: var(--amr-green); }
 .amr-kpi .kpi-spark {
   position: absolute;
   left: 14px; right: 14px; bottom: 10px;

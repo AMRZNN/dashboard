@@ -27,7 +27,7 @@ mod_trend_ui <- function(id) {
 # =========================
 # SERVER
 # =========================
-mod_trend_server <- function(id, data, cfg) {
+mod_trend_server <- function(id, data, cfg, eenheid = "per100k") {
   moduleServer(id, function(input, output, session) {
     
     trend_df <- reactive({
@@ -47,14 +47,16 @@ mod_trend_server <- function(id, data, cfg) {
       df <- trend_df()
       req(nrow(df) > 0)
       
+      eenheid_txt <- if (eenheid == "per100k") "per 100.000 inwoners" else "absoluut aantal"
+      
       if ("datum" %in% names(df)) {
         eerste <- format(min(df$datum, na.rm = TRUE), "%b %Y")
         laatste <- format(max(df$datum, na.rm = TRUE), "%b %Y")
-        paste0("Aantal meldingen, Noord-Nederland, ", eerste, " – ", laatste)
+        paste0("Aantal meldingen (", eenheid_txt, "), Noord-Nederland, ", eerste, " \u2013 ", laatste)
       } else {
         eerste <- min(df$jaar, na.rm = TRUE)
         laatste <- max(df$jaar, na.rm = TRUE)
-        paste0("Aantal meldingen per 100.000 inwoners, Noord-Nederland, ", eerste, "\u2013", laatste)
+        paste0("Aantal meldingen (", eenheid_txt, "), Noord-Nederland, ", eerste, "\u2013", laatste)
       }
     })
     
@@ -145,8 +147,18 @@ mod_trend_server <- function(id, data, cfg) {
       # Gebruik regio_basis als die bestaat (Certe-modus), anders data$regio
       regio_data <- if (!is.null(data$regio_basis)) data$regio() else data$regio()
       
-      df <- dplyr::left_join(data$shape, regio_data,
-                             by = c("provincie" = "regio")) |>
+      # Heel Nederland tonen, alleen noordelijke nuts3 ingekleurd
+      # Filter regio-data op noordelijke nuts3 zodat alleen die ingekleurd worden
+      noord_nuts3 <- c(
+        "Delfzijl en omgeving", "Oost-Groningen", "Overig Groningen",
+        "Noord-Friesland", "Zuidoost-Friesland", "Zuidwest-Friesland",
+        "Noord-Drenthe", "Zuidoost-Drenthe", "Zuidwest-Drenthe"
+      )
+      
+      regio_noord <- dplyr::filter(regio_data, regio %in% noord_nuts3)
+      
+      df <- data$shape |>
+        dplyr::left_join(regio_noord, by = c("nuts3" = "regio")) |>
         sf::st_transform(4326)
       
       pal  <- leaflet::colorBin(cfg$colors$map_bins, df$incidentie,

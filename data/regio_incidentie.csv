@@ -1,13 +1,1081 @@
-regio,incidentie
-Groningen,22.5
-Friesland,18.2
-Drenthe,14.3
-Overijssel,19.1
-Flevoland,16.8
-Gelderland,20.3
-Utrecht,15.7
-Noord-Holland,24.1
-Zuid-Holland,26.4
-Zeeland,13.9
-Noord-Brabant,21.6
-Limburg,17.2
+jaar,maand,provincie,nuts3,esbl,mrpa,mrsa,facre,vre,cre,fara,cpa,cpe,ca
+2015,1,Groningen,Delfzijl en omgeving,10,1,4,0,1,0,0,0,0,0
+2015,1,Groningen,Oost-Groningen,7,1,4,0,1,0,0,0,0,0
+2015,1,Groningen,Overig Groningen,11,2,5,0,1,0,0,0,0,0
+2015,1,Friesland,Noord-Friesland,7,1,5,0,1,0,0,0,0,0
+2015,1,Friesland,Zuidoost-Friesland,10,0,3,0,1,0,0,0,1,0
+2015,1,Friesland,Zuidwest-Friesland,8,1,4,0,1,0,0,0,0,0
+2015,1,Drenthe,Noord-Drenthe,8,0,0,0,0,0,0,0,0,0
+2015,1,Drenthe,Zuidoost-Drenthe,9,1,1,0,1,0,0,0,0,0
+2015,1,Drenthe,Zuidwest-Drenthe,7,1,3,0,1,0,0,0,0,0
+2015,2,Groningen,Delfzijl en omgeving,11,2,4,0,0,0,0,0,0,0
+2015,2,Groningen,Oost-Groningen,9,2,4,0,1,0,0,0,0,0
+2015,2,Groningen,Overig Groningen,8,2,5,0,1,0,0,0,1,0
+2015,2,Friesland,Noord-Friesland,12,1,2,0,0,0,0,0,1,0
+2015,2,Friesland,Zuidoost-Friesland,6,1,4,0,0,0,0,0,0,0
+2015,2,Friesland,Zuidwest-Friesland,10,2,4,0,0,0,0,0,0,0
+2015,2,Drenthe,Noord-Drenthe,6,1,2,0,0,0,0,0,0,0
+2015,2,Drenthe,Zuidoost-Drenthe,6,1,1,0,0,0,0,0,0,0
+2015,2,Drenthe,Zuidwest-Drenthe,8,1,3,0,1,0,0,0,0,0
+2015,3,Groningen,Delfzijl en omgeving,13,2,4,0,0,0,0,0,1,0
+2015,3,Groningen,Oost-Groningen,11,2,4,0,1,0,0,0,0,0
+2015,3,Groningen,Overig Groningen,14,1,3,0,0,0,0,0,0,0
+2015,3,Friesland,Noord-Friesland,12,2,4,0,0,0,0,0,0,0
+2015,3,Friesland,Zuidoost-Friesland,10,1,3,0,1,0,0,0,1,0
+2015,3,Friesland,Zuidwest-Friesland,7,1,5,0,0,0,0,0,0,0
+2015,3,Drenthe,Noord-Drenthe,7,0,3,0,0,0,0,0,0,0
+2015,3,Drenthe,Zuidoost-Drenthe,7,2,3,0,1,0,0,0,0,0
+2015,3,Drenthe,Zuidwest-Drenthe,7,1,4,0,0,0,0,0,0,0
+2015,4,Groningen,Delfzijl en omgeving,12,2,5,0,1,0,0,0,0,0
+2015,4,Groningen,Oost-Groningen,8,1,4,0,1,0,0,0,0,0
+2015,4,Groningen,Overig Groningen,11,1,4,0,1,0,0,0,1,0
+2015,4,Friesland,Noord-Friesland,12,1,2,0,1,0,0,0,0,0
+2015,4,Friesland,Zuidoost-Friesland,10,1,4,0,1,0,0,0,0,0
+2015,4,Friesland,Zuidwest-Friesland,11,1,4,0,1,0,0,0,0,0
+2015,4,Drenthe,Noord-Drenthe,7,1,4,0,0,0,0,0,0,0
+2015,4,Drenthe,Zuidoost-Drenthe,10,1,1,0,1,0,0,0,0,0
+2015,4,Drenthe,Zuidwest-Drenthe,6,1,3,0,0,0,0,0,0,0
+2015,5,Groningen,Delfzijl en omgeving,10,1,4,0,1,0,0,0,0,0
+2015,5,Groningen,Oost-Groningen,11,2,3,0,1,0,0,0,1,0
+2015,5,Groningen,Overig Groningen,9,1,4,0,1,0,0,0,0,0
+2015,5,Friesland,Noord-Friesland,10,1,3,0,1,0,0,0,0,0
+2015,5,Friesland,Zuidoost-Friesland,13,1,4,0,0,0,0,0,0,0
+2015,5,Friesland,Zuidwest-Friesland,9,1,4,0,0,0,0,0,1,0
+2015,5,Drenthe,Noord-Drenthe,7,2,2,0,1,0,0,0,1,0
+2015,5,Drenthe,Zuidoost-Drenthe,5,0,2,0,1,0,0,0,0,0
+2015,5,Drenthe,Zuidwest-Drenthe,10,1,1,0,0,0,0,0,1,0
+2015,6,Groningen,Delfzijl en omgeving,11,0,4,0,1,0,0,0,1,0
+2015,6,Groningen,Oost-Groningen,12,1,3,0,0,0,0,0,0,0
+2015,6,Groningen,Overig Groningen,11,2,3,0,0,0,0,0,0,0
+2015,6,Friesland,Noord-Friesland,6,1,1,0,0,0,0,0,0,0
+2015,6,Friesland,Zuidoost-Friesland,12,1,4,0,0,0,0,0,0,0
+2015,6,Friesland,Zuidwest-Friesland,7,2,4,0,1,0,0,0,1,0
+2015,6,Drenthe,Noord-Drenthe,7,1,3,0,0,0,0,0,1,0
+2015,6,Drenthe,Zuidoost-Drenthe,10,0,2,0,1,0,0,0,0,0
+2015,6,Drenthe,Zuidwest-Drenthe,5,0,1,0,0,0,0,0,0,0
+2015,7,Groningen,Delfzijl en omgeving,11,1,3,0,0,0,0,0,0,0
+2015,7,Groningen,Oost-Groningen,11,2,5,0,1,0,0,0,1,0
+2015,7,Groningen,Overig Groningen,10,1,3,0,0,0,0,0,0,0
+2015,7,Friesland,Noord-Friesland,9,1,3,0,0,0,0,0,0,0
+2015,7,Friesland,Zuidoost-Friesland,12,1,3,0,0,0,0,0,0,0
+2015,7,Friesland,Zuidwest-Friesland,6,1,3,0,1,0,0,0,1,0
+2015,7,Drenthe,Noord-Drenthe,9,1,3,0,0,0,0,0,0,0
+2015,7,Drenthe,Zuidoost-Drenthe,8,1,5,0,1,0,0,0,0,0
+2015,7,Drenthe,Zuidwest-Drenthe,8,1,3,0,1,0,0,0,0,0
+2015,8,Groningen,Delfzijl en omgeving,6,1,5,0,1,0,0,0,1,0
+2015,8,Groningen,Oost-Groningen,14,0,5,0,0,0,0,0,1,0
+2015,8,Groningen,Overig Groningen,11,1,6,0,1,0,0,0,0,0
+2015,8,Friesland,Noord-Friesland,9,1,3,0,0,0,0,0,1,0
+2015,8,Friesland,Zuidoost-Friesland,6,1,5,0,0,0,0,0,0,0
+2015,8,Friesland,Zuidwest-Friesland,9,1,4,0,1,0,0,0,0,0
+2015,8,Drenthe,Noord-Drenthe,11,1,3,0,0,0,0,0,0,0
+2015,8,Drenthe,Zuidoost-Drenthe,10,1,3,0,0,0,0,0,0,0
+2015,8,Drenthe,Zuidwest-Drenthe,7,1,3,0,1,0,0,0,0,0
+2015,9,Groningen,Delfzijl en omgeving,10,1,3,0,0,0,0,0,0,0
+2015,9,Groningen,Oost-Groningen,12,1,5,0,1,0,0,0,0,0
+2015,9,Groningen,Overig Groningen,7,1,4,0,0,0,0,0,0,0
+2015,9,Friesland,Noord-Friesland,9,1,3,0,0,0,0,0,1,0
+2015,9,Friesland,Zuidoost-Friesland,8,1,3,0,1,0,0,0,0,0
+2015,9,Friesland,Zuidwest-Friesland,10,1,4,0,1,0,0,0,0,0
+2015,9,Drenthe,Noord-Drenthe,9,1,2,0,1,0,0,0,0,0
+2015,9,Drenthe,Zuidoost-Drenthe,7,0,3,0,0,0,0,0,0,0
+2015,9,Drenthe,Zuidwest-Drenthe,6,1,1,0,1,0,0,0,0,0
+2015,10,Groningen,Delfzijl en omgeving,9,2,5,0,0,0,0,0,0,0
+2015,10,Groningen,Oost-Groningen,12,1,4,0,0,0,0,0,0,0
+2015,10,Groningen,Overig Groningen,11,1,5,0,1,0,0,0,0,0
+2015,10,Friesland,Noord-Friesland,6,1,4,0,1,0,0,0,0,0
+2015,10,Friesland,Zuidoost-Friesland,9,1,3,0,1,0,0,0,0,0
+2015,10,Friesland,Zuidwest-Friesland,10,1,4,0,1,0,0,0,0,0
+2015,10,Drenthe,Noord-Drenthe,7,1,5,0,0,0,0,0,0,0
+2015,10,Drenthe,Zuidoost-Drenthe,4,0,1,0,0,0,0,0,0,0
+2015,10,Drenthe,Zuidwest-Drenthe,5,1,2,0,1,0,0,0,0,0
+2015,11,Groningen,Delfzijl en omgeving,13,1,3,0,1,0,0,0,0,0
+2015,11,Groningen,Oost-Groningen,13,1,3,0,0,0,0,0,0,0
+2015,11,Groningen,Overig Groningen,12,1,4,0,1,0,0,0,0,0
+2015,11,Friesland,Noord-Friesland,9,1,5,0,1,0,0,0,0,0
+2015,11,Friesland,Zuidoost-Friesland,7,1,3,0,1,0,0,0,0,0
+2015,11,Friesland,Zuidwest-Friesland,11,0,3,0,1,0,0,0,0,0
+2015,11,Drenthe,Noord-Drenthe,7,1,2,0,1,0,0,0,1,0
+2015,11,Drenthe,Zuidoost-Drenthe,3,0,4,0,0,0,0,0,0,0
+2015,11,Drenthe,Zuidwest-Drenthe,7,1,2,0,0,0,0,0,0,0
+2015,12,Groningen,Delfzijl en omgeving,13,1,4,0,0,0,0,0,0,0
+2015,12,Groningen,Oost-Groningen,10,1,3,0,1,0,0,0,1,0
+2015,12,Groningen,Overig Groningen,11,2,5,0,1,0,0,0,0,0
+2015,12,Friesland,Noord-Friesland,9,2,3,0,0,0,0,0,0,0
+2015,12,Friesland,Zuidoost-Friesland,5,1,4,0,1,0,0,0,0,0
+2015,12,Friesland,Zuidwest-Friesland,11,1,2,0,0,0,0,0,0,0
+2015,12,Drenthe,Noord-Drenthe,4,1,2,0,1,0,0,0,0,0
+2015,12,Drenthe,Zuidoost-Drenthe,9,1,2,0,0,0,0,0,0,0
+2015,12,Drenthe,Zuidwest-Drenthe,4,1,4,0,0,0,0,0,0,0
+2016,1,Groningen,Delfzijl en omgeving,13,0,4,0,1,0,0,0,0,0
+2016,1,Groningen,Oost-Groningen,13,2,4,0,1,0,0,0,0,0
+2016,1,Groningen,Overig Groningen,9,1,5,0,1,0,0,0,1,0
+2016,1,Friesland,Noord-Friesland,7,2,5,0,1,0,0,0,0,0
+2016,1,Friesland,Zuidoost-Friesland,7,1,2,0,1,0,0,0,1,0
+2016,1,Friesland,Zuidwest-Friesland,6,2,5,0,0,0,0,0,0,0
+2016,1,Drenthe,Noord-Drenthe,7,0,2,0,0,0,0,0,0,0
+2016,1,Drenthe,Zuidoost-Drenthe,11,0,2,0,0,0,0,0,0,0
+2016,1,Drenthe,Zuidwest-Drenthe,7,2,3,0,0,0,0,0,0,0
+2016,2,Groningen,Delfzijl en omgeving,9,1,4,0,1,0,0,0,0,0
+2016,2,Groningen,Oost-Groningen,11,1,4,0,1,0,0,0,0,0
+2016,2,Groningen,Overig Groningen,14,1,3,0,1,0,0,0,0,0
+2016,2,Friesland,Noord-Friesland,12,2,2,0,1,0,0,0,0,0
+2016,2,Friesland,Zuidoost-Friesland,6,0,3,0,1,0,0,0,0,0
+2016,2,Friesland,Zuidwest-Friesland,8,1,2,0,0,0,0,0,0,0
+2016,2,Drenthe,Noord-Drenthe,7,1,2,0,0,0,0,0,0,0
+2016,2,Drenthe,Zuidoost-Drenthe,7,1,3,0,1,0,0,0,0,0
+2016,2,Drenthe,Zuidwest-Drenthe,6,1,3,0,0,0,0,0,0,0
+2016,3,Groningen,Delfzijl en omgeving,13,1,4,0,1,0,0,0,0,0
+2016,3,Groningen,Oost-Groningen,12,1,4,0,0,0,0,0,0,0
+2016,3,Groningen,Overig Groningen,13,1,4,0,1,0,0,0,1,0
+2016,3,Friesland,Noord-Friesland,7,2,2,0,0,0,0,0,0,0
+2016,3,Friesland,Zuidoost-Friesland,9,1,4,0,0,0,0,0,0,0
+2016,3,Friesland,Zuidwest-Friesland,7,2,4,0,1,0,0,0,0,0
+2016,3,Drenthe,Noord-Drenthe,6,1,3,0,0,0,0,0,0,0
+2016,3,Drenthe,Zuidoost-Drenthe,4,1,2,0,0,0,0,0,0,0
+2016,3,Drenthe,Zuidwest-Drenthe,3,1,4,0,0,0,0,0,0,0
+2016,4,Groningen,Delfzijl en omgeving,9,1,1,0,1,0,0,0,1,0
+2016,4,Groningen,Oost-Groningen,10,1,4,0,1,0,0,0,1,0
+2016,4,Groningen,Overig Groningen,10,1,3,0,1,0,0,0,1,0
+2016,4,Friesland,Noord-Friesland,8,1,2,0,0,0,0,0,0,0
+2016,4,Friesland,Zuidoost-Friesland,6,0,1,0,0,0,0,0,0,0
+2016,4,Friesland,Zuidwest-Friesland,6,0,3,0,0,0,0,0,0,0
+2016,4,Drenthe,Noord-Drenthe,9,1,1,0,0,0,0,0,0,0
+2016,4,Drenthe,Zuidoost-Drenthe,6,0,4,0,0,0,0,0,0,0
+2016,4,Drenthe,Zuidwest-Drenthe,7,1,3,0,0,0,0,0,0,0
+2016,5,Groningen,Delfzijl en omgeving,15,2,5,0,0,0,0,0,1,0
+2016,5,Groningen,Oost-Groningen,8,1,3,0,1,0,0,0,0,0
+2016,5,Groningen,Overig Groningen,8,1,4,0,1,0,0,0,0,0
+2016,5,Friesland,Noord-Friesland,7,1,3,0,0,0,0,0,0,0
+2016,5,Friesland,Zuidoost-Friesland,7,0,3,0,1,0,0,0,0,0
+2016,5,Friesland,Zuidwest-Friesland,13,1,2,0,0,0,0,0,0,0
+2016,5,Drenthe,Noord-Drenthe,5,2,2,0,1,0,0,0,1,0
+2016,5,Drenthe,Zuidoost-Drenthe,7,0,2,0,1,0,0,0,0,0
+2016,5,Drenthe,Zuidwest-Drenthe,7,0,3,0,0,0,0,0,0,0
+2016,6,Groningen,Delfzijl en omgeving,9,1,4,0,1,0,0,0,1,0
+2016,6,Groningen,Oost-Groningen,9,1,5,0,1,0,0,0,0,0
+2016,6,Groningen,Overig Groningen,10,2,4,0,1,0,0,0,0,0
+2016,6,Friesland,Noord-Friesland,10,1,3,0,0,0,0,0,0,0
+2016,6,Friesland,Zuidoost-Friesland,13,1,3,0,0,0,0,0,0,0
+2016,6,Friesland,Zuidwest-Friesland,11,1,5,0,0,0,0,0,0,0
+2016,6,Drenthe,Noord-Drenthe,11,0,4,0,0,0,0,0,0,0
+2016,6,Drenthe,Zuidoost-Drenthe,7,1,0,0,0,0,0,0,0,0
+2016,6,Drenthe,Zuidwest-Drenthe,7,0,2,0,0,0,0,0,0,0
+2016,7,Groningen,Delfzijl en omgeving,9,1,4,0,1,0,0,0,0,0
+2016,7,Groningen,Oost-Groningen,10,1,4,0,1,0,0,0,0,0
+2016,7,Groningen,Overig Groningen,11,1,3,0,0,0,0,0,1,0
+2016,7,Friesland,Noord-Friesland,9,2,4,0,0,0,0,0,0,0
+2016,7,Friesland,Zuidoost-Friesland,10,1,2,0,0,0,0,0,0,0
+2016,7,Friesland,Zuidwest-Friesland,7,1,3,0,0,0,0,0,0,0
+2016,7,Drenthe,Noord-Drenthe,6,2,2,0,0,0,0,0,1,0
+2016,7,Drenthe,Zuidoost-Drenthe,4,1,3,0,0,0,0,0,0,0
+2016,7,Drenthe,Zuidwest-Drenthe,8,1,4,0,1,0,0,0,1,0
+2016,8,Groningen,Delfzijl en omgeving,7,1,3,0,1,0,0,0,1,0
+2016,8,Groningen,Oost-Groningen,12,1,3,0,0,0,0,0,1,0
+2016,8,Groningen,Overig Groningen,11,1,5,0,1,0,0,0,1,0
+2016,8,Friesland,Noord-Friesland,6,1,3,0,1,0,0,0,1,0
+2016,8,Friesland,Zuidoost-Friesland,7,1,6,0,1,0,0,0,1,0
+2016,8,Friesland,Zuidwest-Friesland,9,1,5,0,1,0,0,0,1,0
+2016,8,Drenthe,Noord-Drenthe,5,1,4,0,0,0,0,0,0,0
+2016,8,Drenthe,Zuidoost-Drenthe,6,0,3,0,1,0,0,0,0,0
+2016,8,Drenthe,Zuidwest-Drenthe,9,1,3,0,0,0,0,0,0,0
+2016,9,Groningen,Delfzijl en omgeving,12,1,5,0,1,0,0,0,0,0
+2016,9,Groningen,Oost-Groningen,13,1,2,0,1,0,0,0,0,0
+2016,9,Groningen,Overig Groningen,6,1,3,0,1,0,0,0,0,0
+2016,9,Friesland,Noord-Friesland,8,1,2,0,0,0,0,0,0,0
+2016,9,Friesland,Zuidoost-Friesland,7,0,2,0,0,0,0,0,0,0
+2016,9,Friesland,Zuidwest-Friesland,7,0,4,0,1,0,0,0,0,0
+2016,9,Drenthe,Noord-Drenthe,6,2,3,0,1,0,0,0,0,0
+2016,9,Drenthe,Zuidoost-Drenthe,6,0,2,0,1,0,0,0,0,0
+2016,9,Drenthe,Zuidwest-Drenthe,8,0,3,0,0,0,0,0,0,0
+2016,10,Groningen,Delfzijl en omgeving,11,2,4,0,1,0,0,0,0,0
+2016,10,Groningen,Oost-Groningen,9,0,6,0,1,0,0,0,0,0
+2016,10,Groningen,Overig Groningen,13,2,4,0,0,0,0,0,0,0
+2016,10,Friesland,Noord-Friesland,8,1,4,0,0,0,0,0,0,0
+2016,10,Friesland,Zuidoost-Friesland,10,2,4,0,0,0,0,0,0,0
+2016,10,Friesland,Zuidwest-Friesland,9,1,4,0,0,0,0,0,0,0
+2016,10,Drenthe,Noord-Drenthe,9,2,5,0,0,0,0,0,0,0
+2016,10,Drenthe,Zuidoost-Drenthe,11,1,3,0,1,0,0,0,0,0
+2016,10,Drenthe,Zuidwest-Drenthe,4,1,2,0,0,0,0,0,0,0
+2016,11,Groningen,Delfzijl en omgeving,10,1,3,0,1,0,0,0,0,0
+2016,11,Groningen,Oost-Groningen,10,1,5,0,1,0,0,0,0,0
+2016,11,Groningen,Overig Groningen,13,2,1,0,0,0,0,0,0,0
+2016,11,Friesland,Noord-Friesland,10,1,4,0,1,0,0,0,0,0
+2016,11,Friesland,Zuidoost-Friesland,7,0,3,0,1,0,0,0,0,0
+2016,11,Friesland,Zuidwest-Friesland,7,2,4,0,1,0,0,0,0,0
+2016,11,Drenthe,Noord-Drenthe,8,1,3,0,0,0,0,0,1,0
+2016,11,Drenthe,Zuidoost-Drenthe,11,2,3,0,1,0,0,0,0,0
+2016,11,Drenthe,Zuidwest-Drenthe,7,1,3,0,0,0,0,0,1,0
+2016,12,Groningen,Delfzijl en omgeving,11,1,5,0,1,0,0,0,0,0
+2016,12,Groningen,Oost-Groningen,10,1,4,0,0,0,0,0,0,0
+2016,12,Groningen,Overig Groningen,8,2,5,0,1,0,0,0,0,0
+2016,12,Friesland,Noord-Friesland,10,0,2,0,1,0,0,0,0,0
+2016,12,Friesland,Zuidoost-Friesland,9,1,3,0,0,0,0,0,0,0
+2016,12,Friesland,Zuidwest-Friesland,9,1,4,0,1,0,0,0,0,0
+2016,12,Drenthe,Noord-Drenthe,8,0,2,0,0,0,0,0,1,0
+2016,12,Drenthe,Zuidoost-Drenthe,5,1,2,0,0,0,0,0,0,0
+2016,12,Drenthe,Zuidwest-Drenthe,3,0,1,0,0,0,0,0,0,0
+2017,1,Groningen,Delfzijl en omgeving,9,1,3,0,1,0,0,0,0,0
+2017,1,Groningen,Oost-Groningen,11,1,5,0,1,0,0,0,0,0
+2017,1,Groningen,Overig Groningen,11,1,4,0,1,0,0,0,1,0
+2017,1,Friesland,Noord-Friesland,11,1,2,0,0,0,0,0,0,0
+2017,1,Friesland,Zuidoost-Friesland,8,1,2,0,1,0,0,0,0,0
+2017,1,Friesland,Zuidwest-Friesland,5,1,1,0,0,0,0,0,0,0
+2017,1,Drenthe,Noord-Drenthe,6,1,2,0,0,0,0,0,1,0
+2017,1,Drenthe,Zuidoost-Drenthe,10,0,4,0,0,0,0,0,0,0
+2017,1,Drenthe,Zuidwest-Drenthe,10,0,3,0,0,0,0,0,0,0
+2017,2,Groningen,Delfzijl en omgeving,10,2,3,0,1,0,0,0,1,0
+2017,2,Groningen,Oost-Groningen,10,1,4,0,1,0,0,0,1,0
+2017,2,Groningen,Overig Groningen,9,1,4,0,1,0,0,0,0,0
+2017,2,Friesland,Noord-Friesland,9,1,3,0,1,0,0,0,0,0
+2017,2,Friesland,Zuidoost-Friesland,11,1,2,0,1,0,0,0,0,0
+2017,2,Friesland,Zuidwest-Friesland,10,2,3,0,0,0,0,0,0,0
+2017,2,Drenthe,Noord-Drenthe,5,1,3,0,0,0,0,0,0,0
+2017,2,Drenthe,Zuidoost-Drenthe,6,1,2,0,0,0,0,0,0,0
+2017,2,Drenthe,Zuidwest-Drenthe,7,0,4,0,1,0,0,0,0,0
+2017,3,Groningen,Delfzijl en omgeving,11,2,4,0,1,0,0,0,1,0
+2017,3,Groningen,Oost-Groningen,11,2,5,0,1,0,0,0,0,0
+2017,3,Groningen,Overig Groningen,12,1,6,0,1,0,0,0,0,0
+2017,3,Friesland,Noord-Friesland,9,2,2,0,0,0,0,0,0,0
+2017,3,Friesland,Zuidoost-Friesland,8,1,3,0,1,0,0,0,0,0
+2017,3,Friesland,Zuidwest-Friesland,12,0,2,0,1,0,0,0,0,0
+2017,3,Drenthe,Noord-Drenthe,8,1,2,0,0,0,0,0,0,0
+2017,3,Drenthe,Zuidoost-Drenthe,8,1,3,0,1,0,0,0,0,0
+2017,3,Drenthe,Zuidwest-Drenthe,9,1,3,0,0,0,0,0,0,0
+2017,4,Groningen,Delfzijl en omgeving,7,1,3,0,1,0,0,0,0,0
+2017,4,Groningen,Oost-Groningen,8,1,4,0,0,0,0,0,0,0
+2017,4,Groningen,Overig Groningen,8,1,2,0,0,0,0,0,1,0
+2017,4,Friesland,Noord-Friesland,6,1,2,0,0,0,0,0,0,0
+2017,4,Friesland,Zuidoost-Friesland,8,2,4,0,0,0,0,0,0,0
+2017,4,Friesland,Zuidwest-Friesland,11,1,3,0,1,0,0,0,1,0
+2017,4,Drenthe,Noord-Drenthe,9,2,4,0,1,0,0,0,0,0
+2017,4,Drenthe,Zuidoost-Drenthe,5,1,1,0,0,0,0,0,0,0
+2017,4,Drenthe,Zuidwest-Drenthe,6,1,1,0,0,0,0,0,0,0
+2017,5,Groningen,Delfzijl en omgeving,11,1,6,0,1,0,0,0,0,0
+2017,5,Groningen,Oost-Groningen,13,1,4,0,1,0,0,0,1,0
+2017,5,Groningen,Overig Groningen,8,2,4,0,1,0,0,0,0,0
+2017,5,Friesland,Noord-Friesland,11,1,4,0,1,0,0,0,0,0
+2017,5,Friesland,Zuidoost-Friesland,10,1,3,0,0,0,0,0,0,0
+2017,5,Friesland,Zuidwest-Friesland,6,2,2,0,0,0,0,0,1,0
+2017,5,Drenthe,Noord-Drenthe,8,1,4,0,0,0,0,0,0,0
+2017,5,Drenthe,Zuidoost-Drenthe,9,1,2,0,0,0,0,0,1,0
+2017,5,Drenthe,Zuidwest-Drenthe,8,0,3,0,0,0,0,0,0,0
+2017,6,Groningen,Delfzijl en omgeving,8,1,3,0,0,0,0,0,1,0
+2017,6,Groningen,Oost-Groningen,11,2,5,0,1,0,0,0,0,0
+2017,6,Groningen,Overig Groningen,11,2,5,0,1,0,0,0,1,0
+2017,6,Friesland,Noord-Friesland,11,0,4,0,1,0,0,0,0,0
+2017,6,Friesland,Zuidoost-Friesland,8,1,4,0,1,0,0,0,0,0
+2017,6,Friesland,Zuidwest-Friesland,9,1,2,0,1,0,0,0,0,0
+2017,6,Drenthe,Noord-Drenthe,6,1,3,0,0,0,0,0,0,0
+2017,6,Drenthe,Zuidoost-Drenthe,6,1,3,0,0,0,0,0,0,0
+2017,6,Drenthe,Zuidwest-Drenthe,6,2,2,0,0,0,0,0,0,0
+2017,7,Groningen,Delfzijl en omgeving,9,2,6,0,1,0,0,0,0,0
+2017,7,Groningen,Oost-Groningen,9,1,5,0,1,0,0,0,0,0
+2017,7,Groningen,Overig Groningen,13,2,4,0,0,0,0,0,0,0
+2017,7,Friesland,Noord-Friesland,7,1,3,0,0,0,0,0,1,0
+2017,7,Friesland,Zuidoost-Friesland,9,2,3,0,1,0,0,0,1,0
+2017,7,Friesland,Zuidwest-Friesland,10,1,7,0,0,0,0,0,0,0
+2017,7,Drenthe,Noord-Drenthe,11,0,2,0,0,0,0,0,0,0
+2017,7,Drenthe,Zuidoost-Drenthe,8,1,1,0,1,0,0,0,1,0
+2017,7,Drenthe,Zuidwest-Drenthe,7,1,3,0,1,0,0,0,0,0
+2017,8,Groningen,Delfzijl en omgeving,8,1,3,0,1,0,0,0,0,0
+2017,8,Groningen,Oost-Groningen,10,1,2,0,1,0,0,0,0,0
+2017,8,Groningen,Overig Groningen,11,2,3,0,1,0,0,0,0,0
+2017,8,Friesland,Noord-Friesland,9,1,2,0,1,0,0,0,0,0
+2017,8,Friesland,Zuidoost-Friesland,11,1,3,0,1,0,0,0,0,0
+2017,8,Friesland,Zuidwest-Friesland,6,1,5,0,1,0,0,0,0,0
+2017,8,Drenthe,Noord-Drenthe,9,0,1,0,0,0,0,0,0,0
+2017,8,Drenthe,Zuidoost-Drenthe,8,0,3,0,0,0,0,0,0,0
+2017,8,Drenthe,Zuidwest-Drenthe,4,1,3,0,0,0,0,0,0,0
+2017,9,Groningen,Delfzijl en omgeving,12,2,2,0,1,0,0,0,0,0
+2017,9,Groningen,Oost-Groningen,8,2,5,0,0,0,0,0,0,0
+2017,9,Groningen,Overig Groningen,12,1,6,0,1,0,0,0,0,0
+2017,9,Friesland,Noord-Friesland,8,1,3,0,1,0,0,0,0,0
+2017,9,Friesland,Zuidoost-Friesland,7,2,4,0,0,0,0,0,0,0
+2017,9,Friesland,Zuidwest-Friesland,10,2,2,0,1,0,0,0,0,0
+2017,9,Drenthe,Noord-Drenthe,10,1,0,0,0,0,0,0,0,0
+2017,9,Drenthe,Zuidoost-Drenthe,7,1,2,0,0,0,0,0,0,0
+2017,9,Drenthe,Zuidwest-Drenthe,6,1,4,0,1,0,0,0,0,0
+2017,10,Groningen,Delfzijl en omgeving,13,1,5,0,1,0,0,0,0,0
+2017,10,Groningen,Oost-Groningen,12,1,5,0,1,0,0,0,1,0
+2017,10,Groningen,Overig Groningen,10,2,5,0,0,0,0,0,1,0
+2017,10,Friesland,Noord-Friesland,7,0,4,0,1,0,0,0,0,0
+2017,10,Friesland,Zuidoost-Friesland,8,2,4,0,0,0,0,0,0,0
+2017,10,Friesland,Zuidwest-Friesland,6,1,2,0,0,0,0,0,0,0
+2017,10,Drenthe,Noord-Drenthe,10,0,2,0,0,0,0,0,0,0
+2017,10,Drenthe,Zuidoost-Drenthe,7,1,3,0,0,0,0,0,0,0
+2017,10,Drenthe,Zuidwest-Drenthe,9,1,3,0,0,0,0,0,0,0
+2017,11,Groningen,Delfzijl en omgeving,9,2,3,0,1,0,0,0,1,0
+2017,11,Groningen,Oost-Groningen,9,2,3,0,1,0,0,0,1,0
+2017,11,Groningen,Overig Groningen,11,1,4,0,1,0,0,0,0,0
+2017,11,Friesland,Noord-Friesland,8,2,2,0,1,0,0,0,0,0
+2017,11,Friesland,Zuidoost-Friesland,9,1,4,0,1,0,0,0,1,0
+2017,11,Friesland,Zuidwest-Friesland,12,2,4,0,0,0,0,0,1,0
+2017,11,Drenthe,Noord-Drenthe,5,1,3,0,1,0,0,0,1,0
+2017,11,Drenthe,Zuidoost-Drenthe,7,0,2,0,1,0,0,0,0,0
+2017,11,Drenthe,Zuidwest-Drenthe,10,1,1,0,1,0,0,0,0,0
+2017,12,Groningen,Delfzijl en omgeving,14,1,2,0,1,0,0,0,1,0
+2017,12,Groningen,Oost-Groningen,6,2,4,0,1,0,0,0,0,0
+2017,12,Groningen,Overig Groningen,11,1,5,0,0,0,0,0,1,0
+2017,12,Friesland,Noord-Friesland,12,1,3,0,1,0,0,0,0,0
+2017,12,Friesland,Zuidoost-Friesland,8,1,4,0,0,0,0,0,0,0
+2017,12,Friesland,Zuidwest-Friesland,10,1,2,0,0,0,0,0,0,0
+2017,12,Drenthe,Noord-Drenthe,5,0,2,0,1,0,0,0,0,0
+2017,12,Drenthe,Zuidoost-Drenthe,6,0,2,0,0,0,0,0,0,0
+2017,12,Drenthe,Zuidwest-Drenthe,9,0,3,0,0,0,0,0,1,0
+2018,1,Groningen,Delfzijl en omgeving,7,1,4,0,0,0,0,0,0,0
+2018,1,Groningen,Oost-Groningen,11,1,4,0,1,0,0,0,1,0
+2018,1,Groningen,Overig Groningen,9,2,4,0,0,0,0,0,0,0
+2018,1,Friesland,Noord-Friesland,9,1,4,0,0,0,0,0,1,0
+2018,1,Friesland,Zuidoost-Friesland,9,1,4,0,1,0,0,0,0,0
+2018,1,Friesland,Zuidwest-Friesland,11,1,5,0,1,0,0,0,0,0
+2018,1,Drenthe,Noord-Drenthe,6,1,3,0,0,0,0,0,0,0
+2018,1,Drenthe,Zuidoost-Drenthe,7,1,3,0,1,0,0,0,0,0
+2018,1,Drenthe,Zuidwest-Drenthe,9,1,3,0,1,0,0,0,0,0
+2018,2,Groningen,Delfzijl en omgeving,11,1,3,0,0,0,0,0,0,0
+2018,2,Groningen,Oost-Groningen,7,2,4,0,0,0,0,0,0,0
+2018,2,Groningen,Overig Groningen,12,1,4,0,1,0,0,0,0,0
+2018,2,Friesland,Noord-Friesland,5,1,3,0,1,0,0,0,0,0
+2018,2,Friesland,Zuidoost-Friesland,8,2,3,0,1,0,0,0,0,0
+2018,2,Friesland,Zuidwest-Friesland,12,1,4,0,1,0,0,0,0,0
+2018,2,Drenthe,Noord-Drenthe,7,1,3,0,0,0,0,0,0,0
+2018,2,Drenthe,Zuidoost-Drenthe,5,1,2,0,1,0,0,0,1,0
+2018,2,Drenthe,Zuidwest-Drenthe,12,1,2,0,0,0,0,0,1,0
+2018,3,Groningen,Delfzijl en omgeving,7,1,3,0,1,0,0,0,0,0
+2018,3,Groningen,Oost-Groningen,13,2,4,0,1,0,0,0,0,0
+2018,3,Groningen,Overig Groningen,10,1,1,0,1,0,0,0,0,0
+2018,3,Friesland,Noord-Friesland,5,0,3,0,0,0,0,0,0,0
+2018,3,Friesland,Zuidoost-Friesland,7,1,4,0,0,0,0,0,0,0
+2018,3,Friesland,Zuidwest-Friesland,8,1,3,0,1,0,0,0,0,0
+2018,3,Drenthe,Noord-Drenthe,9,2,1,0,1,0,0,0,1,0
+2018,3,Drenthe,Zuidoost-Drenthe,5,1,2,0,1,0,0,0,0,0
+2018,3,Drenthe,Zuidwest-Drenthe,6,2,2,0,0,0,0,0,0,0
+2018,4,Groningen,Delfzijl en omgeving,14,1,5,0,1,0,0,0,0,0
+2018,4,Groningen,Oost-Groningen,8,1,3,0,1,0,0,0,0,0
+2018,4,Groningen,Overig Groningen,13,2,7,0,1,0,0,0,1,0
+2018,4,Friesland,Noord-Friesland,10,2,3,0,1,0,0,0,1,0
+2018,4,Friesland,Zuidoost-Friesland,7,1,4,0,0,0,0,0,0,0
+2018,4,Friesland,Zuidwest-Friesland,12,1,5,0,0,0,0,0,0,0
+2018,4,Drenthe,Noord-Drenthe,9,1,2,0,0,0,0,0,0,0
+2018,4,Drenthe,Zuidoost-Drenthe,6,1,0,0,0,0,0,0,0,0
+2018,4,Drenthe,Zuidwest-Drenthe,6,0,2,0,0,0,0,0,1,0
+2018,5,Groningen,Delfzijl en omgeving,8,1,5,0,1,0,0,0,0,0
+2018,5,Groningen,Oost-Groningen,9,1,4,0,0,0,0,0,0,0
+2018,5,Groningen,Overig Groningen,7,2,5,0,0,0,0,0,1,0
+2018,5,Friesland,Noord-Friesland,14,1,5,0,1,0,0,0,0,0
+2018,5,Friesland,Zuidoost-Friesland,7,1,3,0,0,0,0,0,0,0
+2018,5,Friesland,Zuidwest-Friesland,8,1,3,0,1,0,0,0,0,0
+2018,5,Drenthe,Noord-Drenthe,5,1,5,0,0,0,0,0,1,0
+2018,5,Drenthe,Zuidoost-Drenthe,5,2,3,0,1,0,0,0,1,0
+2018,5,Drenthe,Zuidwest-Drenthe,6,2,2,0,0,0,0,0,1,0
+2018,6,Groningen,Delfzijl en omgeving,9,1,4,0,1,0,0,0,0,0
+2018,6,Groningen,Oost-Groningen,9,1,5,0,1,0,0,0,0,0
+2018,6,Groningen,Overig Groningen,8,1,3,0,1,0,0,0,0,0
+2018,6,Friesland,Noord-Friesland,10,1,5,0,1,0,0,0,0,0
+2018,6,Friesland,Zuidoost-Friesland,10,1,4,0,1,0,0,0,0,0
+2018,6,Friesland,Zuidwest-Friesland,9,0,3,0,1,0,0,0,1,0
+2018,6,Drenthe,Noord-Drenthe,7,1,2,0,1,0,0,0,0,0
+2018,6,Drenthe,Zuidoost-Drenthe,5,1,4,0,0,0,0,0,0,0
+2018,6,Drenthe,Zuidwest-Drenthe,8,1,2,0,0,0,0,0,0,0
+2018,7,Groningen,Delfzijl en omgeving,11,2,4,0,0,0,0,0,0,0
+2018,7,Groningen,Oost-Groningen,12,1,4,0,1,0,0,0,0,0
+2018,7,Groningen,Overig Groningen,10,2,4,0,1,0,0,0,0,0
+2018,7,Friesland,Noord-Friesland,10,2,4,0,1,0,0,0,0,0
+2018,7,Friesland,Zuidoost-Friesland,6,1,4,0,1,0,0,0,0,0
+2018,7,Friesland,Zuidwest-Friesland,9,1,5,0,1,0,0,0,0,0
+2018,7,Drenthe,Noord-Drenthe,8,0,2,0,0,0,0,0,0,0
+2018,7,Drenthe,Zuidoost-Drenthe,8,1,1,0,0,0,0,0,0,0
+2018,7,Drenthe,Zuidwest-Drenthe,7,0,4,0,1,0,0,0,1,0
+2018,8,Groningen,Delfzijl en omgeving,13,1,4,0,1,0,0,0,0,0
+2018,8,Groningen,Oost-Groningen,8,2,4,0,0,0,0,0,0,0
+2018,8,Groningen,Overig Groningen,9,2,4,0,1,0,0,0,0,0
+2018,8,Friesland,Noord-Friesland,7,2,3,0,0,0,0,0,0,0
+2018,8,Friesland,Zuidoost-Friesland,7,1,4,0,0,0,0,0,0,0
+2018,8,Friesland,Zuidwest-Friesland,9,1,4,0,1,0,0,0,0,0
+2018,8,Drenthe,Noord-Drenthe,5,0,2,0,0,0,0,0,0,0
+2018,8,Drenthe,Zuidoost-Drenthe,6,2,3,0,0,0,0,0,0,0
+2018,8,Drenthe,Zuidwest-Drenthe,5,1,1,0,1,0,0,0,0,0
+2018,9,Groningen,Delfzijl en omgeving,11,1,3,0,0,0,0,0,1,0
+2018,9,Groningen,Oost-Groningen,11,1,4,0,1,0,0,0,1,0
+2018,9,Groningen,Overig Groningen,13,2,3,0,1,0,0,0,0,0
+2018,9,Friesland,Noord-Friesland,7,0,2,0,0,0,0,0,0,0
+2018,9,Friesland,Zuidoost-Friesland,11,2,3,0,1,0,0,0,1,0
+2018,9,Friesland,Zuidwest-Friesland,11,2,2,0,0,0,0,0,0,0
+2018,9,Drenthe,Noord-Drenthe,2,1,4,0,0,0,0,0,0,0
+2018,9,Drenthe,Zuidoost-Drenthe,5,1,3,0,0,0,0,0,1,0
+2018,9,Drenthe,Zuidwest-Drenthe,3,1,2,0,1,0,0,0,0,0
+2018,10,Groningen,Delfzijl en omgeving,6,0,3,0,0,0,0,0,0,0
+2018,10,Groningen,Oost-Groningen,10,2,3,0,0,0,0,0,0,0
+2018,10,Groningen,Overig Groningen,10,1,3,0,1,0,0,0,1,0
+2018,10,Friesland,Noord-Friesland,6,0,4,0,1,0,0,0,0,0
+2018,10,Friesland,Zuidoost-Friesland,6,0,4,0,0,0,0,0,1,0
+2018,10,Friesland,Zuidwest-Friesland,13,1,4,0,1,0,0,0,1,0
+2018,10,Drenthe,Noord-Drenthe,7,1,4,0,1,0,0,0,1,0
+2018,10,Drenthe,Zuidoost-Drenthe,4,1,2,0,1,0,0,0,0,0
+2018,10,Drenthe,Zuidwest-Drenthe,8,0,3,0,1,0,0,0,1,0
+2018,11,Groningen,Delfzijl en omgeving,7,1,5,0,1,0,0,0,0,0
+2018,11,Groningen,Oost-Groningen,12,1,4,0,1,0,0,0,1,0
+2018,11,Groningen,Overig Groningen,9,1,4,0,1,0,0,0,0,0
+2018,11,Friesland,Noord-Friesland,11,0,3,0,0,0,0,0,0,0
+2018,11,Friesland,Zuidoost-Friesland,11,0,3,0,0,0,0,0,1,0
+2018,11,Friesland,Zuidwest-Friesland,12,1,5,0,0,0,0,0,0,0
+2018,11,Drenthe,Noord-Drenthe,4,1,3,0,0,0,0,0,1,0
+2018,11,Drenthe,Zuidoost-Drenthe,3,0,1,0,0,0,0,0,0,0
+2018,11,Drenthe,Zuidwest-Drenthe,8,2,4,0,0,0,0,0,0,0
+2018,12,Groningen,Delfzijl en omgeving,12,1,3,0,0,0,0,0,0,0
+2018,12,Groningen,Oost-Groningen,13,1,5,0,1,0,0,0,0,0
+2018,12,Groningen,Overig Groningen,16,2,4,0,0,0,0,0,0,0
+2018,12,Friesland,Noord-Friesland,10,1,4,0,1,0,0,0,0,0
+2018,12,Friesland,Zuidoost-Friesland,11,1,3,0,0,0,0,0,0,0
+2018,12,Friesland,Zuidwest-Friesland,7,1,4,0,1,0,0,0,0,0
+2018,12,Drenthe,Noord-Drenthe,4,0,1,0,0,0,0,0,0,0
+2018,12,Drenthe,Zuidoost-Drenthe,5,1,3,0,0,0,0,0,0,0
+2018,12,Drenthe,Zuidwest-Drenthe,9,0,3,0,0,0,0,0,0,0
+2019,1,Groningen,Delfzijl en omgeving,12,2,5,0,1,0,0,0,1,0
+2019,1,Groningen,Oost-Groningen,7,1,4,0,1,0,0,0,1,0
+2019,1,Groningen,Overig Groningen,12,1,6,0,1,0,0,0,0,0
+2019,1,Friesland,Noord-Friesland,13,0,2,0,0,0,0,0,0,0
+2019,1,Friesland,Zuidoost-Friesland,10,1,3,0,1,0,0,0,0,0
+2019,1,Friesland,Zuidwest-Friesland,12,1,5,0,1,0,0,0,1,0
+2019,1,Drenthe,Noord-Drenthe,7,0,3,0,0,0,0,0,0,0
+2019,1,Drenthe,Zuidoost-Drenthe,9,0,4,0,1,0,0,0,0,0
+2019,1,Drenthe,Zuidwest-Drenthe,7,1,2,0,1,0,0,0,0,0
+2019,2,Groningen,Delfzijl en omgeving,11,2,4,0,0,0,0,0,0,0
+2019,2,Groningen,Oost-Groningen,13,2,4,0,0,0,0,0,0,0
+2019,2,Groningen,Overig Groningen,11,1,3,0,1,0,0,0,0,0
+2019,2,Friesland,Noord-Friesland,9,1,3,0,1,0,0,0,0,0
+2019,2,Friesland,Zuidoost-Friesland,10,1,4,0,0,0,0,0,0,0
+2019,2,Friesland,Zuidwest-Friesland,11,1,4,0,1,0,0,0,0,0
+2019,2,Drenthe,Noord-Drenthe,9,1,4,0,1,0,0,0,0,0
+2019,2,Drenthe,Zuidoost-Drenthe,12,0,2,0,0,0,0,0,0,0
+2019,2,Drenthe,Zuidwest-Drenthe,8,1,4,0,1,0,0,0,0,0
+2019,3,Groningen,Delfzijl en omgeving,8,2,5,0,1,0,0,0,0,0
+2019,3,Groningen,Oost-Groningen,13,1,4,0,1,0,0,0,0,0
+2019,3,Groningen,Overig Groningen,12,1,3,0,0,0,0,0,0,0
+2019,3,Friesland,Noord-Friesland,10,1,1,0,1,0,0,0,0,0
+2019,3,Friesland,Zuidoost-Friesland,7,2,4,0,1,0,0,0,1,0
+2019,3,Friesland,Zuidwest-Friesland,8,1,5,0,0,0,0,0,0,0
+2019,3,Drenthe,Noord-Drenthe,7,1,3,0,0,0,0,0,0,0
+2019,3,Drenthe,Zuidoost-Drenthe,9,0,2,0,0,0,0,0,0,0
+2019,3,Drenthe,Zuidwest-Drenthe,9,1,2,0,0,0,0,0,0,0
+2019,4,Groningen,Delfzijl en omgeving,13,2,2,0,0,0,0,0,1,0
+2019,4,Groningen,Oost-Groningen,9,1,3,0,0,0,0,0,0,0
+2019,4,Groningen,Overig Groningen,10,2,4,0,0,0,0,0,1,0
+2019,4,Friesland,Noord-Friesland,11,1,2,0,0,0,0,0,0,0
+2019,4,Friesland,Zuidoost-Friesland,12,0,3,0,1,0,0,0,1,0
+2019,4,Friesland,Zuidwest-Friesland,8,1,3,0,0,0,0,0,1,0
+2019,4,Drenthe,Noord-Drenthe,7,0,4,0,1,0,0,0,0,0
+2019,4,Drenthe,Zuidoost-Drenthe,9,1,1,0,0,0,0,0,0,0
+2019,4,Drenthe,Zuidwest-Drenthe,6,0,3,0,1,0,0,0,0,0
+2019,5,Groningen,Delfzijl en omgeving,9,1,4,0,1,0,0,0,0,0
+2019,5,Groningen,Oost-Groningen,13,2,5,0,1,0,0,0,1,0
+2019,5,Groningen,Overig Groningen,9,1,3,0,1,0,0,0,0,0
+2019,5,Friesland,Noord-Friesland,10,1,4,0,1,0,0,0,0,0
+2019,5,Friesland,Zuidoost-Friesland,10,1,3,0,0,0,0,0,0,0
+2019,5,Friesland,Zuidwest-Friesland,9,1,4,0,0,0,0,0,0,0
+2019,5,Drenthe,Noord-Drenthe,7,1,3,0,1,0,0,0,0,0
+2019,5,Drenthe,Zuidoost-Drenthe,7,1,2,0,0,0,0,0,0,0
+2019,5,Drenthe,Zuidwest-Drenthe,7,1,3,0,0,0,0,0,0,0
+2019,6,Groningen,Delfzijl en omgeving,11,2,3,0,0,0,0,0,1,0
+2019,6,Groningen,Oost-Groningen,10,2,2,0,1,0,0,0,0,0
+2019,6,Groningen,Overig Groningen,9,1,3,0,1,0,0,0,0,0
+2019,6,Friesland,Noord-Friesland,10,0,3,0,1,0,0,0,0,0
+2019,6,Friesland,Zuidoost-Friesland,9,1,4,0,1,0,0,0,1,0
+2019,6,Friesland,Zuidwest-Friesland,7,1,4,0,1,0,0,0,0,0
+2019,6,Drenthe,Noord-Drenthe,10,1,1,0,1,0,0,0,0,0
+2019,6,Drenthe,Zuidoost-Drenthe,6,1,2,0,1,0,0,0,0,0
+2019,6,Drenthe,Zuidwest-Drenthe,8,1,3,0,1,0,0,0,0,0
+2019,7,Groningen,Delfzijl en omgeving,8,1,3,0,0,0,0,0,1,0
+2019,7,Groningen,Oost-Groningen,8,1,4,0,1,0,0,0,0,0
+2019,7,Groningen,Overig Groningen,10,2,4,0,1,0,0,0,0,0
+2019,7,Friesland,Noord-Friesland,5,1,3,0,1,0,0,0,1,0
+2019,7,Friesland,Zuidoost-Friesland,10,1,3,0,0,0,0,0,0,0
+2019,7,Friesland,Zuidwest-Friesland,6,1,3,0,1,0,0,0,0,0
+2019,7,Drenthe,Noord-Drenthe,5,3,2,0,1,0,0,0,0,0
+2019,7,Drenthe,Zuidoost-Drenthe,5,2,3,0,0,0,0,0,1,0
+2019,7,Drenthe,Zuidwest-Drenthe,6,1,2,0,0,0,0,0,0,0
+2019,8,Groningen,Delfzijl en omgeving,11,1,5,0,1,0,0,0,0,0
+2019,8,Groningen,Oost-Groningen,10,2,3,0,1,0,0,0,0,0
+2019,8,Groningen,Overig Groningen,12,2,2,0,1,0,0,0,0,0
+2019,8,Friesland,Noord-Friesland,12,1,6,0,0,0,0,0,0,0
+2019,8,Friesland,Zuidoost-Friesland,8,1,3,0,0,0,0,0,0,0
+2019,8,Friesland,Zuidwest-Friesland,9,0,2,0,1,0,0,0,0,0
+2019,8,Drenthe,Noord-Drenthe,9,0,3,0,1,0,0,0,0,0
+2019,8,Drenthe,Zuidoost-Drenthe,6,1,4,0,0,0,0,0,0,0
+2019,8,Drenthe,Zuidwest-Drenthe,7,2,3,0,0,0,0,0,0,0
+2019,9,Groningen,Delfzijl en omgeving,8,1,4,0,1,0,0,0,0,0
+2019,9,Groningen,Oost-Groningen,10,1,4,0,1,0,0,0,1,0
+2019,9,Groningen,Overig Groningen,9,2,3,0,1,0,0,0,0,0
+2019,9,Friesland,Noord-Friesland,11,1,3,0,1,0,0,0,0,0
+2019,9,Friesland,Zuidoost-Friesland,12,2,3,0,1,0,0,0,0,0
+2019,9,Friesland,Zuidwest-Friesland,8,1,3,0,0,0,0,0,0,0
+2019,9,Drenthe,Noord-Drenthe,9,1,2,0,0,0,0,0,0,0
+2019,9,Drenthe,Zuidoost-Drenthe,10,1,4,0,0,0,0,0,1,0
+2019,9,Drenthe,Zuidwest-Drenthe,7,2,3,0,0,0,0,0,0,0
+2019,10,Groningen,Delfzijl en omgeving,11,1,5,0,1,0,0,0,0,0
+2019,10,Groningen,Oost-Groningen,13,0,3,0,1,0,0,0,1,0
+2019,10,Groningen,Overig Groningen,11,1,3,0,0,0,0,0,1,0
+2019,10,Friesland,Noord-Friesland,11,2,3,0,0,0,0,0,0,0
+2019,10,Friesland,Zuidoost-Friesland,9,1,3,0,0,0,0,0,0,0
+2019,10,Friesland,Zuidwest-Friesland,8,0,4,0,1,0,0,0,0,0
+2019,10,Drenthe,Noord-Drenthe,4,1,3,0,0,0,0,0,0,0
+2019,10,Drenthe,Zuidoost-Drenthe,3,2,2,0,1,0,0,0,0,0
+2019,10,Drenthe,Zuidwest-Drenthe,8,0,2,0,0,0,0,0,0,0
+2019,11,Groningen,Delfzijl en omgeving,9,0,3,0,0,0,0,0,0,0
+2019,11,Groningen,Oost-Groningen,10,1,3,0,1,0,0,0,1,0
+2019,11,Groningen,Overig Groningen,13,1,5,0,1,0,0,0,0,0
+2019,11,Friesland,Noord-Friesland,7,3,3,0,1,0,0,0,0,0
+2019,11,Friesland,Zuidoost-Friesland,10,1,2,0,1,0,0,0,0,0
+2019,11,Friesland,Zuidwest-Friesland,4,1,3,0,1,0,0,0,0,0
+2019,11,Drenthe,Noord-Drenthe,8,1,3,0,0,0,0,0,0,0
+2019,11,Drenthe,Zuidoost-Drenthe,5,0,3,0,1,0,0,0,0,0
+2019,11,Drenthe,Zuidwest-Drenthe,6,1,2,0,1,0,0,0,0,0
+2019,12,Groningen,Delfzijl en omgeving,14,1,4,0,0,0,0,0,0,0
+2019,12,Groningen,Oost-Groningen,10,1,3,0,0,0,0,0,0,0
+2019,12,Groningen,Overig Groningen,10,2,4,0,0,0,0,0,0,0
+2019,12,Friesland,Noord-Friesland,8,2,3,0,0,0,0,0,0,0
+2019,12,Friesland,Zuidoost-Friesland,6,2,5,0,0,0,0,0,0,0
+2019,12,Friesland,Zuidwest-Friesland,9,1,5,0,1,0,0,0,0,0
+2019,12,Drenthe,Noord-Drenthe,11,1,2,0,1,0,0,0,0,0
+2019,12,Drenthe,Zuidoost-Drenthe,10,1,2,0,0,0,0,0,0,0
+2019,12,Drenthe,Zuidwest-Drenthe,8,0,3,0,0,0,0,0,0,0
+2020,1,Groningen,Delfzijl en omgeving,12,2,4,0,0,0,0,0,0,0
+2020,1,Groningen,Oost-Groningen,10,2,3,0,0,0,0,0,0,0
+2020,1,Groningen,Overig Groningen,13,2,5,0,0,0,0,0,1,0
+2020,1,Friesland,Noord-Friesland,7,1,4,0,0,0,0,0,0,0
+2020,1,Friesland,Zuidoost-Friesland,9,1,2,0,1,0,0,0,0,0
+2020,1,Friesland,Zuidwest-Friesland,8,2,1,0,1,0,0,0,0,0
+2020,1,Drenthe,Noord-Drenthe,6,1,3,0,0,0,0,0,0,0
+2020,1,Drenthe,Zuidoost-Drenthe,7,1,4,0,0,0,0,0,1,0
+2020,1,Drenthe,Zuidwest-Drenthe,5,1,1,0,0,0,0,0,0,0
+2020,2,Groningen,Delfzijl en omgeving,14,1,3,0,1,0,0,0,0,0
+2020,2,Groningen,Oost-Groningen,11,2,5,0,0,0,0,0,0,0
+2020,2,Groningen,Overig Groningen,10,1,2,0,1,0,0,0,0,0
+2020,2,Friesland,Noord-Friesland,7,1,3,0,1,0,0,0,1,0
+2020,2,Friesland,Zuidoost-Friesland,9,2,5,0,1,0,0,0,0,0
+2020,2,Friesland,Zuidwest-Friesland,8,1,4,0,1,0,0,0,0,0
+2020,2,Drenthe,Noord-Drenthe,8,1,2,0,0,0,0,0,0,0
+2020,2,Drenthe,Zuidoost-Drenthe,9,1,3,0,1,0,0,0,0,0
+2020,2,Drenthe,Zuidwest-Drenthe,4,1,2,0,0,0,0,0,0,0
+2020,3,Groningen,Delfzijl en omgeving,11,2,3,0,1,0,0,0,1,0
+2020,3,Groningen,Oost-Groningen,12,1,5,0,1,0,0,0,0,0
+2020,3,Groningen,Overig Groningen,10,2,4,0,1,0,0,0,0,0
+2020,3,Friesland,Noord-Friesland,5,1,3,0,1,0,0,0,0,0
+2020,3,Friesland,Zuidoost-Friesland,10,1,3,0,1,0,0,0,0,0
+2020,3,Friesland,Zuidwest-Friesland,7,1,3,0,0,0,0,0,0,0
+2020,3,Drenthe,Noord-Drenthe,7,1,1,0,1,0,0,0,0,0
+2020,3,Drenthe,Zuidoost-Drenthe,7,2,0,0,1,0,0,0,1,0
+2020,3,Drenthe,Zuidwest-Drenthe,5,1,2,0,0,0,0,0,0,0
+2020,4,Groningen,Delfzijl en omgeving,14,1,4,0,1,0,0,0,0,0
+2020,4,Groningen,Oost-Groningen,13,2,4,0,0,0,0,0,1,0
+2020,4,Groningen,Overig Groningen,11,2,5,0,1,0,0,0,0,0
+2020,4,Friesland,Noord-Friesland,12,1,4,0,1,0,0,0,0,0
+2020,4,Friesland,Zuidoost-Friesland,10,1,3,0,0,0,0,0,0,0
+2020,4,Friesland,Zuidwest-Friesland,8,2,3,0,1,0,0,0,0,0
+2020,4,Drenthe,Noord-Drenthe,8,1,5,0,0,0,0,0,0,0
+2020,4,Drenthe,Zuidoost-Drenthe,8,0,4,0,0,0,0,0,0,0
+2020,4,Drenthe,Zuidwest-Drenthe,9,0,3,0,0,0,0,0,0,0
+2020,5,Groningen,Delfzijl en omgeving,11,2,4,0,1,0,0,0,0,0
+2020,5,Groningen,Oost-Groningen,10,2,4,0,1,0,0,0,0,0
+2020,5,Groningen,Overig Groningen,11,1,3,0,0,0,0,0,1,0
+2020,5,Friesland,Noord-Friesland,5,3,4,0,1,0,0,0,1,0
+2020,5,Friesland,Zuidoost-Friesland,9,1,4,0,0,0,0,0,0,0
+2020,5,Friesland,Zuidwest-Friesland,11,1,2,0,1,0,0,0,0,0
+2020,5,Drenthe,Noord-Drenthe,6,0,2,0,0,0,0,0,0,0
+2020,5,Drenthe,Zuidoost-Drenthe,13,1,2,0,0,0,0,0,0,0
+2020,5,Drenthe,Zuidwest-Drenthe,8,1,3,0,1,0,0,0,1,0
+2020,6,Groningen,Delfzijl en omgeving,10,1,4,0,1,0,0,0,0,0
+2020,6,Groningen,Oost-Groningen,11,1,5,0,1,0,0,0,1,0
+2020,6,Groningen,Overig Groningen,9,2,2,0,1,0,0,0,0,0
+2020,6,Friesland,Noord-Friesland,11,1,4,0,1,0,0,0,0,0
+2020,6,Friesland,Zuidoost-Friesland,10,2,3,0,1,0,0,0,0,0
+2020,6,Friesland,Zuidwest-Friesland,11,2,3,0,0,0,0,0,0,0
+2020,6,Drenthe,Noord-Drenthe,6,1,2,0,0,0,0,0,1,0
+2020,6,Drenthe,Zuidoost-Drenthe,9,1,5,0,0,0,0,0,0,0
+2020,6,Drenthe,Zuidwest-Drenthe,11,1,3,0,0,0,0,0,0,0
+2020,7,Groningen,Delfzijl en omgeving,12,1,2,0,0,0,0,0,1,0
+2020,7,Groningen,Oost-Groningen,13,1,7,0,1,0,0,0,1,0
+2020,7,Groningen,Overig Groningen,13,2,3,0,0,0,0,0,0,0
+2020,7,Friesland,Noord-Friesland,9,1,4,0,1,0,0,0,0,0
+2020,7,Friesland,Zuidoost-Friesland,11,1,3,0,0,0,0,0,1,0
+2020,7,Friesland,Zuidwest-Friesland,7,1,4,0,1,0,0,0,0,0
+2020,7,Drenthe,Noord-Drenthe,9,0,2,0,0,0,0,0,1,0
+2020,7,Drenthe,Zuidoost-Drenthe,9,1,4,0,1,0,0,0,0,0
+2020,7,Drenthe,Zuidwest-Drenthe,8,1,3,0,0,0,0,0,0,0
+2020,8,Groningen,Delfzijl en omgeving,10,1,3,0,1,0,0,0,0,0
+2020,8,Groningen,Oost-Groningen,12,1,4,0,1,0,0,0,0,0
+2020,8,Groningen,Overig Groningen,11,2,5,0,1,0,0,0,0,0
+2020,8,Friesland,Noord-Friesland,9,2,3,0,1,0,0,0,0,0
+2020,8,Friesland,Zuidoost-Friesland,7,1,4,0,0,0,0,0,0,0
+2020,8,Friesland,Zuidwest-Friesland,7,1,3,0,1,0,0,0,0,0
+2020,8,Drenthe,Noord-Drenthe,9,2,4,0,0,0,0,0,0,0
+2020,8,Drenthe,Zuidoost-Drenthe,4,1,4,0,1,0,0,0,0,0
+2020,8,Drenthe,Zuidwest-Drenthe,11,1,3,0,0,0,0,0,0,0
+2020,9,Groningen,Delfzijl en omgeving,11,2,5,0,1,0,0,0,0,0
+2020,9,Groningen,Oost-Groningen,10,1,5,0,1,0,0,0,0,0
+2020,9,Groningen,Overig Groningen,7,1,4,0,0,0,0,0,0,0
+2020,9,Friesland,Noord-Friesland,8,0,4,0,0,0,0,0,0,0
+2020,9,Friesland,Zuidoost-Friesland,11,1,1,0,1,0,0,0,0,0
+2020,9,Friesland,Zuidwest-Friesland,6,1,3,0,1,0,0,0,0,0
+2020,9,Drenthe,Noord-Drenthe,13,1,3,0,0,0,0,0,0,0
+2020,9,Drenthe,Zuidoost-Drenthe,10,0,4,0,0,0,0,0,0,0
+2020,9,Drenthe,Zuidwest-Drenthe,7,2,3,0,0,0,0,0,0,0
+2020,10,Groningen,Delfzijl en omgeving,12,1,5,0,0,0,0,0,0,0
+2020,10,Groningen,Oost-Groningen,11,1,3,0,1,0,0,0,0,0
+2020,10,Groningen,Overig Groningen,11,1,3,0,1,0,0,0,0,0
+2020,10,Friesland,Noord-Friesland,8,1,3,0,1,0,0,0,0,0
+2020,10,Friesland,Zuidoost-Friesland,11,1,4,0,0,0,0,0,0,0
+2020,10,Friesland,Zuidwest-Friesland,9,1,2,0,0,0,0,0,1,0
+2020,10,Drenthe,Noord-Drenthe,8,1,3,0,0,0,0,0,0,0
+2020,10,Drenthe,Zuidoost-Drenthe,8,1,3,0,0,0,0,0,0,0
+2020,10,Drenthe,Zuidwest-Drenthe,9,1,2,0,1,0,0,0,0,0
+2020,11,Groningen,Delfzijl en omgeving,13,1,4,0,0,0,0,0,0,0
+2020,11,Groningen,Oost-Groningen,12,1,5,0,1,0,0,0,0,0
+2020,11,Groningen,Overig Groningen,11,0,4,0,0,0,0,0,0,0
+2020,11,Friesland,Noord-Friesland,10,1,3,0,1,0,0,0,0,0
+2020,11,Friesland,Zuidoost-Friesland,10,1,4,0,0,0,0,0,0,0
+2020,11,Friesland,Zuidwest-Friesland,11,2,3,0,0,0,0,0,1,0
+2020,11,Drenthe,Noord-Drenthe,4,1,3,0,1,0,0,0,0,0
+2020,11,Drenthe,Zuidoost-Drenthe,9,1,5,0,0,0,0,0,0,0
+2020,11,Drenthe,Zuidwest-Drenthe,9,2,3,0,0,0,0,0,0,0
+2020,12,Groningen,Delfzijl en omgeving,12,2,5,0,1,0,0,0,0,0
+2020,12,Groningen,Oost-Groningen,9,1,4,0,1,0,0,0,1,0
+2020,12,Groningen,Overig Groningen,11,1,4,0,1,0,0,0,0,0
+2020,12,Friesland,Noord-Friesland,9,1,3,0,1,0,0,0,0,0
+2020,12,Friesland,Zuidoost-Friesland,14,1,2,0,0,0,0,0,0,0
+2020,12,Friesland,Zuidwest-Friesland,9,2,2,0,0,0,0,0,0,0
+2020,12,Drenthe,Noord-Drenthe,8,0,3,0,1,0,0,0,0,0
+2020,12,Drenthe,Zuidoost-Drenthe,6,0,3,0,1,0,0,0,1,0
+2020,12,Drenthe,Zuidwest-Drenthe,10,0,1,0,0,0,0,0,1,0
+2021,1,Groningen,Delfzijl en omgeving,12,1,5,0,1,0,0,0,1,0
+2021,1,Groningen,Oost-Groningen,8,2,3,0,0,0,0,0,0,0
+2021,1,Groningen,Overig Groningen,10,1,5,0,1,0,0,0,0,0
+2021,1,Friesland,Noord-Friesland,10,2,4,0,0,0,0,0,0,0
+2021,1,Friesland,Zuidoost-Friesland,9,1,2,0,0,0,0,0,1,0
+2021,1,Friesland,Zuidwest-Friesland,7,0,3,0,1,0,0,0,0,0
+2021,1,Drenthe,Noord-Drenthe,8,1,3,0,1,0,0,0,0,0
+2021,1,Drenthe,Zuidoost-Drenthe,4,1,4,0,0,0,0,0,0,0
+2021,1,Drenthe,Zuidwest-Drenthe,5,2,2,0,1,0,0,0,0,0
+2021,2,Groningen,Delfzijl en omgeving,12,1,6,0,0,0,0,0,0,0
+2021,2,Groningen,Oost-Groningen,6,1,6,0,1,0,0,0,0,0
+2021,2,Groningen,Overig Groningen,10,1,4,0,1,0,0,0,1,0
+2021,2,Friesland,Noord-Friesland,10,1,2,0,1,0,0,0,1,0
+2021,2,Friesland,Zuidoost-Friesland,8,1,5,0,1,0,0,0,0,0
+2021,2,Friesland,Zuidwest-Friesland,8,1,3,0,1,0,0,0,0,0
+2021,2,Drenthe,Noord-Drenthe,11,1,4,0,0,0,0,0,0,0
+2021,2,Drenthe,Zuidoost-Drenthe,10,1,2,0,0,0,0,0,0,0
+2021,2,Drenthe,Zuidwest-Drenthe,7,1,3,0,0,0,0,0,0,0
+2021,3,Groningen,Delfzijl en omgeving,9,2,4,0,1,0,0,0,0,0
+2021,3,Groningen,Oost-Groningen,9,1,3,0,1,0,0,0,1,0
+2021,3,Groningen,Overig Groningen,9,1,4,0,0,0,0,0,0,0
+2021,3,Friesland,Noord-Friesland,12,1,3,0,1,0,0,0,0,0
+2021,3,Friesland,Zuidoost-Friesland,6,2,3,0,1,0,0,0,1,0
+2021,3,Friesland,Zuidwest-Friesland,7,1,4,0,1,0,0,0,0,0
+2021,3,Drenthe,Noord-Drenthe,7,0,3,0,1,0,0,0,0,0
+2021,3,Drenthe,Zuidoost-Drenthe,7,1,2,0,0,0,0,0,0,0
+2021,3,Drenthe,Zuidwest-Drenthe,10,1,3,0,0,0,0,0,0,0
+2021,4,Groningen,Delfzijl en omgeving,8,1,5,0,0,0,0,0,0,0
+2021,4,Groningen,Oost-Groningen,9,1,3,0,1,0,0,0,0,0
+2021,4,Groningen,Overig Groningen,9,1,4,0,1,0,0,0,0,0
+2021,4,Friesland,Noord-Friesland,9,1,4,0,1,0,0,0,0,0
+2021,4,Friesland,Zuidoost-Friesland,10,1,5,0,1,0,0,0,1,0
+2021,4,Friesland,Zuidwest-Friesland,9,1,3,0,1,0,0,0,0,0
+2021,4,Drenthe,Noord-Drenthe,6,2,3,0,1,0,0,0,0,0
+2021,4,Drenthe,Zuidoost-Drenthe,7,1,4,0,1,0,0,0,0,0
+2021,4,Drenthe,Zuidwest-Drenthe,6,1,3,0,1,0,0,0,0,0
+2021,5,Groningen,Delfzijl en omgeving,10,1,4,0,1,0,0,0,0,0
+2021,5,Groningen,Oost-Groningen,14,1,5,0,1,0,0,0,1,0
+2021,5,Groningen,Overig Groningen,14,2,4,0,0,0,0,0,0,0
+2021,5,Friesland,Noord-Friesland,10,0,2,0,1,0,0,0,1,0
+2021,5,Friesland,Zuidoost-Friesland,10,2,4,0,0,0,0,0,0,0
+2021,5,Friesland,Zuidwest-Friesland,11,1,2,0,1,0,0,0,0,0
+2021,5,Drenthe,Noord-Drenthe,7,1,3,0,0,0,0,0,0,0
+2021,5,Drenthe,Zuidoost-Drenthe,9,1,1,0,1,0,0,0,0,0
+2021,5,Drenthe,Zuidwest-Drenthe,7,1,2,0,0,0,0,0,0,0
+2021,6,Groningen,Delfzijl en omgeving,10,2,4,0,1,0,0,0,0,0
+2021,6,Groningen,Oost-Groningen,10,2,3,0,0,0,0,0,0,0
+2021,6,Groningen,Overig Groningen,8,0,3,0,1,0,0,0,0,0
+2021,6,Friesland,Noord-Friesland,6,1,5,0,1,0,0,0,0,0
+2021,6,Friesland,Zuidoost-Friesland,11,1,2,0,1,0,0,0,0,0
+2021,6,Friesland,Zuidwest-Friesland,9,1,3,0,0,0,0,0,1,0
+2021,6,Drenthe,Noord-Drenthe,4,1,2,0,0,0,0,0,0,0
+2021,6,Drenthe,Zuidoost-Drenthe,8,1,3,0,1,0,0,0,0,0
+2021,6,Drenthe,Zuidwest-Drenthe,8,0,3,0,0,0,0,0,0,0
+2021,7,Groningen,Delfzijl en omgeving,9,1,2,0,1,0,0,0,1,0
+2021,7,Groningen,Oost-Groningen,12,1,4,0,1,0,0,0,1,0
+2021,7,Groningen,Overig Groningen,9,1,3,0,1,0,0,0,0,0
+2021,7,Friesland,Noord-Friesland,4,1,4,0,1,0,0,0,1,0
+2021,7,Friesland,Zuidoost-Friesland,6,1,2,0,1,0,0,0,0,0
+2021,7,Friesland,Zuidwest-Friesland,8,1,3,0,0,0,0,0,1,0
+2021,7,Drenthe,Noord-Drenthe,9,1,1,0,0,0,0,0,0,0
+2021,7,Drenthe,Zuidoost-Drenthe,8,1,4,0,0,0,0,0,0,0
+2021,7,Drenthe,Zuidwest-Drenthe,6,1,4,0,0,0,0,0,0,0
+2021,8,Groningen,Delfzijl en omgeving,11,1,3,0,0,0,0,0,1,0
+2021,8,Groningen,Oost-Groningen,12,1,4,0,0,0,0,0,0,0
+2021,8,Groningen,Overig Groningen,6,2,5,0,1,0,0,0,0,0
+2021,8,Friesland,Noord-Friesland,12,1,2,0,1,0,0,0,0,0
+2021,8,Friesland,Zuidoost-Friesland,8,0,3,0,1,0,0,0,0,0
+2021,8,Friesland,Zuidwest-Friesland,5,0,2,0,1,0,0,0,1,0
+2021,8,Drenthe,Noord-Drenthe,7,1,2,0,1,0,0,0,0,0
+2021,8,Drenthe,Zuidoost-Drenthe,6,1,1,0,1,0,0,0,0,0
+2021,8,Drenthe,Zuidwest-Drenthe,6,1,1,0,0,0,0,0,0,0
+2021,9,Groningen,Delfzijl en omgeving,9,1,3,0,0,0,0,0,0,0
+2021,9,Groningen,Oost-Groningen,13,2,4,0,1,0,0,0,0,0
+2021,9,Groningen,Overig Groningen,10,1,5,0,1,0,0,0,0,0
+2021,9,Friesland,Noord-Friesland,9,1,2,0,1,0,0,0,0,0
+2021,9,Friesland,Zuidoost-Friesland,8,2,4,0,0,0,0,0,0,0
+2021,9,Friesland,Zuidwest-Friesland,9,1,3,0,1,0,0,0,0,0
+2021,9,Drenthe,Noord-Drenthe,7,1,4,0,0,0,0,0,0,0
+2021,9,Drenthe,Zuidoost-Drenthe,10,2,3,0,1,0,0,0,1,0
+2021,9,Drenthe,Zuidwest-Drenthe,7,0,3,0,0,0,0,0,0,0
+2021,10,Groningen,Delfzijl en omgeving,14,1,3,0,0,0,0,0,0,0
+2021,10,Groningen,Oost-Groningen,7,2,5,0,1,0,0,0,0,0
+2021,10,Groningen,Overig Groningen,10,1,5,0,1,0,0,0,0,0
+2021,10,Friesland,Noord-Friesland,11,0,3,0,0,0,0,0,0,0
+2021,10,Friesland,Zuidoost-Friesland,6,0,2,0,1,0,0,0,0,0
+2021,10,Friesland,Zuidwest-Friesland,10,2,4,0,1,0,0,0,0,0
+2021,10,Drenthe,Noord-Drenthe,7,0,3,0,1,0,0,0,0,0
+2021,10,Drenthe,Zuidoost-Drenthe,7,1,3,0,0,0,0,0,0,0
+2021,10,Drenthe,Zuidwest-Drenthe,9,2,3,0,0,0,0,0,0,0
+2021,11,Groningen,Delfzijl en omgeving,8,1,3,0,1,0,0,0,0,0
+2021,11,Groningen,Oost-Groningen,12,1,4,0,0,0,0,0,0,0
+2021,11,Groningen,Overig Groningen,10,1,4,0,1,0,0,0,0,0
+2021,11,Friesland,Noord-Friesland,10,1,5,0,0,0,0,0,0,0
+2021,11,Friesland,Zuidoost-Friesland,11,0,5,0,1,0,0,0,0,0
+2021,11,Friesland,Zuidwest-Friesland,10,1,2,0,1,0,0,0,0,0
+2021,11,Drenthe,Noord-Drenthe,5,2,4,0,0,0,0,0,0,0
+2021,11,Drenthe,Zuidoost-Drenthe,7,2,2,0,0,0,0,0,1,0
+2021,11,Drenthe,Zuidwest-Drenthe,7,1,3,0,0,0,0,0,0,0
+2021,12,Groningen,Delfzijl en omgeving,10,2,6,0,1,0,0,0,0,0
+2021,12,Groningen,Oost-Groningen,13,2,4,0,0,0,0,0,0,0
+2021,12,Groningen,Overig Groningen,11,1,4,0,1,0,0,0,0,0
+2021,12,Friesland,Noord-Friesland,6,0,3,0,0,0,0,0,0,0
+2021,12,Friesland,Zuidoost-Friesland,9,1,3,0,1,0,0,0,0,0
+2021,12,Friesland,Zuidwest-Friesland,8,1,3,0,1,0,0,0,0,0
+2021,12,Drenthe,Noord-Drenthe,6,2,3,0,0,0,0,0,0,0
+2021,12,Drenthe,Zuidoost-Drenthe,5,0,1,0,0,0,0,0,1,0
+2021,12,Drenthe,Zuidwest-Drenthe,9,2,4,0,0,0,0,0,0,0
+2022,1,Groningen,Delfzijl en omgeving,11,1,3,0,1,0,0,0,0,0
+2022,1,Groningen,Oost-Groningen,11,2,5,0,1,0,0,0,0,0
+2022,1,Groningen,Overig Groningen,11,1,3,0,0,0,0,0,0,0
+2022,1,Friesland,Noord-Friesland,6,0,5,0,0,0,0,0,0,0
+2022,1,Friesland,Zuidoost-Friesland,9,1,2,0,0,0,0,0,0,0
+2022,1,Friesland,Zuidwest-Friesland,8,1,1,0,0,0,0,0,1,0
+2022,1,Drenthe,Noord-Drenthe,6,0,3,0,1,0,0,0,0,0
+2022,1,Drenthe,Zuidoost-Drenthe,6,1,4,0,1,0,0,0,0,0
+2022,1,Drenthe,Zuidwest-Drenthe,13,0,1,0,1,0,0,0,0,0
+2022,2,Groningen,Delfzijl en omgeving,11,2,5,0,0,0,0,0,0,0
+2022,2,Groningen,Oost-Groningen,12,2,5,0,1,0,0,0,1,0
+2022,2,Groningen,Overig Groningen,9,1,4,0,1,0,0,0,1,0
+2022,2,Friesland,Noord-Friesland,7,1,3,0,1,0,0,0,0,0
+2022,2,Friesland,Zuidoost-Friesland,9,1,5,0,0,0,0,0,0,0
+2022,2,Friesland,Zuidwest-Friesland,11,2,4,0,0,0,0,0,0,0
+2022,2,Drenthe,Noord-Drenthe,9,1,3,0,0,0,0,0,0,0
+2022,2,Drenthe,Zuidoost-Drenthe,8,1,2,0,0,0,0,0,0,0
+2022,2,Drenthe,Zuidwest-Drenthe,7,1,3,0,0,0,0,0,0,0
+2022,3,Groningen,Delfzijl en omgeving,9,1,2,0,0,0,0,0,0,0
+2022,3,Groningen,Oost-Groningen,10,2,4,0,1,0,0,0,0,0
+2022,3,Groningen,Overig Groningen,11,2,4,0,0,0,0,0,0,0
+2022,3,Friesland,Noord-Friesland,9,1,4,0,0,0,0,0,0,0
+2022,3,Friesland,Zuidoost-Friesland,10,0,4,0,1,0,0,0,0,0
+2022,3,Friesland,Zuidwest-Friesland,9,2,3,0,1,0,0,0,0,0
+2022,3,Drenthe,Noord-Drenthe,5,1,3,0,1,0,0,0,0,0
+2022,3,Drenthe,Zuidoost-Drenthe,8,1,3,0,1,0,0,0,0,0
+2022,3,Drenthe,Zuidwest-Drenthe,5,1,5,0,1,0,0,0,0,0
+2022,4,Groningen,Delfzijl en omgeving,13,0,4,0,1,0,0,0,0,0
+2022,4,Groningen,Oost-Groningen,9,1,3,0,0,0,0,0,0,0
+2022,4,Groningen,Overig Groningen,7,1,4,0,1,0,0,0,0,0
+2022,4,Friesland,Noord-Friesland,6,2,2,0,1,0,0,0,0,0
+2022,4,Friesland,Zuidoost-Friesland,7,1,4,0,1,0,0,0,0,0
+2022,4,Friesland,Zuidwest-Friesland,9,1,2,0,1,0,0,0,0,0
+2022,4,Drenthe,Noord-Drenthe,8,1,1,0,0,0,0,0,0,0
+2022,4,Drenthe,Zuidoost-Drenthe,7,1,3,0,0,0,0,0,1,0
+2022,4,Drenthe,Zuidwest-Drenthe,8,1,4,0,1,0,0,0,0,0
+2022,5,Groningen,Delfzijl en omgeving,12,1,5,0,1,0,0,0,0,0
+2022,5,Groningen,Oost-Groningen,9,2,4,0,1,0,0,0,0,0
+2022,5,Groningen,Overig Groningen,12,2,6,0,1,0,0,0,1,0
+2022,5,Friesland,Noord-Friesland,12,0,2,0,1,0,0,0,0,0
+2022,5,Friesland,Zuidoost-Friesland,8,1,3,0,0,0,0,0,0,0
+2022,5,Friesland,Zuidwest-Friesland,10,1,4,0,1,0,0,0,0,0
+2022,5,Drenthe,Noord-Drenthe,9,0,2,0,1,0,0,0,0,0
+2022,5,Drenthe,Zuidoost-Drenthe,8,1,3,0,1,0,0,0,0,0
+2022,5,Drenthe,Zuidwest-Drenthe,9,1,4,0,1,0,0,0,0,0
+2022,6,Groningen,Delfzijl en omgeving,7,1,2,0,0,0,0,0,0,0
+2022,6,Groningen,Oost-Groningen,13,1,4,0,1,0,0,0,0,0
+2022,6,Groningen,Overig Groningen,9,1,3,0,1,0,0,0,0,0
+2022,6,Friesland,Noord-Friesland,10,1,3,0,1,0,0,0,0,0
+2022,6,Friesland,Zuidoost-Friesland,8,1,3,0,1,0,0,0,1,0
+2022,6,Friesland,Zuidwest-Friesland,9,0,3,0,1,0,0,0,0,0
+2022,6,Drenthe,Noord-Drenthe,5,1,4,0,1,0,0,0,1,0
+2022,6,Drenthe,Zuidoost-Drenthe,7,2,2,0,1,0,0,0,0,0
+2022,6,Drenthe,Zuidwest-Drenthe,10,1,2,0,1,0,0,0,0,0
+2022,7,Groningen,Delfzijl en omgeving,9,2,4,0,1,0,0,0,0,0
+2022,7,Groningen,Oost-Groningen,13,1,2,0,0,0,0,0,0,0
+2022,7,Groningen,Overig Groningen,7,2,4,0,1,0,0,0,0,0
+2022,7,Friesland,Noord-Friesland,10,0,3,0,1,0,0,0,0,0
+2022,7,Friesland,Zuidoost-Friesland,9,1,4,0,1,0,0,0,1,0
+2022,7,Friesland,Zuidwest-Friesland,8,1,4,0,1,0,0,0,0,0
+2022,7,Drenthe,Noord-Drenthe,3,2,2,0,0,0,0,0,0,0
+2022,7,Drenthe,Zuidoost-Drenthe,5,2,2,0,0,0,0,0,0,0
+2022,7,Drenthe,Zuidwest-Drenthe,8,2,3,0,0,0,0,0,1,0
+2022,8,Groningen,Delfzijl en omgeving,11,1,4,0,1,0,0,0,0,0
+2022,8,Groningen,Oost-Groningen,10,1,6,0,2,0,0,0,0,0
+2022,8,Groningen,Overig Groningen,9,1,5,0,0,0,0,0,0,0
+2022,8,Friesland,Noord-Friesland,10,1,3,0,1,0,0,0,0,0
+2022,8,Friesland,Zuidoost-Friesland,8,1,3,0,0,0,0,0,0,0
+2022,8,Friesland,Zuidwest-Friesland,11,1,3,0,1,0,0,0,0,0
+2022,8,Drenthe,Noord-Drenthe,8,1,5,0,1,0,0,0,0,0
+2022,8,Drenthe,Zuidoost-Drenthe,10,0,1,0,0,0,0,0,1,0
+2022,8,Drenthe,Zuidwest-Drenthe,7,1,1,0,1,0,0,0,0,0
+2022,9,Groningen,Delfzijl en omgeving,8,1,4,0,1,0,0,0,1,0
+2022,9,Groningen,Oost-Groningen,12,2,4,0,1,0,0,0,1,0
+2022,9,Groningen,Overig Groningen,13,1,6,0,1,0,0,0,0,0
+2022,9,Friesland,Noord-Friesland,10,1,2,0,1,0,0,0,1,0
+2022,9,Friesland,Zuidoost-Friesland,7,1,4,0,0,0,0,0,1,0
+2022,9,Friesland,Zuidwest-Friesland,8,2,3,0,1,0,0,0,1,0
+2022,9,Drenthe,Noord-Drenthe,8,1,3,0,1,0,0,0,0,0
+2022,9,Drenthe,Zuidoost-Drenthe,6,2,4,0,0,0,0,0,0,0
+2022,9,Drenthe,Zuidwest-Drenthe,5,0,2,0,0,0,0,0,0,0
+2022,10,Groningen,Delfzijl en omgeving,11,0,4,0,1,0,0,0,0,0
+2022,10,Groningen,Oost-Groningen,5,1,5,0,1,0,0,0,0,0
+2022,10,Groningen,Overig Groningen,13,2,4,0,0,0,0,0,0,0
+2022,10,Friesland,Noord-Friesland,7,1,3,0,0,0,0,0,1,0
+2022,10,Friesland,Zuidoost-Friesland,8,0,4,0,1,0,0,0,0,0
+2022,10,Friesland,Zuidwest-Friesland,7,1,3,0,0,0,0,0,0,0
+2022,10,Drenthe,Noord-Drenthe,7,0,3,0,0,0,0,0,0,0
+2022,10,Drenthe,Zuidoost-Drenthe,8,2,1,0,1,0,0,0,0,0
+2022,10,Drenthe,Zuidwest-Drenthe,8,1,4,0,0,0,0,0,0,0
+2022,11,Groningen,Delfzijl en omgeving,10,2,3,0,1,0,0,0,1,0
+2022,11,Groningen,Oost-Groningen,14,2,5,0,1,0,0,0,1,0
+2022,11,Groningen,Overig Groningen,14,1,2,0,1,0,0,0,0,0
+2022,11,Friesland,Noord-Friesland,7,1,3,0,0,0,0,0,1,0
+2022,11,Friesland,Zuidoost-Friesland,12,1,2,0,1,0,0,0,0,0
+2022,11,Friesland,Zuidwest-Friesland,9,1,4,0,1,0,0,0,0,0
+2022,11,Drenthe,Noord-Drenthe,8,1,4,0,0,0,0,0,0,0
+2022,11,Drenthe,Zuidoost-Drenthe,10,1,2,0,1,0,0,0,0,0
+2022,11,Drenthe,Zuidwest-Drenthe,6,0,3,0,0,0,0,0,0,0
+2022,12,Groningen,Delfzijl en omgeving,12,1,3,0,1,0,0,0,1,0
+2022,12,Groningen,Oost-Groningen,9,2,2,0,0,0,0,0,0,0
+2022,12,Groningen,Overig Groningen,11,1,5,0,1,0,0,0,1,0
+2022,12,Friesland,Noord-Friesland,8,1,1,0,1,0,0,0,0,0
+2022,12,Friesland,Zuidoost-Friesland,11,2,3,0,1,0,0,0,0,0
+2022,12,Friesland,Zuidwest-Friesland,8,0,5,0,0,0,0,0,0,0
+2022,12,Drenthe,Noord-Drenthe,8,1,3,0,1,0,0,0,0,0
+2022,12,Drenthe,Zuidoost-Drenthe,9,1,3,0,0,0,0,0,0,0
+2022,12,Drenthe,Zuidwest-Drenthe,8,0,1,0,0,0,0,0,0,0
+2023,1,Groningen,Delfzijl en omgeving,10,2,5,0,1,0,0,0,1,0
+2023,1,Groningen,Oost-Groningen,11,2,3,0,0,0,0,0,0,0
+2023,1,Groningen,Overig Groningen,9,1,1,0,1,0,0,0,0,0
+2023,1,Friesland,Noord-Friesland,8,1,2,0,0,0,0,0,0,0
+2023,1,Friesland,Zuidoost-Friesland,6,1,3,0,1,0,0,0,0,0
+2023,1,Friesland,Zuidwest-Friesland,8,1,4,0,1,0,0,0,0,0
+2023,1,Drenthe,Noord-Drenthe,11,1,3,0,0,0,0,0,0,0
+2023,1,Drenthe,Zuidoost-Drenthe,7,2,2,0,0,0,0,0,0,0
+2023,1,Drenthe,Zuidwest-Drenthe,6,1,3,0,0,0,0,0,0,0
+2023,2,Groningen,Delfzijl en omgeving,12,1,4,0,1,0,0,0,1,0
+2023,2,Groningen,Oost-Groningen,9,2,4,0,1,0,0,0,0,0
+2023,2,Groningen,Overig Groningen,14,2,3,0,1,0,0,0,0,0
+2023,2,Friesland,Noord-Friesland,9,0,2,0,1,0,0,0,0,0
+2023,2,Friesland,Zuidoost-Friesland,10,1,2,0,0,0,0,0,1,0
+2023,2,Friesland,Zuidwest-Friesland,9,1,4,0,1,0,0,0,0,0
+2023,2,Drenthe,Noord-Drenthe,8,1,4,0,0,0,0,0,0,0
+2023,2,Drenthe,Zuidoost-Drenthe,9,1,2,0,1,0,0,0,0,0
+2023,2,Drenthe,Zuidwest-Drenthe,0,0,3,0,0,0,0,0,1,0
+2023,3,Groningen,Delfzijl en omgeving,11,1,4,0,1,0,0,0,0,0
+2023,3,Groningen,Oost-Groningen,11,2,2,0,1,0,0,0,0,0
+2023,3,Groningen,Overig Groningen,11,1,4,0,0,0,0,0,0,0
+2023,3,Friesland,Noord-Friesland,8,0,4,0,0,0,0,0,0,0
+2023,3,Friesland,Zuidoost-Friesland,6,1,3,0,1,0,0,0,0,0
+2023,3,Friesland,Zuidwest-Friesland,8,2,3,0,1,0,0,0,1,0
+2023,3,Drenthe,Noord-Drenthe,9,2,3,0,0,0,0,0,0,0
+2023,3,Drenthe,Zuidoost-Drenthe,9,1,3,0,0,0,0,0,0,0
+2023,3,Drenthe,Zuidwest-Drenthe,7,1,4,0,1,0,0,0,0,0
+2023,4,Groningen,Delfzijl en omgeving,11,1,4,0,1,0,0,0,0,0
+2023,4,Groningen,Oost-Groningen,7,1,5,0,1,0,0,0,1,0
+2023,4,Groningen,Overig Groningen,11,1,2,0,1,0,0,0,0,0
+2023,4,Friesland,Noord-Friesland,12,1,3,0,0,0,0,0,0,0
+2023,4,Friesland,Zuidoost-Friesland,9,1,2,0,1,0,0,0,1,0
+2023,4,Friesland,Zuidwest-Friesland,7,1,3,0,1,0,0,0,0,0
+2023,4,Drenthe,Noord-Drenthe,8,0,4,0,0,0,0,0,1,0
+2023,4,Drenthe,Zuidoost-Drenthe,9,1,3,0,1,0,0,0,0,0
+2023,4,Drenthe,Zuidwest-Drenthe,9,1,3,0,0,0,0,0,0,0
+2023,5,Groningen,Delfzijl en omgeving,11,1,5,0,0,0,0,0,0,0
+2023,5,Groningen,Oost-Groningen,14,1,3,0,0,0,0,0,1,0
+2023,5,Groningen,Overig Groningen,8,1,3,0,0,0,0,0,0,0
+2023,5,Friesland,Noord-Friesland,8,1,3,0,1,0,0,0,0,0
+2023,5,Friesland,Zuidoost-Friesland,10,1,3,0,1,0,0,0,0,0
+2023,5,Friesland,Zuidwest-Friesland,7,1,2,0,0,0,0,0,0,0
+2023,5,Drenthe,Noord-Drenthe,5,1,5,0,1,0,0,0,0,0
+2023,5,Drenthe,Zuidoost-Drenthe,9,1,2,0,0,0,0,0,0,0
+2023,5,Drenthe,Zuidwest-Drenthe,3,0,2,0,1,0,0,0,0,0
+2023,6,Groningen,Delfzijl en omgeving,7,1,4,0,1,0,0,0,0,0
+2023,6,Groningen,Oost-Groningen,15,1,5,0,1,0,0,0,0,0
+2023,6,Groningen,Overig Groningen,10,1,4,0,1,0,0,0,0,0
+2023,6,Friesland,Noord-Friesland,9,1,4,0,1,0,0,0,0,0
+2023,6,Friesland,Zuidoost-Friesland,11,1,2,0,1,0,0,0,0,0
+2023,6,Friesland,Zuidwest-Friesland,7,1,5,0,1,0,0,0,0,0
+2023,6,Drenthe,Noord-Drenthe,8,0,6,0,0,0,0,0,0,0
+2023,6,Drenthe,Zuidoost-Drenthe,7,0,2,0,0,0,0,0,0,0
+2023,6,Drenthe,Zuidwest-Drenthe,7,1,0,0,0,0,0,0,1,0
+2023,7,Groningen,Delfzijl en omgeving,8,1,3,0,0,0,0,0,0,0
+2023,7,Groningen,Oost-Groningen,9,2,4,0,1,0,0,0,1,0
+2023,7,Groningen,Overig Groningen,11,1,5,0,0,0,0,0,0,0
+2023,7,Friesland,Noord-Friesland,11,0,3,0,1,0,0,0,0,0
+2023,7,Friesland,Zuidoost-Friesland,8,1,2,0,1,0,0,0,0,0
+2023,7,Friesland,Zuidwest-Friesland,12,2,4,0,1,0,0,0,0,0
+2023,7,Drenthe,Noord-Drenthe,7,0,4,0,1,0,0,0,0,0
+2023,7,Drenthe,Zuidoost-Drenthe,5,1,2,0,0,0,0,0,1,0
+2023,7,Drenthe,Zuidwest-Drenthe,6,1,4,0,1,0,0,0,0,0
+2023,8,Groningen,Delfzijl en omgeving,13,0,5,0,1,0,0,0,0,0
+2023,8,Groningen,Oost-Groningen,9,1,6,0,1,0,0,0,0,0
+2023,8,Groningen,Overig Groningen,12,2,4,0,1,0,0,0,1,0
+2023,8,Friesland,Noord-Friesland,9,1,3,0,0,0,0,0,0,0
+2023,8,Friesland,Zuidoost-Friesland,10,1,3,0,0,0,0,0,1,0
+2023,8,Friesland,Zuidwest-Friesland,9,1,3,0,1,0,0,0,0,0
+2023,8,Drenthe,Noord-Drenthe,8,0,3,0,1,0,0,0,0,0
+2023,8,Drenthe,Zuidoost-Drenthe,5,1,2,0,0,0,0,0,0,0
+2023,8,Drenthe,Zuidwest-Drenthe,5,1,3,0,0,0,0,0,0,0
+2023,9,Groningen,Delfzijl en omgeving,11,1,3,0,0,0,0,0,0,0
+2023,9,Groningen,Oost-Groningen,12,1,4,0,0,0,0,0,1,0
+2023,9,Groningen,Overig Groningen,6,0,3,0,1,0,0,0,1,0
+2023,9,Friesland,Noord-Friesland,10,1,4,0,1,0,0,0,0,0
+2023,9,Friesland,Zuidoost-Friesland,9,1,5,0,0,0,0,0,1,0
+2023,9,Friesland,Zuidwest-Friesland,6,2,3,0,1,0,0,0,0,0
+2023,9,Drenthe,Noord-Drenthe,9,1,2,0,0,0,0,0,0,0
+2023,9,Drenthe,Zuidoost-Drenthe,7,0,3,0,1,0,0,0,1,0
+2023,9,Drenthe,Zuidwest-Drenthe,10,1,3,0,0,0,0,0,0,0
+2023,10,Groningen,Delfzijl en omgeving,12,1,3,0,1,0,0,0,0,0
+2023,10,Groningen,Oost-Groningen,12,1,4,0,1,0,0,0,0,0
+2023,10,Groningen,Overig Groningen,7,2,4,0,1,0,0,0,0,0
+2023,10,Friesland,Noord-Friesland,5,2,4,0,1,0,0,0,0,0
+2023,10,Friesland,Zuidoost-Friesland,7,1,4,0,0,0,0,0,0,0
+2023,10,Friesland,Zuidwest-Friesland,10,1,2,0,1,0,0,0,0,0
+2023,10,Drenthe,Noord-Drenthe,8,1,3,0,0,0,0,0,0,0
+2023,10,Drenthe,Zuidoost-Drenthe,10,1,3,0,0,0,0,0,1,0
+2023,10,Drenthe,Zuidwest-Drenthe,4,1,2,0,0,0,0,0,0,0
+2023,11,Groningen,Delfzijl en omgeving,13,2,4,0,1,0,0,0,0,0
+2023,11,Groningen,Oost-Groningen,14,1,3,0,1,0,0,0,1,0
+2023,11,Groningen,Overig Groningen,13,2,5,0,1,0,0,0,0,0
+2023,11,Friesland,Noord-Friesland,8,2,4,0,1,0,0,0,0,0
+2023,11,Friesland,Zuidoost-Friesland,8,2,3,0,1,0,0,0,1,0
+2023,11,Friesland,Zuidwest-Friesland,9,2,5,0,1,0,0,0,0,0
+2023,11,Drenthe,Noord-Drenthe,3,0,3,0,1,0,0,0,1,0
+2023,11,Drenthe,Zuidoost-Drenthe,5,1,1,0,0,0,0,0,0,0
+2023,11,Drenthe,Zuidwest-Drenthe,3,1,5,0,0,0,0,0,0,0
+2023,12,Groningen,Delfzijl en omgeving,14,2,4,0,1,0,0,0,0,0
+2023,12,Groningen,Oost-Groningen,10,2,4,0,1,0,0,0,0,0
+2023,12,Groningen,Overig Groningen,9,1,3,0,0,0,0,0,0,0
+2023,12,Friesland,Noord-Friesland,8,1,4,0,0,0,0,0,0,0
+2023,12,Friesland,Zuidoost-Friesland,10,2,4,0,1,0,0,0,0,0
+2023,12,Friesland,Zuidwest-Friesland,6,2,5,0,1,0,0,0,1,0
+2023,12,Drenthe,Noord-Drenthe,9,2,3,0,0,0,0,0,0,0
+2023,12,Drenthe,Zuidoost-Drenthe,6,1,2,0,0,0,0,0,0,0
+2023,12,Drenthe,Zuidwest-Drenthe,5,1,4,0,0,0,0,0,0,0
+2024,1,Groningen,Delfzijl en omgeving,6,1,4,0,0,0,0,0,0,0
+2024,1,Groningen,Oost-Groningen,12,3,5,0,0,0,0,0,0,0
+2024,1,Groningen,Overig Groningen,10,1,2,0,1,0,0,0,1,0
+2024,1,Friesland,Noord-Friesland,9,1,4,0,1,0,0,0,0,0
+2024,1,Friesland,Zuidoost-Friesland,6,1,4,0,1,0,0,0,1,0
+2024,1,Friesland,Zuidwest-Friesland,12,0,4,0,1,0,0,0,1,0
+2024,1,Drenthe,Noord-Drenthe,10,1,3,0,1,0,0,0,0,0
+2024,1,Drenthe,Zuidoost-Drenthe,8,0,2,0,1,0,0,0,0,0
+2024,1,Drenthe,Zuidwest-Drenthe,7,2,4,0,0,0,0,0,0,0
+2024,2,Groningen,Delfzijl en omgeving,9,2,5,0,0,0,0,0,1,0
+2024,2,Groningen,Oost-Groningen,8,2,1,0,1,0,0,0,0,0
+2024,2,Groningen,Overig Groningen,12,1,2,0,0,0,0,0,0,0
+2024,2,Friesland,Noord-Friesland,11,2,4,0,1,0,0,0,0,0
+2024,2,Friesland,Zuidoost-Friesland,10,1,2,0,0,0,0,0,0,0
+2024,2,Friesland,Zuidwest-Friesland,10,1,3,0,0,0,0,0,0,0
+2024,2,Drenthe,Noord-Drenthe,8,1,3,0,1,0,0,0,0,0
+2024,2,Drenthe,Zuidoost-Drenthe,5,1,2,0,1,0,0,0,0,0
+2024,2,Drenthe,Zuidwest-Drenthe,6,0,2,0,0,0,0,0,0,0
+2024,3,Groningen,Delfzijl en omgeving,11,1,4,0,1,0,0,0,1,0
+2024,3,Groningen,Oost-Groningen,8,2,3,0,1,0,0,0,0,0
+2024,3,Groningen,Overig Groningen,9,1,3,0,0,0,0,0,0,0
+2024,3,Friesland,Noord-Friesland,6,1,3,0,0,0,0,0,0,0
+2024,3,Friesland,Zuidoost-Friesland,10,1,3,0,1,0,0,0,0,0
+2024,3,Friesland,Zuidwest-Friesland,9,1,4,0,1,0,0,0,0,0
+2024,3,Drenthe,Noord-Drenthe,7,1,1,0,0,0,0,0,0,0
+2024,3,Drenthe,Zuidoost-Drenthe,5,2,4,0,0,0,0,0,0,0
+2024,3,Drenthe,Zuidwest-Drenthe,4,1,5,0,0,0,0,0,0,0
+2024,4,Groningen,Delfzijl en omgeving,13,1,5,0,1,0,0,0,0,0
+2024,4,Groningen,Oost-Groningen,12,2,2,0,1,0,0,0,0,0
+2024,4,Groningen,Overig Groningen,10,1,3,0,1,0,0,0,0,0
+2024,4,Friesland,Noord-Friesland,12,1,5,0,1,0,0,0,1,0
+2024,4,Friesland,Zuidoost-Friesland,2,1,4,0,0,0,0,0,0,0
+2024,4,Friesland,Zuidwest-Friesland,10,1,3,0,1,0,0,0,0,0
+2024,4,Drenthe,Noord-Drenthe,9,1,3,0,0,0,0,0,0,0
+2024,4,Drenthe,Zuidoost-Drenthe,7,0,3,0,0,0,0,0,0,0
+2024,4,Drenthe,Zuidwest-Drenthe,9,0,1,0,1,0,0,0,0,0
+2024,5,Groningen,Delfzijl en omgeving,8,1,5,0,0,0,0,0,0,0
+2024,5,Groningen,Oost-Groningen,13,1,5,0,1,0,0,0,0,0
+2024,5,Groningen,Overig Groningen,10,1,3,0,1,0,0,0,0,0
+2024,5,Friesland,Noord-Friesland,6,1,3,0,1,0,0,0,0,0
+2024,5,Friesland,Zuidoost-Friesland,14,1,2,0,0,0,0,0,0,0
+2024,5,Friesland,Zuidwest-Friesland,8,0,2,0,1,0,0,0,0,0
+2024,5,Drenthe,Noord-Drenthe,7,1,2,0,1,0,0,0,0,0
+2024,5,Drenthe,Zuidoost-Drenthe,9,1,2,0,0,0,0,0,0,0
+2024,5,Drenthe,Zuidwest-Drenthe,8,0,4,0,0,0,0,0,0,0
+2024,6,Groningen,Delfzijl en omgeving,11,1,4,0,1,0,0,0,0,0
+2024,6,Groningen,Oost-Groningen,7,1,5,0,1,0,0,0,1,0
+2024,6,Groningen,Overig Groningen,6,1,3,0,1,0,0,0,0,0
+2024,6,Friesland,Noord-Friesland,8,1,6,0,1,0,0,0,0,0
+2024,6,Friesland,Zuidoost-Friesland,6,2,4,0,1,0,0,0,0,0
+2024,6,Friesland,Zuidwest-Friesland,8,1,3,0,0,0,0,0,0,0
+2024,6,Drenthe,Noord-Drenthe,6,1,3,0,0,0,0,0,0,0
+2024,6,Drenthe,Zuidoost-Drenthe,8,1,3,0,1,0,0,0,0,0
+2024,6,Drenthe,Zuidwest-Drenthe,6,1,4,0,0,0,0,0,0,0
+2024,7,Groningen,Delfzijl en omgeving,10,1,4,0,1,0,0,0,0,0
+2024,7,Groningen,Oost-Groningen,9,1,4,0,0,0,0,0,0,0
+2024,7,Groningen,Overig Groningen,11,1,3,0,1,0,0,0,0,0
+2024,7,Friesland,Noord-Friesland,7,1,2,0,0,0,0,0,0,0
+2024,7,Friesland,Zuidoost-Friesland,10,0,3,0,0,0,0,0,1,0
+2024,7,Friesland,Zuidwest-Friesland,8,1,3,0,1,0,0,0,0,0
+2024,7,Drenthe,Noord-Drenthe,5,1,2,0,0,0,0,0,0,0
+2024,7,Drenthe,Zuidoost-Drenthe,8,1,5,0,0,0,0,0,0,0
+2024,7,Drenthe,Zuidwest-Drenthe,5,1,2,0,0,0,0,0,0,0
+2024,8,Groningen,Delfzijl en omgeving,9,2,4,0,0,0,0,0,1,0
+2024,8,Groningen,Oost-Groningen,12,2,3,0,1,0,0,0,1,0
+2024,8,Groningen,Overig Groningen,13,1,3,0,0,0,0,0,0,0
+2024,8,Friesland,Noord-Friesland,7,1,2,0,1,0,0,0,0,0
+2024,8,Friesland,Zuidoost-Friesland,7,1,4,0,1,0,0,0,0,0
+2024,8,Friesland,Zuidwest-Friesland,9,1,4,0,0,0,0,0,0,0
+2024,8,Drenthe,Noord-Drenthe,10,2,4,0,0,0,0,0,0,0
+2024,8,Drenthe,Zuidoost-Drenthe,5,1,1,0,0,0,0,0,0,0
+2024,8,Drenthe,Zuidwest-Drenthe,12,1,3,0,1,0,0,0,0,0
+2024,9,Groningen,Delfzijl en omgeving,9,2,4,0,1,0,0,0,1,0
+2024,9,Groningen,Oost-Groningen,7,2,3,0,1,0,0,0,0,0
+2024,9,Groningen,Overig Groningen,12,2,3,0,1,0,0,0,0,0
+2024,9,Friesland,Noord-Friesland,12,1,4,0,1,0,0,0,0,0
+2024,9,Friesland,Zuidoost-Friesland,11,1,4,0,1,0,0,0,0,0
+2024,9,Friesland,Zuidwest-Friesland,9,2,3,0,1,0,0,0,0,0
+2024,9,Drenthe,Noord-Drenthe,5,1,4,0,1,0,0,0,0,0
+2024,9,Drenthe,Zuidoost-Drenthe,5,2,1,0,0,0,0,0,1,0
+2024,9,Drenthe,Zuidwest-Drenthe,6,1,2,0,1,0,0,0,0,0
+2024,10,Groningen,Delfzijl en omgeving,10,1,4,0,0,0,0,0,1,0
+2024,10,Groningen,Oost-Groningen,11,1,5,0,1,0,0,0,0,0
+2024,10,Groningen,Overig Groningen,11,2,4,0,0,0,0,0,0,0
+2024,10,Friesland,Noord-Friesland,10,1,3,0,0,0,0,0,0,0
+2024,10,Friesland,Zuidoost-Friesland,10,1,3,0,1,0,0,0,1,0
+2024,10,Friesland,Zuidwest-Friesland,7,1,3,0,1,0,0,0,0,0
+2024,10,Drenthe,Noord-Drenthe,6,1,2,0,0,0,0,0,0,0
+2024,10,Drenthe,Zuidoost-Drenthe,5,1,4,0,0,0,0,0,0,0
+2024,10,Drenthe,Zuidwest-Drenthe,6,0,3,0,1,0,0,0,1,0
+2024,11,Groningen,Delfzijl en omgeving,16,1,4,0,0,0,0,0,1,0
+2024,11,Groningen,Oost-Groningen,12,2,4,0,1,0,0,0,0,0
+2024,11,Groningen,Overig Groningen,13,2,4,0,0,0,0,0,1,0
+2024,11,Friesland,Noord-Friesland,9,1,2,0,0,0,0,0,0,0
+2024,11,Friesland,Zuidoost-Friesland,9,1,5,0,0,0,0,0,0,0
+2024,11,Friesland,Zuidwest-Friesland,9,2,3,0,0,0,0,0,0,0
+2024,11,Drenthe,Noord-Drenthe,9,1,3,0,1,0,0,0,1,0
+2024,11,Drenthe,Zuidoost-Drenthe,7,1,2,0,1,0,0,0,0,0
+2024,11,Drenthe,Zuidwest-Drenthe,8,1,3,0,1,0,0,0,0,0
+2024,12,Groningen,Delfzijl en omgeving,10,2,4,0,1,0,0,0,0,0
+2024,12,Groningen,Oost-Groningen,7,2,4,0,1,0,0,0,0,0
+2024,12,Groningen,Overig Groningen,11,2,3,0,1,0,0,0,0,0
+2024,12,Friesland,Noord-Friesland,10,1,0,0,1,0,0,0,0,0
+2024,12,Friesland,Zuidoost-Friesland,7,0,4,0,1,0,0,0,1,0
+2024,12,Friesland,Zuidwest-Friesland,7,2,3,0,0,0,0,0,0,0
+2024,12,Drenthe,Noord-Drenthe,9,1,4,0,0,0,0,0,0,0
+2024,12,Drenthe,Zuidoost-Drenthe,5,1,2,0,0,0,0,0,0,0
+2024,12,Drenthe,Zuidwest-Drenthe,7,1,2,0,0,0,0,0,0,0

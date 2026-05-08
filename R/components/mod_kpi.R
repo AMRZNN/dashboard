@@ -146,7 +146,7 @@ mod_kpi_server <- function(id, data, cfg) {
             round((latest - prev) / prev * 100, 1)
           else NA
           dir     <- if (!is.na(change) && change >= 0) "up" else "down"
-          accent  <- if (!is.na(change) && change >= 0) "green" else "red"
+          accent  <- if (!is.na(change) && change >= 0) "red" else "green"
           trend_txt <- if (is.na(change)) "–" else paste0(abs(change), "%")
           spark   <- tail(vals, 10)
           kpi_tile(label, latest, trend_txt, dir = dir, accent = accent, spark_vals = spark)
@@ -168,7 +168,7 @@ mod_kpi_server <- function(id, data, cfg) {
       previous <- tail(df$incidentie, 2)[1]
       change   <- round((latest - previous) / previous * 100, 1)
       dir_main    <- ifelse(change >= 0, "up", "down")
-      accent_main <- ifelse(change >= 0, "green", "red")
+      accent_main <- ifelse(change >= 0, "red", "green")
       spark_vals  <- tail(df$incidentie, 10)
       
       tags$div(
@@ -177,11 +177,11 @@ mod_kpi_server <- function(id, data, cfg) {
                  paste0(abs(change), "%"),
                  dir = dir_main, accent = accent_main, spark_vals = spark_vals),
         kpi_tile("ESBL incidentie", "14,1", "7%",
-                 dir = "up",   accent = "green", spark_vals = spark_vals),
+                 dir = "up",   accent = "red", spark_vals = spark_vals),
         kpi_tile("MRSA incidentie", "2,7",  "7%",
-                 dir = "up",   accent = "green", spark_vals = spark_vals),
+                 dir = "up",   accent = "red", spark_vals = spark_vals),
         kpi_tile("CPE incidentie",  "0,8",  "4%",
-                 dir = "down", accent = "red",   spark_vals = spark_vals)
+                 dir = "down", accent = "green",   spark_vals = spark_vals)
       )
     })
   })
