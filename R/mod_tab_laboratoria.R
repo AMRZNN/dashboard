@@ -134,7 +134,12 @@ mod_tab_laboratoria_server <- function(id, data, cfg) {
                           facre, cre, fara, cpa, ca)), na.rm = TRUE)) |>
         dplyr::filter(datum == max(datum, na.rm = TRUE)) |>
         dplyr::group_by(regio = nuts3) |>
-        dplyr::summarise(incidentie = sum(totaal, na.rm = TRUE), .groups = "drop")
+        dplyr::summarise(meldingen = sum(totaal, na.rm = TRUE), .groups = "drop") |>
+        dplyr::left_join(
+          sf::st_drop_geometry(data$shape) |> dplyr::select(nuts3, inwoners),
+          by = c("regio" = "nuts3")
+        ) |>
+        dplyr::mutate(incidentie = round(meldingen / inwoners * 100000, 1))
     })
     
     # Samengesteld data-object

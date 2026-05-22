@@ -79,7 +79,7 @@ app_ui <- function(cfg) {
             tags$ul(
               class = "nav nav-pills amr-tabs-nav",
               tags$li(class = "active",
-                      tags$a(href = "#ggd", `data-toggle` = "tab", "GGD")),
+                      tags$a(href = "#ggd", `data-toggle` = "tab", "GGD (FICTIEF)")),
               tags$li(tags$a(href = "#zh",  `data-toggle` = "tab", "Ziekenhuizen")),
               tags$li(tags$a(href = "#lab", `data-toggle` = "tab", "Laboratoria")),
               tags$li(tags$a(href = "#ha",  `data-toggle` = "tab", "Huisartsen")),
