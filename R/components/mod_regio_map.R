@@ -72,6 +72,21 @@ mod_regio_map_server <- function(id, data, cfg) {
           highlight    = leaflet::highlightOptions(
             weight = 2.5, color = "#1F3B63",
             fillOpacity = 1, bringToFront = TRUE
+          ),
+          label = ~paste0(nuts3, ": ", round(incidentie, 1)),
+          labelOptions = leaflet::labelOptions(
+            style     = list(
+              "font-family"   = "Inter, sans-serif",
+              "font-size"     = "13px",
+              "background"    = "white",
+              "border"        = "1px solid #E3E8EF",
+              "border-radius" = "6px",
+              "padding"       = "6px 10px",
+              "box-shadow"    = "0 2px 6px rgba(0,0,0,0.15)"
+            ),
+            direction = "top",
+            sticky    = TRUE,
+            opacity   = 1
           )
         ) |>
         leaflet::addLegend(
@@ -88,38 +103,5 @@ mod_regio_map_server <- function(id, data, cfg) {
         )
     })
     
-    # Popup bij klik
-    observeEvent(input$map_plot_shape_click, {
-      click <- input$map_plot_shape_click
-      req(click)
-      
-      df  <- kaart_df()
-      rij <- df[df$nuts3 == click$id, ]
-      req(nrow(rij) > 0)
-      
-      centroid <- sf::st_centroid(rij$geometry)
-      coords   <- sf::st_coordinates(centroid)
-      bbox     <- sf::st_bbox(df)
-      
-      leaflet::leafletProxy("map_plot", session) |>
-        leaflet::clearPopups() |>
-        leaflet::fitBounds(
-          lng1 = bbox[["xmin"]], lat1 = bbox[["ymin"]],
-          lng2 = bbox[["xmax"]], lat2 = bbox[["ymax"]]
-        ) |>
-        leaflet::addPopups(
-          lng   = coords[1, "X"],
-          lat   = coords[1, "Y"],
-          popup = sprintf(
-            "<div style='font-family:Inter,sans-serif;font-size:14px;padding:4px 2px;'>
-              <strong style='font-size:15px;'>%s</strong><br/>
-              <span style='color:#6B7C93;'>Incidentie:</span>
-              <strong>%.1f</strong>
-            </div>",
-            rij$nuts3, rij$incidentie
-          ),
-          options = leaflet::popupOptions(closeButton = TRUE, maxWidth = 220, minWidth = 160)
-        )
-    })
   })
 }

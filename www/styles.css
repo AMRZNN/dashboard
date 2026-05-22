@@ -291,3 +291,30 @@ body, .content-wrapper, .right-side { background: var(--amr-band) !important; }
 }
 .amr-footer .left,
 .amr-footer .right { white-space: normal; }
+
+.amr-footer a {
+  color: var(--amr-blue);
+  text-decoration: underline;
+}
+.amr-footer a:hover {
+  color: var(--amr-blue-light);
+}
+/* Info-knop: zelfde opmaak als tab-knoppen */
+.amr-info-btn {
+  background: #F4F7FB;
+  border: 1px solid var(--amr-border);
+  border-radius: 12px;
+  font-size: clamp(11px, 1.2vw, 13px);
+  font-weight: 700;
+  color: var(--amr-title);
+  padding: 6px 12px;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  margin-right: 18px;
+}
+.amr-info-btn:hover {
+  background: var(--amr-blue-light);
+  color: #fff;
+  text-decoration: none;
+}

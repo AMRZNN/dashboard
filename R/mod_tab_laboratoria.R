@@ -21,7 +21,9 @@ mod_tab_laboratoria_ui <- function(id) {
     tags$div(
       class = "amr-footer",
       tags$div(class = "left",
-               "© AMR Zorgnetwerk Noord-Nederland, 2024. Bron: Certe laboratorium. BRMO = bijzonder resistente micro-organismen."),
+               "© AMR Zorgnetwerk Noord-Nederland, 2024. Bron: Certe laboratorium. BRMO = bijzonder resistente micro-organismen. ",
+               tags$a(href = "https://github.com/AMRZNN/dashboard_data/blob/main/TERMS_OF_USE.md",
+                      target = "_blank", "Gebruiksvoorwaarden")),
       tags$div(class = "right",
                "Meldplichtig: ESBL, MRSA, VRE, CPE.")
     )
@@ -98,16 +100,18 @@ mod_tab_laboratoria_server <- function(id, data, cfg) {
       
       df |>
         dplyr::filter(provincie %in% noord) |>
-        dplyr::mutate(dplyr::across(c(esbl, mrsa, vre, cpe), as.numeric)) |>
+        dplyr::mutate(dplyr::across(c(esbl, mrsa, vre, cpe,
+                                      mrpa, facre, cre, fara, cpa, ca), as.numeric)) |>
         dplyr::group_by(jaar = as.integer(jaar)) |>
         dplyr::summarise(
-          ESBL = sum(esbl, na.rm = TRUE),
-          MRSA = sum(mrsa, na.rm = TRUE),
-          VRE  = sum(vre,  na.rm = TRUE),
-          CPE  = sum(cpe,  na.rm = TRUE),
+          ESBL   = sum(esbl,  na.rm = TRUE),
+          MRSA   = sum(mrsa,  na.rm = TRUE),
+          VRE    = sum(vre,   na.rm = TRUE),
+          CPE    = sum(cpe,   na.rm = TRUE),
+          Overig = sum(mrpa + facre + cre + fara + cpa + ca, na.rm = TRUE),
           .groups = "drop"
         ) |>
-        tidyr::pivot_longer(cols = c(ESBL, MRSA, VRE, CPE),
+        tidyr::pivot_longer(cols = c(ESBL, MRSA, VRE, CPE, Overig),
                             names_to = "type", values_to = "waarde") |>
         dplyr::arrange(jaar)
     })

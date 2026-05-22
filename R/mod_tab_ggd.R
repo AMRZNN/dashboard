@@ -27,7 +27,9 @@ mod_tab_ggd_ui <- function(id) {
     tags$div(
       class = "amr-footer",
       tags$div(class = "left",
-               "© AMR Zorgnetwerk Noord-Nederland, 2024. Laatste update: april 2024. BRMO = bijzonder resistente micro-organismen."),
+               "© AMR Zorgnetwerk Noord-Nederland, 2024. Bron: Certe laboratorium. BRMO = bijzonder resistente micro-organismen. ",
+               tags$a(href = "https://github.com/AMRZNN/dashboard_data/blob/main/TERMS_OF_USE.md",
+                      target = "_blank", "Gebruiksvoorwaarden")),
       tags$div(class = "right",
                "Meldplichtig: ESBL, MRSA, VRE, CPE.")
     )

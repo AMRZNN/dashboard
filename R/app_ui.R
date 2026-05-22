@@ -9,7 +9,7 @@ app_ui <- function(cfg) {
     # HEADER
     # ==============================
     dashboardHeader(disable = TRUE),
-
+    
     # ==============================
     # SIDEBAR (leeg, verplicht)
     # ==============================
@@ -74,16 +74,23 @@ app_ui <- function(cfg) {
           # ==========================
           # TABS
           # ==========================
-          tags$ul(
-            class = "nav nav-pills amr-tabs-nav",
-            
-            tags$li(class = "active",
-                    tags$a(href = "#ggd", `data-toggle` = "tab", "GGD")),
-            
-            tags$li(tags$a(href = "#zh", `data-toggle` = "tab", "Ziekenhuizen")),
-            tags$li(tags$a(href = "#lab", `data-toggle` = "tab", "Laboratoria")),
-            tags$li(tags$a(href = "#ha", `data-toggle` = "tab", "Huisartsen")),
-            tags$li(tags$a(href = "#vh", `data-toggle` = "tab", "Verpleeghuizen"))
+          tags$div(
+            style = "display:flex; justify-content:space-between; align-items:center;",
+            tags$ul(
+              class = "nav nav-pills amr-tabs-nav",
+              tags$li(class = "active",
+                      tags$a(href = "#ggd", `data-toggle` = "tab", "GGD")),
+              tags$li(tags$a(href = "#zh",  `data-toggle` = "tab", "Ziekenhuizen")),
+              tags$li(tags$a(href = "#lab", `data-toggle` = "tab", "Laboratoria")),
+              tags$li(tags$a(href = "#ha",  `data-toggle` = "tab", "Huisartsen")),
+              tags$li(tags$a(href = "#vh",  `data-toggle` = "tab", "Verpleeghuizen"))
+            ),
+            tags$a(
+              href   = "https://github.com/AMRZNN",
+              target = "_blank",
+              class  = "amr-info-btn",
+              "Info"
+            )
           ),
           
           # ==========================
