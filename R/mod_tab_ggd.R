@@ -39,7 +39,7 @@ mod_tab_ggd_ui <- function(id) {
 # =========================
 # SERVER
 # =========================
-mod_tab_ggd_server <- function(id, data, cfg) {
+mod_tab_ggd_server <- function(id, data, cfg, weergave = reactive({ "absoluut" })) {
   moduleServer(id, function(input, output, session) {
     
     noord_nuts3 <- c(
@@ -72,10 +72,12 @@ mod_tab_ggd_server <- function(id, data, cfg) {
         dplyr::group_by(regio = nuts3) |>
         dplyr::summarise(meldingen = sum(totaal, na.rm = TRUE), .groups = "drop") |>
         dplyr::left_join(inwoners_df, by = c("regio" = "nuts3")) |>
-        dplyr::mutate(incidentie = round(meldingen / inwoners * 100000, 1))
+        dplyr::mutate(incidentie = if (weergave() == "per100k")
+          round(meldingen / inwoners * 100000, 1)
+          else meldingen)
     })
     
-    # Trendgrafiek: laatste 12 maanden per 100.000 inwoners
+    # Trendgrafiek: laatste 12 maanden, relatief of absoluut
     ggd_trend <- reactive({
       df  <- data$regio()
       shp <- data$shape
@@ -100,7 +102,9 @@ mod_tab_ggd_server <- function(id, data, cfg) {
                           facre, cre, fara, cpa, ca)), na.rm = TRUE)) |>
         dplyr::group_by(datum, jaar, maand) |>
         dplyr::summarise(meldingen = sum(totaal, na.rm = TRUE), .groups = "drop") |>
-        dplyr::mutate(incidentie = round(meldingen / inwoners_totaal * 100000, 1)) |>
+        dplyr::mutate(incidentie = if (weergave() == "per100k")
+          round(meldingen / inwoners_totaal * 100000, 1)
+          else meldingen) |>
         dplyr::arrange(datum) |>
         (\(d) { cutoff <- seq(max(d$datum), length.out = 2, by = "-11 months")[2]
         dplyr::filter(d, datum >= cutoff) })()
@@ -133,10 +137,10 @@ mod_tab_ggd_server <- function(id, data, cfg) {
           .groups = "drop"
         ) |>
         dplyr::mutate(
-          ESBL = round(ESBL / inwoners_totaal * 100000, 2),
-          MRSA = round(MRSA / inwoners_totaal * 100000, 2),
-          VRE  = round(VRE  / inwoners_totaal * 100000, 2),
-          CPE  = round(CPE  / inwoners_totaal * 100000, 2)
+          ESBL = if (weergave() == "per100k") round(ESBL / inwoners_totaal * 100000, 2) else ESBL,
+          MRSA = if (weergave() == "per100k") round(MRSA / inwoners_totaal * 100000, 2) else MRSA,
+          VRE  = if (weergave() == "per100k") round(VRE  / inwoners_totaal * 100000, 2) else VRE,
+          CPE  = if (weergave() == "per100k") round(CPE  / inwoners_totaal * 100000, 2) else CPE
         ) |>
         dplyr::arrange(datum)
     })
@@ -149,9 +153,9 @@ mod_tab_ggd_server <- function(id, data, cfg) {
       kpi   = ggd_kpi
     )
     
-    mod_trend_server("trend",   ggd_data, cfg)
+    mod_trend_server("trend",   ggd_data, cfg, eenheid = weergave)
     mod_kpi_server("kpi",       ggd_data, cfg)
     mod_micro_server("micro",   ggd_data, cfg)
-    mod_regio_map_server("map", ggd_data, cfg)
+    mod_regio_map_server("map", ggd_data, cfg, weergave)
   })
 }

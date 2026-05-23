@@ -299,6 +299,102 @@ body, .content-wrapper, .right-side { background: var(--amr-band) !important; }
 .amr-footer a:hover {
   color: var(--amr-blue-light);
 }
+/* Weergave knoppen — zelfde opmaak als tabs */
+.amr-weergave-inline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.amr-weergave-label {
+  font-size: clamp(11px, 1.2vw, 13px);
+  font-weight: 600;
+  color: var(--amr-muted);
+  white-space: nowrap;
+}
+.amr-weergave-btn {
+  background: #F4F7FB;
+  border: 1px solid var(--amr-border);
+  border-radius: 12px;
+  font-size: clamp(11px, 1.2vw, 13px);
+  font-weight: 700;
+  color: var(--amr-title);
+  padding: 6px 12px;
+  line-height: 1;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  display: inline-block;
+}
+.amr-weergave-btn:hover {
+  background: var(--amr-blue-light);
+  color: #fff;
+  border-color: var(--amr-blue-light);
+  text-decoration: none;
+}
+.amr-weergave-btn.active {
+  background: var(--amr-blue);
+  color: #fff;
+  border-color: var(--amr-blue);
+}
+
+/* Info-knop: zelfde opmaak als tab-knoppen */
+.amr-info-btn {
+  background: #F4F7FB;
+  border: 1px solid var(--amr-border);
+  border-radius: 12px;
+  font-size: clamp(11px, 1.2vw, 13px);
+  font-weight: 700;
+  color: var(--amr-title);
+  padding: 6px 12px;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  margin-right: 18px;
+}
+.amr-info-btn:hover {
+  background: var(--amr-blue-light);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Weergave knoppen — zelfde opmaak als tabs */
+.amr-weergave-inline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.amr-weergave-label {
+  font-size: clamp(11px, 1.2vw, 13px);
+  font-weight: 600;
+  color: var(--amr-muted);
+  white-space: nowrap;
+}
+.amr-weergave-btn {
+  background: #F4F7FB;
+  border: 1px solid var(--amr-border);
+  border-radius: 12px;
+  font-size: clamp(11px, 1.2vw, 13px);
+  font-weight: 700;
+  color: var(--amr-title);
+  padding: 6px 12px;
+  line-height: 1;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  display: inline-block;
+}
+.amr-weergave-btn:hover {
+  background: var(--amr-blue-light);
+  color: #fff;
+  border-color: var(--amr-blue-light);
+  text-decoration: none;
+}
+.amr-weergave-btn.active {
+  background: var(--amr-blue);
+  color: #fff;
+  border-color: var(--amr-blue);
+}
+
 /* Info-knop: zelfde opmaak als tab-knoppen */
 .amr-info-btn {
   background: #F4F7FB;

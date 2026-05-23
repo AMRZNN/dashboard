@@ -12,8 +12,7 @@ mod_regio_map_ui <- function(id) {
     tags$div(
       style = "height: 280px; display:flex; flex-direction:column;",
       
-      tags$div(class = "amr-subtitle",
-               "Aantal meldingen per 100.000 inwoners"),
+      textOutput(ns("subtitel"), inline = FALSE) |> tagAppendAttributes(class = "amr-subtitle"),
       
       leafletOutput(ns("map_plot"), height = "100%", width = "100%")
     )
@@ -25,7 +24,7 @@ mod_regio_map_ui <- function(id) {
 # geo_nuts3.rds heeft kolom: nuts3 (geen provincie)
 # regio-data heeft kolom:    regio
 # =========================
-mod_regio_map_server <- function(id, data, cfg) {
+mod_regio_map_server <- function(id, data, cfg, weergave = reactive({ "per100k" })) {
   moduleServer(id, function(input, output, session) {
     
     # Noord-NL nuts3 regio's
@@ -34,6 +33,11 @@ mod_regio_map_server <- function(id, data, cfg) {
       "Noord-Friesland", "Zuidoost-Friesland", "Zuidwest-Friesland",
       "Noord-Drenthe", "Zuidoost-Drenthe", "Zuidwest-Drenthe"
     )
+    
+    output$subtitel <- renderText({
+      w <- if (is.function(weergave) || is.reactive(weergave)) weergave() else weergave
+      if (w == "per100k") "Aantal meldingen per 100.000 inwoners" else "Absoluut aantal meldingen"
+    })
     
     kaart_df <- reactive({
       req(data$shape)

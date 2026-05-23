@@ -12,6 +12,7 @@ mod_tab_laboratoria_ui <- function(id) {
       mod_trend_ui(ns("trend")),
       mod_kpi_ui(ns("kpi"))
     ),
+    
     fluidRow(
       class = "amr-row2",
       mod_micro_ui(ns("micro")),
@@ -33,7 +34,7 @@ mod_tab_laboratoria_ui <- function(id) {
 # =========================
 # SERVER
 # =========================
-mod_tab_laboratoria_server <- function(id, data, cfg) {
+mod_tab_laboratoria_server <- function(id, data, cfg, weergave = reactive({ "absoluut" })) {
   moduleServer(id, function(input, output, session) {
     
     noord <- cfg$geo$noord_provincies
@@ -66,9 +67,24 @@ mod_tab_laboratoria_server <- function(id, data, cfg) {
                       maand = as.integer(maand),
                       datum = as.Date(paste(jaar, maand, "01", sep = "-"))) |>
         dplyr::group_by(datum, jaar, maand) |>
-        dplyr::summarise(incidentie = sum(totaal, na.rm = TRUE), .groups = "drop") |>
+        dplyr::summarise(meldingen = sum(totaal, na.rm = TRUE), .groups = "drop") |>
         dplyr::arrange(datum) |>
-        (\(d) { cutoff <- seq(max(d$datum), length.out = 2, by = "-11 months")[2]; dplyr::filter(d, datum >= cutoff) })()
+        (\(d) { cutoff <- seq(max(d$datum), length.out = 2, by = "-11 months")[2]; dplyr::filter(d, datum >= cutoff) })() |>
+        dplyr::mutate(incidentie = {
+          w <- if (is.function(weergave) || is.reactive(weergave)) weergave() else weergave
+          if (w == "per100k") {
+            inwoners_totaal <- sum(
+              sf::st_drop_geometry(data$shape) |>
+                dplyr::filter(nuts3 %in% c(
+                  "Delfzijl en omgeving", "Oost-Groningen", "Overig Groningen",
+                  "Noord-Friesland", "Zuidoost-Friesland", "Zuidwest-Friesland",
+                  "Noord-Drenthe", "Zuidoost-Drenthe", "Zuidwest-Drenthe"
+                )) |>
+                dplyr::pull(inwoners), na.rm = TRUE
+            )
+            round(meldingen / inwoners_totaal * 100000, 1)
+          } else meldingen
+        })
     })
     
     # --- KPI's: per categorie, vergelijking t.o.v. vorige maand ---
@@ -90,7 +106,27 @@ mod_tab_laboratoria_server <- function(id, data, cfg) {
           CPE  = sum(cpe,  na.rm = TRUE),
           .groups = "drop"
         ) |>
-        dplyr::arrange(datum)
+        dplyr::arrange(datum) |>
+        (\(d) {
+          w <- if (is.function(weergave) || is.reactive(weergave)) weergave() else weergave
+          if (w == "per100k") {
+            inwoners_totaal <- sum(
+              sf::st_drop_geometry(data$shape) |>
+                dplyr::filter(nuts3 %in% c(
+                  "Delfzijl en omgeving", "Oost-Groningen", "Overig Groningen",
+                  "Noord-Friesland", "Zuidoost-Friesland", "Zuidwest-Friesland",
+                  "Noord-Drenthe", "Zuidoost-Drenthe", "Zuidwest-Drenthe"
+                )) |>
+                dplyr::pull(inwoners), na.rm = TRUE
+            )
+            dplyr::mutate(d,
+                          ESBL = round(ESBL / inwoners_totaal * 100000, 2),
+                          MRSA = round(MRSA / inwoners_totaal * 100000, 2),
+                          VRE  = round(VRE  / inwoners_totaal * 100000, 2),
+                          CPE  = round(CPE  / inwoners_totaal * 100000, 2)
+            )
+          } else d
+        })()
     })
     
     # --- Micro: uitsplitsing per jaar ---
@@ -139,7 +175,9 @@ mod_tab_laboratoria_server <- function(id, data, cfg) {
           sf::st_drop_geometry(data$shape) |> dplyr::select(nuts3, inwoners),
           by = c("regio" = "nuts3")
         ) |>
-        dplyr::mutate(incidentie = round(meldingen / inwoners * 100000, 1))
+        dplyr::mutate(incidentie = if (weergave() == "per100k")
+          round(meldingen / inwoners * 100000, 1)
+          else meldingen)
     })
     
     # Samengesteld data-object
@@ -152,9 +190,9 @@ mod_tab_laboratoria_server <- function(id, data, cfg) {
       kpi         = lab_kpi
     )
     
-    mod_trend_server("trend",   lab_data, cfg, eenheid = "absoluut")
+    mod_trend_server("trend",   lab_data, cfg, eenheid = weergave)
     mod_kpi_server("kpi",       lab_data, cfg)
     mod_micro_server("micro",   lab_data, cfg)
-    mod_regio_map_server("map", lab_data, cfg)
+    mod_regio_map_server("map", lab_data, cfg, weergave)
   })
 }

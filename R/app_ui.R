@@ -85,11 +85,40 @@ app_ui <- function(cfg) {
               tags$li(tags$a(href = "#ha",  `data-toggle` = "tab", "Huisartsen")),
               tags$li(tags$a(href = "#vh",  `data-toggle` = "tab", "Verpleeghuizen"))
             ),
-            tags$a(
-              href   = "https://github.com/AMRZNN",
-              target = "_blank",
-              class  = "amr-info-btn",
-              "Info"
+            tags$div(
+              style = "display:flex; align-items:center; gap:16px; width:calc(41.67% + 15px); justify-content:space-between;",
+              tags$div(
+                class = "amr-weergave-inline",
+                tags$span(class = "amr-weergave-label", "Weergave:"),
+                tags$a(
+                  id     = "btn-absoluut",
+                  class  = "amr-weergave-btn active",
+                  href   = "#",
+                  onclick = "setWeergave('absoluut'); return false;",
+                  "Absoluut"
+                ),
+                tags$a(
+                  id     = "btn-per100k",
+                  class  = "amr-weergave-btn",
+                  href   = "#",
+                  onclick = "setWeergave('per100k'); return false;",
+                  "Per 100.000 inwoners"
+                ),
+                # Hidden input voor Shiny
+                tags$input(
+                  type  = "text",
+                  id    = "weergave",
+                  name  = "weergave",
+                  value = "absoluut",
+                  style = "display:none;"
+                )
+              ),
+              tags$a(
+                href   = "https://github.com/AMRZNN",
+                target = "_blank",
+                class  = "amr-info-btn",
+                "Info"
+              )
             )
           ),
           

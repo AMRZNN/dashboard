@@ -47,7 +47,8 @@ mod_trend_server <- function(id, data, cfg, eenheid = "per100k") {
       df <- trend_df()
       req(nrow(df) > 0)
       
-      eenheid_txt <- if (eenheid == "per100k") "per 100.000 inwoners" else "absoluut aantal"
+      eenheid_val <- if (is.function(eenheid) || is.reactive(eenheid)) eenheid() else eenheid
+      eenheid_txt <- if (eenheid_val == "per100k") "per 100.000 inwoners" else "absoluut aantal"
       
       if ("datum" %in% names(df)) {
         eerste <- format(min(df$datum, na.rm = TRUE), "%b %Y")
