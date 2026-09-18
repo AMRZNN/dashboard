@@ -7,7 +7,7 @@ mod_regio_map_ui <- function(id) {
   box(
     width = 5,
     class = "amr-regio-box",
-    title = "BRMO incidentie per regio",
+    title = textOutput(ns("box_titel"), inline = TRUE),
     
     tags$div(
       style = "height: 280px; display:flex; flex-direction:column;",
@@ -24,10 +24,18 @@ mod_regio_map_ui <- function(id) {
 # geo_nuts3.rds heeft kolom: nuts3 (geen provincie)
 # regio-data heeft kolom:    regio
 # =========================
-mod_regio_map_server <- function(id, data, cfg, weergave = reactive({ "per100k" })) {
+mod_regio_map_server <- function(id, data, cfg, weergave = reactive({ "per100k" }),
+                                 dataset = reactive({ "brmo" })) {
   moduleServer(id, function(input, output, session) {
     
-    # Noord-NL nuts3 regio's
+    .d <- reactive({ if (is.reactive(data)) data() else data })
+    
+    output$box_titel <- renderText({
+      ds <- if (is.reactive(dataset)) dataset() else "brmo"
+      if (ds == "respiratoir") "Respiratoir incidentie per regio"
+      else "BRMO incidentie per regio"
+    })
+    
     noord_nuts3 <- c(
       "Delfzijl en omgeving", "Oost-Groningen", "Overig Groningen",
       "Noord-Friesland", "Zuidoost-Friesland", "Zuidwest-Friesland",
@@ -40,11 +48,12 @@ mod_regio_map_server <- function(id, data, cfg, weergave = reactive({ "per100k" 
     })
     
     kaart_df <- reactive({
-      req(data$shape)
-      req(data$regio())
+      d <- .d()
+      req(d$shape)
+      req(d$regio())
       
-      shp <- dplyr::filter(data$shape, nuts3 %in% noord_nuts3)
-      dat <- data$regio()
+      shp <- dplyr::filter(d$shape, nuts3 %in% noord_nuts3)
+      dat <- d$regio()
       df  <- dplyr::left_join(shp, dat, by = c("nuts3" = "regio"))
       sf::st_transform(df, 4326)
     })

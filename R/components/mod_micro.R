@@ -9,10 +9,10 @@ mod_micro_ui <- function(id) {
   box(
     width = 7,
     class = "amr-micro-box",
-    title = "Belangrijkste BRMO micro-organismen",
+    title = textOutput(ns("micro_titel"), inline = TRUE),
     
     tags$div(class = "amr-subtitle",
-             "Verdeeld naar micro-organismen, Noord-Nederland"),
+             "Verdeeld naar type, Noord-Nederland"),
     
     tags$div(
       class = "amr-micro-plot-wrapper",
@@ -24,20 +24,41 @@ mod_micro_ui <- function(id) {
 # =========================
 # SERVER
 # =========================
-mod_micro_server <- function(id, data, cfg) {
+mod_micro_server <- function(id, data, cfg,
+                             dataset = reactive({ "brmo" })) {
   moduleServer(id, function(input, output, session) {
     
+    .d <- reactive({ if (is.reactive(data)) data() else data })
+    
+    output$micro_titel <- renderText({
+      ds <- if (is.reactive(dataset)) dataset() else "brmo"
+      if (ds == "respiratoir") "Respiratoire virussen" else "Belangrijkste BRMO micro-organismen"
+    })
+    
     output$plot <- renderPlotly({
-      df <- data$micro()
+      d  <- .d()
+      df <- d$micro()
       req(!is.null(df), nrow(df) > 0)
       
-      kleur <- unlist(cfg$colors$micro)
-      types <- names(kleur)
+      ds <- if (is.reactive(dataset)) dataset() else "brmo"
+      
+      # Kleuren: BRMO = vaste config-kleuren, respiratoir = automatisch palet
+      if (ds == "respiratoir") {
+        alle_types <- unique(df$type)
+        pal <- c("#6EA6CF","#95B9C7","#ACCCBB","#C2DEAF","#D1E6C9",
+                 "#A8C5DA","#7FB3CC","#B8D4E8","#9EC9DC","#E8F0F7",
+                 "#6B9EB8","#84B2C9","#F0F5FA","#D6E8F2")
+        kleur <- setNames(pal[seq_along(alle_types)], alle_types)
+        types <- alle_types
+      } else {
+        kleur <- unlist(cfg$colors$micro)
+        types <- names(kleur)
+      }
       
       # Bouw gestapelde staafgrafiek per type
       p <- plotly::plot_ly()
       for (type in types) {
-        sub <- dplyr::filter(df, type == !!type)
+        sub <- dplyr::filter(df, .data$type == !!type)
         p <- plotly::add_trace(p,
                                data = sub,
                                x = ~factor(jaar), y = ~waarde,

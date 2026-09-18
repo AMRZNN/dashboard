@@ -128,41 +128,60 @@ mod_kpi_ui <- function(id) {
 # -----------------------------
 # SERVER
 # -----------------------------
-mod_kpi_server <- function(id, data, cfg) {
+mod_kpi_server <- function(id, data, cfg,
+                           dataset = reactive({ "brmo" })) {
   moduleServer(id, function(input, output, session) {
+    
+    .d <- reactive({ if (is.reactive(data)) data() else data })
     
     output$kpi_grid <- renderUI({
       
-      # --- Modus 1: per-categorie data (data$kpi aanwezig) ---
-      if (!is.null(data$kpi)) {
-        df <- data$kpi()
+      d  <- .d()
+      ds <- if (is.reactive(dataset)) dataset() else "brmo"
+      
+      # --- Modus 1: per-categorie data (data$kpi aanwezig) → altijd top-4 ---
+      if (!is.null(d$kpi)) {
+        df <- d$kpi()
         req(!is.null(df), nrow(df) >= 2)
         
-        make_kpi <- function(col, label) {
-          vals    <- df[[col]]
-          latest  <- tail(vals, 1)
-          prev    <- tail(vals, 2)[1]
-          change  <- if (!is.na(prev) && prev > 0)
-            round((latest - prev) / prev * 100, 1)
-          else NA
-          dir     <- if (!is.na(change) && change >= 0) "up" else "down"
-          accent  <- if (!is.na(change) && change >= 0) "red" else "green"
+        # Alle niet-datum kolommen
+        value_cols <- setdiff(names(df), "datum")
+        
+        # Top-4 op basis van laatste rij
+        laatste_rij <- tail(df, 1)
+        top4 <- value_cols[order(unlist(laatste_rij[value_cols]),
+                                 decreasing = TRUE)][1:min(4, length(value_cols))]
+        
+        make_kpi <- function(col) {
+          vals      <- df[[col]]
+          latest    <- tail(vals, 1)
+          prev      <- tail(vals, 2)[1]
+          change    <- if (!is.na(prev) && prev > 0)
+            round((latest - prev) / prev * 100, 1) else NA
+          dir       <- if (!is.na(change) && change >= 0) "up" else "down"
+          accent    <- if (!is.na(change) && change >= 0) "red" else "green"
           trend_txt <- if (is.na(change)) "–" else paste0(abs(change), "%")
-          spark   <- tail(vals, 10)
-          kpi_tile(label, latest, trend_txt, dir = dir, accent = accent, spark_vals = spark)
+          # Lange virusnamen inkorten
+          label <- dplyr::case_match(col,
+                                     "Humaan metapneumovirus"    ~ "hMPV",
+                                     "Rhinovirus/enterovirus"    ~ "Rhinovirus/EV",
+                                     "Mycoplasma pneumoniae"     ~ "Mycoplasma",
+                                     "Parainfluenzavirus type 1" ~ "Parainfluenza 1",
+                                     "Parainfluenzavirus type 2" ~ "Parainfluenza 2",
+                                     "Parainfluenzavirus type 3" ~ "Parainfluenza 3",
+                                     "Parainfluenzavirus type 4" ~ "Parainfluenza 4",
+                                     .default = col
+          )
+          kpi_tile(label, round(latest, 1), trend_txt,
+                   dir = dir, accent = accent, spark_vals = tail(vals, 12))
         }
         
-        return(tags$div(
-          class = "amr-kpi-grid",
-          make_kpi("ESBL", "ESBL"),
-          make_kpi("MRSA", "MRSA"),
-          make_kpi("VRE",  "VRE"),
-          make_kpi("CPE",  "CPE")
-        ))
+        tiles <- lapply(top4, make_kpi)
+        return(tags$div(class = "amr-kpi-grid", !!!tiles))
       }
       
       # --- Modus 2: jaardata via data$trend (GGD standaard) ---
-      df <- data$trend() %>% dplyr::arrange(jaar)
+      df <- d$trend() %>% dplyr::arrange(jaar)
       
       latest   <- tail(df$incidentie, 1)
       previous <- tail(df$incidentie, 2)[1]

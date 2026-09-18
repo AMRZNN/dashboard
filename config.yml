@@ -41,3 +41,27 @@ paths:
   regio: "data/regio_incidentie.csv"
   shape: "data/geo_nuts3.rds"
   certe: "https://raw.githubusercontent.com/AMRZNN/dashboard_data/main/certe/brmo_maand.csv"
+  respiratoir: "https://raw.githubusercontent.com/AMRZNN/dashboard_data/main/certe/respiratoir_maand.csv"
+
+# Respiratoire virussen: volgorde en groepering voor UI
+respiratoir:
+  kpi_virussen:
+    - "Influenza A"
+    - "Influenza B"
+    - "RSV"
+    - "SARS-CoV-2"
+  alle_virussen:
+    - "Influenza A"
+    - "Influenza B"
+    - "RSV"
+    - "SARS-CoV-2"
+    - "Rhinovirus"
+    - "Rhinovirus/enterovirus"
+    - "Mycoplasma pneumoniae"
+    - "Humaan metapneumovirus"
+    - "Adenovirus"
+    - "Enterovirus"
+    - "Parainfluenzavirus type 1"
+    - "Parainfluenzavirus type 2"
+    - "Parainfluenzavirus type 3"
+    - "Parainfluenzavirus type 4"

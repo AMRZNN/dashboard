@@ -59,11 +59,19 @@ data_service <- function(cfg) {
     }
   )
   
+  # --- Respiratoir: live van lokaal CSV ---
+  respiratoir <- reactiveFileReader(
+    300000, NULL,  # elke 5 minuten checken
+    filePath = cfg$paths$respiratoir,
+    readFunc  = .safe_read_csv
+  )
+  
   list(
-    trend = trend,
-    micro = micro,
-    regio = regio,
-    shape = shape,
-    certe = certe
+    trend       = trend,
+    micro       = micro,
+    regio       = regio,
+    shape       = shape,
+    certe       = certe,
+    respiratoir = respiratoir
   )
 }
