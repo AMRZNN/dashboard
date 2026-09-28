@@ -2,15 +2,19 @@ library(here)
 
 app_ui <- function(cfg) {
   
-  brmo_items <- c("ESBL" = "esbl", "MRSA" = "mrsa", "VRE" = "vre",
-                  "CPE" = "cpe", "MRPA" = "mrpa", "FACRE" = "facre",
-                  "CRE" = "cre", "FARA" = "fara", "CPA" = "cpa", "CA" = "ca")
+  brmo_items_raw <- c("ESBL" = "esbl", "MRSA" = "mrsa", "VRE" = "vre",
+                      "CPE" = "cpe", "MRPA" = "mrpa", "FACRE" = "facre",
+                      "CRE" = "cre", "FARA" = "fara", "CPA" = "cpa", "CA" = "ca")
+  # Alfabetisch op weergavenaam
+  brmo_items <- brmo_items_raw[order(names(brmo_items_raw))]
   
-  resp_items <- c("Influenza A", "Influenza B", "RSV", "SARS-CoV-2",
-                  "Rhinovirus", "Rhinovirus/enterovirus", "Mycoplasma pneumoniae",
-                  "Humaan metapneumovirus", "Adenovirus", "Enterovirus",
-                  "Parainfluenzavirus type 1", "Parainfluenzavirus type 2",
-                  "Parainfluenzavirus type 3", "Parainfluenzavirus type 4")
+  resp_items_raw <- c("Influenza A", "Influenza B", "RSV", "SARS-CoV-2",
+                      "Rhinovirus", "Rhinovirus/enterovirus", "Mycoplasma pneumoniae",
+                      "Humaan metapneumovirus", "Adenovirus", "Enterovirus",
+                      "Parainfluenzavirus type 1", "Parainfluenzavirus type 2",
+                      "Parainfluenzavirus type 3", "Parainfluenzavirus type 4")
+  # Alfabetisch
+  resp_items <- sort(resp_items_raw)
   
   sidebar_content <- tags$div(
     class = "amr-sidebar",
@@ -48,7 +52,7 @@ app_ui <- function(cfg) {
                              onclick = "setSelectAll('brmo', true); return false;", "Alle"),
                       tags$span(class = "amr-sidebar-selectall-sep", "/"),
                       tags$a(href = "#", class = "amr-sidebar-selectall",
-                             onclick = "setSelectAll('brmo', false); return false;", "Geen")
+                             onclick = "setTop4('brmo'); return false;", "Top 4")
              ),
              tags$div(class = "amr-sidebar-checks",
                       lapply(names(brmo_items), function(nm) {
@@ -72,7 +76,7 @@ app_ui <- function(cfg) {
                              onclick = "setSelectAll('resp', true); return false;", "Alle"),
                       tags$span(class = "amr-sidebar-selectall-sep", "/"),
                       tags$a(href = "#", class = "amr-sidebar-selectall",
-                             onclick = "setSelectAll('resp', false); return false;", "Geen")
+                             onclick = "setTop4('resp'); return false;", "Top 4")
              ),
              tags$div(class = "amr-sidebar-checks",
                       lapply(resp_items, function(nm) {
@@ -141,6 +145,11 @@ app_ui <- function(cfg) {
                  value = "esbl,mrsa,vre,cpe", style = "display:none;"),
       tags$input(type = "text", id = "pathogenen_resp",
                  value = "Influenza A,Influenza B,RSV,SARS-CoV-2", style = "display:none;"),
+      
+      # Hidden outputs: top-4 JSON vanuit R (voor JS setTop4())
+      tags$div(style = "display:none;",
+               textOutput("top4_brmo"),
+               textOutput("top4_resp")),
       
       # Hoofd-layout: sidebar + content naast elkaar in één flex-container
       tags$div(

@@ -27,9 +27,10 @@ mod_tab_laboratoria_ui <- function(id) {
 # SERVER
 # =========================
 mod_tab_laboratoria_server <- function(id, data, cfg,
-                                       weergave   = reactive({ "absoluut" }),
-                                       dataset    = reactive({ "brmo" }),
-                                       pathogenen = reactive({ c("esbl","mrsa","vre","cpe") })) {
+                                       weergave          = reactive({ "absoluut" }),
+                                       dataset           = reactive({ "brmo" }),
+                                       pathogenen        = reactive({ c("esbl","mrsa","vre","cpe") }),
+                                       alle_geselecteerd = reactive({ FALSE })) {
   moduleServer(id, function(input, output, session) {
     
     noord      <- cfg$geo$noord_provincies
@@ -223,8 +224,8 @@ mod_tab_laboratoria_server <- function(id, data, cfg,
     })
     
     mod_trend_server("trend",   lab_data, cfg, eenheid = weergave, dataset = dataset)
-    mod_kpi_server(  "kpi",     lab_data, cfg, dataset = dataset)
-    mod_micro_server("micro",   lab_data, cfg, dataset = dataset)
+    mod_kpi_server(  "kpi",     lab_data, cfg, dataset = dataset, pathogenen = pathogenen)
+    mod_micro_server("micro",   lab_data, cfg, dataset = dataset, alle_geselecteerd = alle_geselecteerd)
     mod_regio_map_server("map", lab_data, cfg, weergave, dataset = dataset)
   })
 }

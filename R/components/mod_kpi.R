@@ -4,11 +4,10 @@ library(dplyr)
 # -----------------------------
 # Sparkline SVG (met gradient)
 # -----------------------------
-spark_svg <- function(values, 
-                      width = 220, 
+spark_svg <- function(values,
+                      width = 220,
                       height = 60) {
   
-  # 🔥 vaste trendkleur (consistent met hoofdgrafiek)
   base_col <- "#6EA6CF"
   
   v <- as.numeric(values)
@@ -32,13 +31,11 @@ spark_svg <- function(values,
   
   xs <- sx(x); ys <- sy(v)
   
-  # lijn pad
   line_path <- paste0(
     "M ", sprintf("%.2f %.2f", xs[1], ys[1]),
     paste0(" L ", sprintf("%.2f %.2f", xs[-1], ys[-1]), collapse="")
   )
   
-  # area (voor gradient)
   area_path <- paste0(
     "M ", sprintf("%.2f %.2f", xs[1], height),
     " L ", sprintf("%.2f %.2f", xs[1], ys[1]),
@@ -58,36 +55,13 @@ spark_svg <- function(values,
         id = gradient_id,
         x1 = "0%", y1 = "0%",
         x2 = "0%", y2 = "100%",
-        
-        tags$stop(
-          offset = "0%",
-          `stop-color` = base_col,
-          `stop-opacity` = "0.35"
-        ),
-        
-        tags$stop(
-          offset = "100%",
-          `stop-color` = base_col,
-          `stop-opacity` = "0"
-        )
+        tags$stop(offset = "0%",   `stop-color` = base_col, `stop-opacity` = "0.35"),
+        tags$stop(offset = "100%", `stop-color` = base_col, `stop-opacity` = "0")
       )
     ),
-    
-    # gradient fill
-    tags$path(
-      d = area_path,
-      fill = paste0("url(#", gradient_id, ")")
-    ),
-    
-    # lijn
-    tags$path(
-      d = line_path,
-      fill = "none",
-      stroke = base_col,
-      `stroke-width` = 2.5,
-      `stroke-linecap` = "round",
-      `stroke-linejoin` = "round"
-    )
+    tags$path(d = area_path, fill = paste0("url(#", gradient_id, ")")),
+    tags$path(d = line_path, fill = "none", stroke = base_col,
+              `stroke-width` = 2.5, `stroke-linecap` = "round", `stroke-linejoin` = "round")
   )
 }
 
@@ -96,19 +70,27 @@ spark_svg <- function(values,
 # -----------------------------
 kpi_tile <- function(title, value, trend, dir = "up",
                      accent = "blue", spark_vals) {
-  
   arrow <- ifelse(dir == "up", "▲", "▼")
-  
   tags$div(
     class = paste("amr-kpi", accent),
     tags$div(class="kpi-title", title),
     tags$div(class="kpi-value", value),
-    tags$div(class=paste("kpi-trend", dir),
-             paste0(arrow," ",trend)),
-    tags$div(
-      class="kpi-spark",
-      spark_svg(spark_vals)
-    )
+    tags$div(class=paste("kpi-trend", dir), paste0(arrow," ",trend)),
+    tags$div(class="kpi-spark", spark_svg(spark_vals))
+  )
+}
+
+# Virusnamen inkorten voor KPI-label
+korten <- function(col) {
+  dplyr::case_match(col,
+                    "Humaan metapneumovirus"    ~ "hMPV",
+                    "Rhinovirus/enterovirus"    ~ "Rhinovirus/EV",
+                    "Mycoplasma pneumoniae"     ~ "Mycoplasma",
+                    "Parainfluenzavirus type 1" ~ "Parainfluenza 1",
+                    "Parainfluenzavirus type 2" ~ "Parainfluenza 2",
+                    "Parainfluenzavirus type 3" ~ "Parainfluenza 3",
+                    "Parainfluenzavirus type 4" ~ "Parainfluenza 4",
+                    .default = col
   )
 }
 
@@ -117,7 +99,6 @@ kpi_tile <- function(title, value, trend, dir = "up",
 # -----------------------------
 mod_kpi_ui <- function(id) {
   ns <- NS(id)
-  
   box(
     width = 5,
     class = "amr-kpi-box",
@@ -129,28 +110,63 @@ mod_kpi_ui <- function(id) {
 # SERVER
 # -----------------------------
 mod_kpi_server <- function(id, data, cfg,
-                           dataset = reactive({ "brmo" })) {
+                           dataset    = reactive({ "brmo" }),
+                           pathogenen = reactive({ character(0) })) {
   moduleServer(id, function(input, output, session) {
     
     .d <- reactive({ if (is.reactive(data)) data() else data })
     
     output$kpi_grid <- renderUI({
       
-      d  <- .d()
-      ds <- if (is.reactive(dataset)) dataset() else "brmo"
+      d   <- .d()
+      ds  <- if (is.reactive(dataset))    dataset()    else "brmo"
+      sel <- if (is.reactive(pathogenen)) pathogenen() else character(0)
       
-      # --- Modus 1: per-categorie data (data$kpi aanwezig) → altijd top-4 ---
+      # Lege selectie → lege KPI-box
+      if (length(sel) == 0L) {
+        return(tags$div(class = "amr-kpi-grid",
+                        tags$div(style = "grid-column:1/-1; display:flex; align-items:center;
+                                          justify-content:center; color:#6B7C93; font-size:13px;
+                                          font-weight:600;",
+                                 "Geen selectie")))
+      }
+      
+      # --- Modus 1: per-categorie KPI-data aanwezig ---
       if (!is.null(d$kpi)) {
         df <- d$kpi()
         req(!is.null(df), nrow(df) >= 2)
         
-        # Alle niet-datum kolommen
         value_cols <- setdiff(names(df), "datum")
         
-        # Top-4 op basis van laatste rij
-        laatste_rij <- tail(df, 1)
-        top4 <- value_cols[order(unlist(laatste_rij[value_cols]),
-                                 decreasing = TRUE)][1:min(4, length(value_cols))]
+        # Filter op geselecteerde pathogenen — match op kolomnaam (case-insensitive)
+        # BRMO: sel = c("esbl","mrsa",...), kolommen = c("ESBL","MRSA",...)
+        # Respiratoir: sel = c("Influenza A",...), kolommen = zelfde namen
+        sel_upper  <- toupper(sel)
+        col_upper  <- toupper(value_cols)
+        beschikbaar <- value_cols[col_upper %in% sel_upper | value_cols %in% sel]
+        
+        if (length(beschikbaar) == 0L) {
+          return(tags$div(class = "amr-kpi-grid",
+                          tags$div(style = "grid-column:1/-1; display:flex; align-items:center;
+                                            justify-content:center; color:#6B7C93; font-size:13px;
+                                            font-weight:600;",
+                                   "Geen data voor selectie")))
+        }
+        
+        # Max 4 tonen: rangschik op waarde in de LAATSTE beschikbare maand
+        # (consistent met de Top-4 knop)
+        laatste_rij <- df[nrow(df), , drop = FALSE]
+        totalen <- vapply(beschikbaar, function(col) {
+          as.numeric(laatste_rij[[col]])
+        }, numeric(1))
+        # Fallback op totaal als laatste rij NA's bevat
+        if (all(is.na(totalen) | totalen == 0)) {
+          totalen <- vapply(beschikbaar, function(col) {
+            sum(as.numeric(df[[col]]), na.rm = TRUE)
+          }, numeric(1))
+        }
+        beschikbaar <- beschikbaar[order(totalen, decreasing = TRUE, na.last = TRUE)]
+        toon_cols  <- head(beschikbaar, 4L)
         
         make_kpi <- function(col) {
           vals      <- df[[col]]
@@ -158,30 +174,20 @@ mod_kpi_server <- function(id, data, cfg,
           prev      <- tail(vals, 2)[1]
           change    <- if (!is.na(prev) && prev > 0)
             round((latest - prev) / prev * 100, 1) else NA
-          dir       <- if (!is.na(change) && change >= 0) "up" else "down"
-          accent    <- if (!is.na(change) && change >= 0) "red" else "green"
+          dir    <- if (!is.na(change) && change >= 0) "up" else "down"
+          accent <- if (!is.na(change) && change >= 0) "red" else "green"
           trend_txt <- if (is.na(change)) "–" else paste0(abs(change), "%")
-          # Lange virusnamen inkorten
-          label <- dplyr::case_match(col,
-                                     "Humaan metapneumovirus"    ~ "hMPV",
-                                     "Rhinovirus/enterovirus"    ~ "Rhinovirus/EV",
-                                     "Mycoplasma pneumoniae"     ~ "Mycoplasma",
-                                     "Parainfluenzavirus type 1" ~ "Parainfluenza 1",
-                                     "Parainfluenzavirus type 2" ~ "Parainfluenza 2",
-                                     "Parainfluenzavirus type 3" ~ "Parainfluenza 3",
-                                     "Parainfluenzavirus type 4" ~ "Parainfluenza 4",
-                                     .default = col
-          )
-          kpi_tile(label, round(latest, 1), trend_txt,
+          kpi_tile(korten(col), round(latest, 1), trend_txt,
                    dir = dir, accent = accent, spark_vals = tail(vals, 12))
         }
         
-        tiles <- lapply(top4, make_kpi)
+        tiles <- lapply(toon_cols, make_kpi)
         return(tags$div(class = "amr-kpi-grid", !!!tiles))
       }
       
       # --- Modus 2: jaardata via data$trend (GGD standaard) ---
-      df <- d$trend() %>% dplyr::arrange(jaar)
+      df <- d$trend() |> dplyr::arrange(jaar)
+      req(!is.null(df), nrow(df) >= 2)
       
       latest   <- tail(df$incidentie, 1)
       previous <- tail(df$incidentie, 2)[1]
@@ -200,7 +206,7 @@ mod_kpi_server <- function(id, data, cfg,
         kpi_tile("MRSA incidentie", "2,7",  "7%",
                  dir = "up",   accent = "red", spark_vals = spark_vals),
         kpi_tile("CPE incidentie",  "0,8",  "4%",
-                 dir = "down", accent = "green",   spark_vals = spark_vals)
+                 dir = "down", accent = "green", spark_vals = spark_vals)
       )
     })
   })
