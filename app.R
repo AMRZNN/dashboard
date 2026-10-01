@@ -1,4 +1,3 @@
-if (!requireNamespace("here", quietly = TRUE)) install.packages("here")
 library(here)
 
 source(here("R", "bootstrap.R"))
