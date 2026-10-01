@@ -32,28 +32,27 @@ mod_tab_ggd_server <- function(id, data, cfg,
                                weergave          = reactive({ "absoluut" }),
                                dataset           = reactive({ "brmo" }),
                                pathogenen        = reactive({ c("esbl","mrsa","vre","cpe") }),
-                               alle_geselecteerd = reactive({ FALSE })) {
+                               alle_geselecteerd = reactive({ FALSE }),
+                               regios            = NULL,
+                               gebied            = reactive({ "Noord-Nederland" })) {
   moduleServer(id, function(input, output, session) {
+    
+    # Geselecteerde regio's; standaard heel Noord-Nederland
+    if (is.null(regios)) regios <- reactive({ cfg$geo$noord_nuts3 })
     
     .BRMO_COLS   <- c("esbl","mrsa","vre","cpe","mrpa","facre","cre","fara","cpa","ca")
     .BRMO_LABELS <- c(esbl="ESBL", mrsa="MRSA", vre="VRE", cpe="CPE",
                       mrpa="MRPA", facre="FACRE", cre="CRE", fara="FARA", cpa="CPA", ca="CA")
-    
-    noord_nuts3 <- c(
-      "Delfzijl en omgeving", "Oost-Groningen", "Overig Groningen",
-      "Noord-Friesland", "Zuidoost-Friesland", "Zuidwest-Friesland",
-      "Noord-Drenthe", "Zuidoost-Drenthe", "Zuidwest-Drenthe"
-    )
     
     # Actieve BRMO-selectie
     brmo_sel <- reactive({
       intersect(pathogenen(), .BRMO_COLS)   # character(0) bij lege selectie
     })
     
-    # Helper: inwoners totaal Noord-Nederland
+    # Helper: inwoners totaal van de geselecteerde regio's
     get_inwoners <- function(shp) {
       sum(sf::st_drop_geometry(shp) |>
-            dplyr::filter(nuts3 %in% noord_nuts3) |>
+            dplyr::filter(nuts3 %in% regios()) |>
             dplyr::pull(inwoners), na.rm = TRUE)
     }
     
@@ -85,9 +84,11 @@ mod_tab_ggd_server <- function(id, data, cfg,
       shp <- data$shape
       req(!is.null(df))
       sel <- brmo_sel()
+      req(length(regios()) > 0)
       inwoners_totaal <- get_inwoners(shp)
       
       df |>
+        dplyr::filter(nuts3 %in% regios()) |>
         dplyr::mutate(dplyr::across(dplyr::any_of(sel), as.numeric),
                       jaar  = as.integer(jaar),
                       maand = as.integer(maand),
@@ -108,9 +109,11 @@ mod_tab_ggd_server <- function(id, data, cfg,
       shp <- data$shape
       req(!is.null(df))
       sel <- brmo_sel()
+      req(length(regios()) > 0)
       inwoners_totaal <- get_inwoners(shp)
       
       df |>
+        dplyr::filter(nuts3 %in% regios()) |>
         dplyr::mutate(dplyr::across(dplyr::any_of(sel), as.numeric),
                       jaar  = as.integer(jaar),
                       maand = as.integer(maand),
@@ -131,8 +134,10 @@ mod_tab_ggd_server <- function(id, data, cfg,
       df <- data$regio()
       req(!is.null(df))
       sel <- brmo_sel()
+      req(length(sel) > 0, length(regios()) > 0)
       
       df |>
+        dplyr::filter(nuts3 %in% regios()) |>
         dplyr::mutate(dplyr::across(dplyr::any_of(sel), as.numeric),
                       jaar = as.integer(jaar)) |>
         dplyr::group_by(jaar) |>
@@ -152,15 +157,15 @@ mod_tab_ggd_server <- function(id, data, cfg,
     
     inwoners_totaal_r <- reactive({
       sum(sf::st_drop_geometry(data$shape) |>
-            dplyr::filter(nuts3 %in% noord_nuts3) |>
+            dplyr::filter(nuts3 %in% regios()) |>
             dplyr::pull(inwoners), na.rm = TRUE)
     })
     
     resp_trend_ggd <- reactive({
-      df <- data$respiratoir(); req(!is.null(df))
+      df <- data$respiratoir(); req(!is.null(df), length(regios()) > 0)
       kolommen <- resp_kolommen()
       df |>
-        dplyr::filter(nuts3 %in% noord_nuts3) |>
+        dplyr::filter(nuts3 %in% regios()) |>
         dplyr::mutate(jaar = as.integer(jaar), maand = as.integer(maand),
                       datum = as.Date(paste(jaar, maand, "01", sep = "-")),
                       dplyr::across(dplyr::all_of(kolommen), as.numeric)) |>
@@ -175,13 +180,13 @@ mod_tab_ggd_server <- function(id, data, cfg,
     })
     
     resp_kpi_ggd <- reactive({
-      df <- data$respiratoir(); req(!is.null(df))
+      df <- data$respiratoir(); req(!is.null(df), length(regios()) > 0)
       # Alle virussen laden zodat mod_kpi_server kan filteren op geselecteerde
       alle_v <- cfg$respiratoir$alle_virussen
       kpi_v  <- intersect(alle_v, names(df))
       inw    <- inwoners_totaal_r()
       df |>
-        dplyr::filter(nuts3 %in% noord_nuts3) |>
+        dplyr::filter(nuts3 %in% regios()) |>
         dplyr::mutate(jaar = as.integer(jaar), maand = as.integer(maand),
                       datum = as.Date(paste(jaar, maand, "01", sep = "-")),
                       dplyr::across(dplyr::all_of(kpi_v), as.numeric)) |>
@@ -197,9 +202,9 @@ mod_tab_ggd_server <- function(id, data, cfg,
     resp_micro_ggd <- reactive({
       df <- data$respiratoir(); req(!is.null(df))
       sel <- resp_kolommen()
-      req(length(sel) > 0)
+      req(length(sel) > 0, length(regios()) > 0)
       df |>
-        dplyr::filter(nuts3 %in% noord_nuts3) |>
+        dplyr::filter(nuts3 %in% regios()) |>
         dplyr::mutate(jaar = as.integer(jaar),
                       dplyr::across(dplyr::all_of(sel), as.numeric)) |>
         dplyr::group_by(jaar) |>
@@ -238,9 +243,10 @@ mod_tab_ggd_server <- function(id, data, cfg,
       }
     })
     
-    mod_trend_server("trend",   ggd_data, cfg, eenheid = weergave, dataset = dataset)
-    mod_kpi_server("kpi",       ggd_data, cfg, dataset = dataset, pathogenen = pathogenen)
-    mod_micro_server("micro",   ggd_data, cfg, dataset = dataset, alle_geselecteerd = alle_geselecteerd)
-    mod_regio_map_server("map", ggd_data, cfg, weergave, dataset = dataset)
+    mod_trend_server("trend",   ggd_data, cfg, eenheid = weergave, dataset = dataset, gebied = gebied)
+    mod_kpi_server("kpi",       ggd_data, cfg, dataset = dataset, pathogenen = pathogenen, regios = regios)
+    mod_micro_server("micro",   ggd_data, cfg, dataset = dataset, alle_geselecteerd = alle_geselecteerd,
+                     gebied = gebied)
+    mod_regio_map_server("map", ggd_data, cfg, weergave, dataset = dataset, regios = regios)
   })
 }

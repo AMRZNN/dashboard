@@ -40,7 +40,8 @@ mod_trend_ui <- function(id) {
 # SERVER
 # =========================
 mod_trend_server <- function(id, data, cfg, eenheid = "per100k",
-                             dataset = reactive({ "brmo" })) {
+                             dataset = reactive({ "brmo" }),
+                             gebied  = reactive({ "Noord-Nederland" })) {
   moduleServer(id, function(input, output, session) {
     
     .d <- reactive({ if (is.reactive(data)) data() else data })
@@ -69,15 +70,16 @@ mod_trend_server <- function(id, data, cfg, eenheid = "per100k",
       
       eenheid_val <- if (is.function(eenheid) || is.reactive(eenheid)) eenheid() else eenheid
       eenheid_txt <- if (eenheid_val == "per100k") "per 100.000 inwoners" else "absoluut aantal"
+      gebied_txt  <- gebied()
       
       if ("datum" %in% names(df)) {
         eerste <- .maand_nl(min(df$datum, na.rm = TRUE), afkorting = TRUE)
         laatste <- .maand_nl(max(df$datum, na.rm = TRUE), afkorting = TRUE)
-        paste0("Aantal meldingen (", eenheid_txt, "), Noord-Nederland, ", eerste, " \u2013 ", laatste)
+        paste0("Aantal meldingen (", eenheid_txt, "), ", gebied_txt, ", ", eerste, " \u2013 ", laatste)
       } else {
         eerste <- min(df$jaar, na.rm = TRUE)
         laatste <- max(df$jaar, na.rm = TRUE)
-        paste0("Aantal meldingen (", eenheid_txt, "), Noord-Nederland, ", eerste, "\u2013", laatste)
+        paste0("Aantal meldingen (", eenheid_txt, "), ", gebied_txt, ", ", eerste, "\u2013", laatste)
       }
     })
     

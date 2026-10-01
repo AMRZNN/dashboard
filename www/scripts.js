@@ -62,12 +62,28 @@ function setWeergave(val) {
 }
 
 // ------------------------------------------------------------
-//  Alle selecteren per groep
+//  Alle / Geen selecteren per groep (brmo / resp / regio)
 // ------------------------------------------------------------
-function setSelectAll(group, checked) {
-  document.querySelectorAll(".amr-pathogeen-check[data-group='" + group + "']")
-    .forEach(function(cb) { cb.checked = checked; });
-  onPathogenChange();
+function groupChecks(group) {
+  return document.querySelectorAll("input[type='checkbox'][data-group='" + group + "']");
+}
+
+function allChecked(group) {
+  var checks = groupChecks(group);
+  return checks.length > 0 && Array.from(checks).every(function(cb) { return cb.checked; });
+}
+
+// Zijn alle items aangevinkt, dan is de link "Geen"; anders "Alle"
+function updateSelectAllLabels() {
+  document.querySelectorAll(".amr-toggle-all").forEach(function(link) {
+    link.textContent = allChecked(link.dataset.group) ? "Geen" : "Alle";
+  });
+}
+
+function toggleSelectAll(group) {
+  var checked = !allChecked(group);
+  groupChecks(group).forEach(function(cb) { cb.checked = checked; });
+  if (group === "regio") onRegioChange(); else onPathogenChange();
 }
 
 // ------------------------------------------------------------
@@ -153,11 +169,34 @@ function onPathogenChange() {
   var input = document.getElementById(inputId);
   if (input) input.value = val;
   Shiny.setInputValue(inputId, val, { priority: "event" });
+  updateSelectAllLabels();
 }
+
+// ------------------------------------------------------------
+//  Regio-checkboxes → Shiny input regio_sel
+// ------------------------------------------------------------
+function onRegioChange() {
+  var aangevinkt = [];
+  groupChecks("regio").forEach(function(cb) { if (cb.checked) aangevinkt.push(cb.dataset.value); });
+
+  var val = aangevinkt.join(",");
+  var input = document.getElementById("regio_sel");
+  if (input) input.value = val;
+  Shiny.setInputValue("regio_sel", val, { priority: "event" });
+  updateSelectAllLabels();
+}
+
+// Klik op een regio in de kaart → checkbox omzetten
+Shiny.addCustomMessageHandler("toggle_regio", function(regio) {
+  var cb = document.querySelector(".amr-regio-check[data-value='" + regio + "']");
+  if (!cb) return;
+  cb.checked = !cb.checked;
+  onRegioChange();
+});
 
 // ------------------------------------------------------------
 //  Init na pagina-load
 // ------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", function() {
-  setTimeout(onPathogenChange, 300);
+  setTimeout(function() { onPathogenChange(); onRegioChange(); }, 300);
 });

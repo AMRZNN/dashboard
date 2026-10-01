@@ -16,6 +16,8 @@ app_ui <- function(cfg) {
   # Alfabetisch
   resp_items <- sort(resp_items_raw)
   
+  regio_items <- cfg$geo$noord_nuts3
+  
   sidebar_content <- tags$div(
     class = "amr-sidebar",
     
@@ -48,8 +50,9 @@ app_ui <- function(cfg) {
     tags$div(id = "sidebar-brmo-filter", class = "amr-sidebar-section",
              tags$div(class = "amr-sidebar-label",
                       "Pathogenen",
-                      tags$a(href = "#", class = "amr-sidebar-selectall",
-                             onclick = "setSelectAll('brmo', true); return false;", "Alle"),
+                      tags$a(href = "#", class = "amr-sidebar-selectall amr-toggle-all",
+                             `data-group` = "brmo",
+                             onclick = "toggleSelectAll('brmo'); return false;", "Alle"),
                       tags$span(class = "amr-sidebar-selectall-sep", "/"),
                       tags$a(href = "#", class = "amr-sidebar-selectall",
                              onclick = "setTop4('brmo'); return false;", "Top 4")
@@ -60,7 +63,7 @@ app_ui <- function(cfg) {
                         tags$label(class = "amr-check-label",
                                    tags$input(type = "checkbox", class = "amr-pathogeen-check",
                                               `data-group` = "brmo", `data-value` = val,
-                                              checked = ifelse(val %in% c("esbl","mrsa","vre","cpe"), "checked", NA),
+                                              checked = if (val %in% c("esbl","mrsa","vre","cpe")) "checked",
                                               onchange = "onPathogenChange()"),
                                    tags$span(nm)
                         )
@@ -72,8 +75,9 @@ app_ui <- function(cfg) {
              style = "display:none;",
              tags$div(class = "amr-sidebar-label",
                       "Virussen",
-                      tags$a(href = "#", class = "amr-sidebar-selectall",
-                             onclick = "setSelectAll('resp', true); return false;", "Alle"),
+                      tags$a(href = "#", class = "amr-sidebar-selectall amr-toggle-all",
+                             `data-group` = "resp",
+                             onclick = "toggleSelectAll('resp'); return false;", "Alle"),
                       tags$span(class = "amr-sidebar-selectall-sep", "/"),
                       tags$a(href = "#", class = "amr-sidebar-selectall",
                              onclick = "setTop4('resp'); return false;", "Top 4")
@@ -83,8 +87,8 @@ app_ui <- function(cfg) {
                         tags$label(class = "amr-check-label",
                                    tags$input(type = "checkbox", class = "amr-pathogeen-check",
                                               `data-group` = "resp", `data-value` = nm,
-                                              checked = ifelse(nm %in% c("Influenza A","Influenza B",
-                                                                         "RSV","SARS-CoV-2"), "checked", NA),
+                                              checked = if (nm %in% c("Influenza A","Influenza B",
+                                                                    "RSV","SARS-CoV-2")) "checked",
                                               onchange = "onPathogenChange()"),
                                    tags$span(nm)
                         )
@@ -93,9 +97,25 @@ app_ui <- function(cfg) {
     ),
     
     tags$hr(class = "amr-sidebar-divider"),
-    tags$div(class = "amr-sidebar-section",
-             tags$a(href = "https://github.com/AMRZNN", target = "_blank",
-                    class = "amr-sidebar-info", "\u24d8 Info & bronnen")
+    
+    tags$div(id = "sidebar-regio-filter", class = "amr-sidebar-section",
+             tags$div(class = "amr-sidebar-label",
+                      "Regio",
+                      tags$a(href = "#", class = "amr-sidebar-selectall amr-toggle-all",
+                             `data-group` = "regio",
+                             onclick = "toggleSelectAll('regio'); return false;", "Geen")
+             ),
+             tags$div(class = "amr-sidebar-checks",
+                      lapply(regio_items, function(nm) {
+                        tags$label(class = "amr-check-label",
+                                   tags$input(type = "checkbox", class = "amr-regio-check",
+                                              `data-group` = "regio", `data-value` = nm,
+                                              checked = "checked",
+                                              onchange = "onRegioChange()"),
+                                   tags$span(nm)
+                        )
+                      })
+             )
     )
   )
   
@@ -127,6 +147,7 @@ app_ui <- function(cfg) {
       
       # Tabbar — volledige breedte
       tags$div(class = "amr-tabbar",
+               tags$span(class = "amr-tabbar-label", "Doelgroepen:"),
                tags$ul(
                  class = "nav nav-pills amr-tabs-nav",
                  tags$li(class = "active",
@@ -145,6 +166,8 @@ app_ui <- function(cfg) {
                  value = "esbl,mrsa,vre,cpe", style = "display:none;"),
       tags$input(type = "text", id = "pathogenen_resp",
                  value = "Influenza A,Influenza B,RSV,SARS-CoV-2", style = "display:none;"),
+      tags$input(type = "text", id = "regio_sel",
+                 value = paste(regio_items, collapse = ","), style = "display:none;"),
       
       # Hidden outputs: top-4 JSON vanuit R (voor JS setTop4())
       tags$div(style = "display:none;",

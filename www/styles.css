@@ -59,6 +59,9 @@ body, .content-wrapper, .right-side, .wrapper { background: var(--amr-band) !imp
   display: flex; align-items: center; gap: 8px;
   padding: 0 20px 0 calc(var(--sidebar-w) + 20px);
 }
+.amr-tabbar-label {
+  font-size: 12px; font-weight: 800; color: var(--amr-muted); white-space: nowrap;
+}
 .amr-tabs-nav {
   display: flex; flex-wrap: nowrap; gap: 6px; flex: 1;
   padding: 0 !important; margin: 0 !important;
@@ -151,11 +154,9 @@ body, .content-wrapper, .right-side, .wrapper { background: var(--amr-band) !imp
   accent-color: var(--amr-blue); width: 13px; height: 13px;
   flex-shrink: 0; cursor: pointer;
 }
-.amr-sidebar-selectall { font-size: 10px; font-weight: 600; color: var(--amr-blue); text-decoration: none; }
+.amr-sidebar-selectall { white-space: nowrap; font-size: 10px; font-weight: 600; color: var(--amr-blue); text-decoration: none; }
 .amr-sidebar-selectall:hover { text-decoration: underline; }
 .amr-sidebar-selectall-sep { font-size: 10px; color: var(--amr-muted); }
-.amr-sidebar-info { font-size: 12px; font-weight: 600; color: var(--amr-muted); text-decoration: none; }
-.amr-sidebar-info:hover { color: var(--amr-blue); text-decoration: underline; }
 
 /* ── Cards / Boxes ── */
 .box {
@@ -197,6 +198,10 @@ body, .content-wrapper, .right-side, .wrapper { background: var(--amr-band) !imp
 .amr-kpi-box .shiny-html-output { flex: 1; min-height: 0; display: flex; flex-direction: column; }
 .amr-kpi-box .amr-kpi-grid { flex: 1; }
 .amr-kpi-box > .box-header { display: none !important; }
+.amr-kpi-heading {
+  font-size: 14px; font-weight: 800; color: var(--amr-title);
+  margin: 0 2px 8px 2px; flex: 0 0 auto;
+}
 .amr-kpi-grid {
   display: grid; grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr; gap: 8px; height: 100%;

@@ -102,6 +102,7 @@ mod_kpi_ui <- function(id) {
   box(
     width = 5,
     class = "amr-kpi-box",
+    tags$div(class = "amr-kpi-heading", textOutput(ns("kpi_titel"), inline = TRUE)),
     uiOutput(ns("kpi_grid"))
   )
 }
@@ -111,10 +112,23 @@ mod_kpi_ui <- function(id) {
 # -----------------------------
 mod_kpi_server <- function(id, data, cfg,
                            dataset    = reactive({ "brmo" }),
-                           pathogenen = reactive({ character(0) })) {
+                           pathogenen = reactive({ character(0) }),
+                           regios     = reactive({ "Noord-Nederland" })) {
   moduleServer(id, function(input, output, session) {
     
     .d <- reactive({ if (is.reactive(data)) data() else data })
+    
+    # Titel met de laatste maand waarop de top 4 is gebaseerd
+    output$kpi_titel <- renderText({
+      if (length(regios()) == 0L) return("Top 4 van selectie")
+      d <- .d()
+      periode <- tryCatch({
+        df <- d$kpi()
+        if (!is.null(df) && "datum" %in% names(df) && nrow(df) > 0)
+          .maand_nl(max(df$datum, na.rm = TRUE)) else NULL
+      }, error = function(e) NULL)
+      if (is.null(periode)) "Top 4 van selectie" else paste0("Top 4 van selectie (", periode, ")")
+    })
     
     output$kpi_grid <- renderUI({
       
@@ -123,7 +137,7 @@ mod_kpi_server <- function(id, data, cfg,
       sel <- if (is.reactive(pathogenen)) pathogenen() else character(0)
       
       # Lege selectie → lege KPI-box
-      if (length(sel) == 0L) {
+      if (length(sel) == 0L || length(regios()) == 0L) {
         return(tags$div(class = "amr-kpi-grid",
                         tags$div(style = "grid-column:1/-1; display:flex; align-items:center;
                                           justify-content:center; color:#6B7C93; font-size:13px;

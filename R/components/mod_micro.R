@@ -11,8 +11,7 @@ mod_micro_ui <- function(id) {
     class = "amr-micro-box",
     title = textOutput(ns("micro_titel"), inline = TRUE),
     
-    tags$div(class = "amr-subtitle",
-             "Verdeeld naar type, Noord-Nederland"),
+    textOutput(ns("subtitel"), inline = FALSE) |> tagAppendAttributes(class = "amr-subtitle"),
     
     tags$div(
       class = "amr-micro-plot-wrapper",
@@ -26,10 +25,13 @@ mod_micro_ui <- function(id) {
 # =========================
 mod_micro_server <- function(id, data, cfg,
                              dataset           = reactive({ "brmo" }),
-                             alle_geselecteerd = reactive({ FALSE })) {
+                             alle_geselecteerd = reactive({ FALSE }),
+                             gebied            = reactive({ "Noord-Nederland" })) {
   moduleServer(id, function(input, output, session) {
     
     .d <- reactive({ if (is.reactive(data)) data() else data })
+    
+    output$subtitel <- renderText({ paste0("Verdeeld naar type, ", gebied()) })
     
     output$micro_titel <- renderText({
       ds <- if (is.reactive(dataset)) dataset() else "brmo"

@@ -21,6 +21,23 @@ app_server <- function(input, output, session, cfg) {
     }
   })
   
+  # Geselecteerde regio's (NUTS3); standaard alle regio's, "" = geen.
+  # reactiveVal: invalideert alleen als de selectie echt verandert.
+  regios <- reactiveVal(cfg$geo$noord_nuts3)
+  observeEvent(input$regio_sel, {
+    raw <- input$regio_sel
+    regios(if (raw == "") character(0)
+           else intersect(cfg$geo$noord_nuts3, trimws(strsplit(raw, ",")[[1]])))
+  })
+  
+  # Omschrijving van het geselecteerde gebied, voor titels
+  gebied <- reactive({
+    r <- regios()
+    if (length(r) == length(cfg$geo$noord_nuts3)) "Noord-Nederland"
+    else if (length(r) == 1L) r
+    else paste0(length(r), " regio's")
+  })
+  
   # ------------------------------------------------------------------
   # Top-4 helpers: laatste beschikbare maand, gefilterd op Noord-NL
   # ------------------------------------------------------------------
@@ -33,6 +50,8 @@ app_server <- function(input, output, session, cfg) {
     .BRMO_COLS  <- c("esbl","mrsa","vre","cpe","mrpa","facre","cre","fara","cpa","ca")
     beschikbaar <- intersect(.BRMO_COLS, names(df))
     if (length(beschikbaar) == 0) return(c("esbl","mrsa","vre","cpe"))
+    if ("nuts3" %in% names(df) && length(regios()) > 0)
+      df <- dplyr::filter(df, nuts3 %in% regios())
     # Laatste beschikbare maand
     df <- df |>
       dplyr::mutate(jaar  = as.integer(jaar),
@@ -51,16 +70,11 @@ app_server <- function(input, output, session, cfg) {
     alle_v <- cfg$respiratoir$alle_virussen
     # Geef NULL terug als data niet beschikbaar — geen alfabetische fallback
     if (is.null(df)) return(NULL)
-    noord_nuts3 <- c(
-      "Delfzijl en omgeving", "Oost-Groningen", "Overig Groningen",
-      "Noord-Friesland", "Zuidoost-Friesland", "Zuidwest-Friesland",
-      "Noord-Drenthe", "Zuidoost-Drenthe", "Zuidwest-Drenthe"
-    )
     beschikbaar <- intersect(alle_v, names(df))
     if (length(beschikbaar) == 0) return(NULL)
-    # Filter op Noord-Nederland (zelfde als GGD-tab)
-    if ("nuts3" %in% names(df))
-      df <- dplyr::filter(df, nuts3 %in% noord_nuts3)
+    # Filter op geselecteerde regio's (zelfde als GGD-tab)
+    if ("nuts3" %in% names(df) && length(regios()) > 0)
+      df <- dplyr::filter(df, nuts3 %in% regios())
     df <- df |>
       dplyr::mutate(jaar  = as.integer(jaar),
                     maand = as.integer(maand),
@@ -115,9 +129,11 @@ app_server <- function(input, output, session, cfg) {
     }
   })
   
-  mod_tab_ggd_server("ggd",           data, cfg, weergave, dataset, pathogenen, alle_geselecteerd)
+  mod_tab_ggd_server("ggd",           data, cfg, weergave, dataset, pathogenen, alle_geselecteerd,
+                     regios, gebied)
   mod_tab_ziekenhuizen_server("zh",   data, cfg)
-  mod_tab_laboratoria_server("lab",   data, cfg, weergave, dataset, pathogenen, alle_geselecteerd)
+  mod_tab_laboratoria_server("lab",   data, cfg, weergave, dataset, pathogenen, alle_geselecteerd,
+                             regios, gebied)
   mod_tab_huisartsen_server("ha",     data, cfg)
   mod_tab_verpleeghuizen_server("vh", data, cfg)
 }

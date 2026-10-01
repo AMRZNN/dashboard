@@ -30,17 +30,20 @@ mod_tab_laboratoria_server <- function(id, data, cfg,
                                        weergave          = reactive({ "absoluut" }),
                                        dataset           = reactive({ "brmo" }),
                                        pathogenen        = reactive({ c("esbl","mrsa","vre","cpe") }),
-                                       alle_geselecteerd = reactive({ FALSE })) {
+                                       alle_geselecteerd = reactive({ FALSE }),
+                                       regios            = NULL,
+                                       gebied            = reactive({ "Noord-Nederland" })) {
   moduleServer(id, function(input, output, session) {
     
-    noord      <- cfg$geo$noord_provincies
-    noord_nuts3 <- c("Delfzijl en omgeving","Oost-Groningen","Overig Groningen",
-                     "Noord-Friesland","Zuidoost-Friesland","Zuidwest-Friesland",
-                     "Noord-Drenthe","Zuidoost-Drenthe","Zuidwest-Drenthe")
+    noord <- cfg$geo$noord_provincies
     
+    # Geselecteerde regio's; standaard heel Noord-Nederland
+    if (is.null(regios)) regios <- reactive({ cfg$geo$noord_nuts3 })
+    
+    # Inwoners van de geselecteerde regio's (noemer voor per 100.000)
     inwoners_noord <- reactive({
       sum(sf::st_drop_geometry(data$shape) |>
-            dplyr::filter(nuts3 %in% noord_nuts3) |>
+            dplyr::filter(nuts3 %in% regios()) |>
             dplyr::pull(inwoners), na.rm = TRUE)
     })
     
@@ -64,8 +67,14 @@ mod_tab_laboratoria_server <- function(id, data, cfg,
                       datum = as.Date(paste(jaar, maand, "01", sep = "-")))
     })
     
+    # Alleen geselecteerde regio's (voor trend, KPI en micro; de kaart toont alle regio's)
+    brmo_base_sel <- reactive({
+      req(length(regios()) > 0)
+      dplyr::filter(brmo_base(), nuts3 %in% regios())
+    })
+    
     brmo_trend <- reactive({
-      df  <- brmo_base()
+      df  <- brmo_base_sel()
       sel <- brmo_sel()
       req(length(sel) > 0)
       df |>
@@ -81,7 +90,7 @@ mod_tab_laboratoria_server <- function(id, data, cfg,
     
     # KPI: altijd alle kolommen laden → top-4 op basis van laatste maand
     brmo_kpi <- reactive({
-      df <- brmo_base()
+      df <- brmo_base_sel()
       inw <- inwoners_noord()
       result <- df |>
         dplyr::group_by(datum) |>
@@ -102,7 +111,7 @@ mod_tab_laboratoria_server <- function(id, data, cfg,
     })
     
     brmo_micro <- reactive({
-      df  <- brmo_base()
+      df  <- brmo_base_sel()
       sel <- brmo_sel()
       req(length(sel) > 0)
       df |>
@@ -150,8 +159,13 @@ mod_tab_laboratoria_server <- function(id, data, cfg,
                       datum = as.Date(paste(jaar, maand, "01", sep = "-")))
     })
     
+    resp_base_sel <- reactive({
+      req(length(regios()) > 0)
+      dplyr::filter(resp_base(), nuts3 %in% regios())
+    })
+    
     resp_trend <- reactive({
-      df  <- resp_base()
+      df  <- resp_base_sel()
       sel <- resp_sel()
       req(length(sel) > 0)
       df |>
@@ -167,7 +181,7 @@ mod_tab_laboratoria_server <- function(id, data, cfg,
     
     # KPI: altijd alle virussen laden → top-4 op laatste maand
     resp_kpi <- reactive({
-      df  <- resp_base()
+      df  <- resp_base_sel()
       inw <- inwoners_noord()
       result <- df |>
         dplyr::group_by(datum) |>
@@ -183,7 +197,7 @@ mod_tab_laboratoria_server <- function(id, data, cfg,
     })
     
     resp_micro <- reactive({
-      df  <- resp_base()
+      df  <- resp_base_sel()
       sel <- resp_sel()
       req(length(sel) > 0)
       df |>
@@ -223,9 +237,10 @@ mod_tab_laboratoria_server <- function(id, data, cfg,
       }
     })
     
-    mod_trend_server("trend",   lab_data, cfg, eenheid = weergave, dataset = dataset)
-    mod_kpi_server(  "kpi",     lab_data, cfg, dataset = dataset, pathogenen = pathogenen)
-    mod_micro_server("micro",   lab_data, cfg, dataset = dataset, alle_geselecteerd = alle_geselecteerd)
-    mod_regio_map_server("map", lab_data, cfg, weergave, dataset = dataset)
+    mod_trend_server("trend",   lab_data, cfg, eenheid = weergave, dataset = dataset, gebied = gebied)
+    mod_kpi_server(  "kpi",     lab_data, cfg, dataset = dataset, pathogenen = pathogenen, regios = regios)
+    mod_micro_server("micro",   lab_data, cfg, dataset = dataset, alle_geselecteerd = alle_geselecteerd,
+                     gebied = gebied)
+    mod_regio_map_server("map", lab_data, cfg, weergave, dataset = dataset, regios = regios)
   })
 }

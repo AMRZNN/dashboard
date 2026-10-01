@@ -34,6 +34,17 @@ geo:
     - Groningen
     - Friesland
     - Drenthe
+  # NUTS3-regio's van Noord-Nederland (volgorde = volgorde in de sidebar)
+  noord_nuts3:
+    - Delfzijl en omgeving
+    - Oost-Groningen
+    - Overig Groningen
+    - Noord-Friesland
+    - Zuidoost-Friesland
+    - Zuidwest-Friesland
+    - Noord-Drenthe
+    - Zuidoost-Drenthe
+    - Zuidwest-Drenthe
 
 paths:
   trend: "data/trend.csv"
