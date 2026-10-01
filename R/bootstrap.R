@@ -4,40 +4,25 @@
 # Alle packages worden hier eenmalig geladen.
 # Individuele R-bestanden roepen GEEN library() aan.
 #
-# Voor reproduceerbare omgevingen: gebruik {renv}.
-#   renv::init()   — initialiseer lockfile
-#   renv::restore() — herstel exacte versies op andere machine
+# Package-versies worden beheerd met {renv} (zie renv.lock).
+#   renv::restore()  — installeer exacte versies uit renv.lock
+#   renv::snapshot() — leg gewijzigde/nieuwe packages vast in renv.lock
+#
+# Gebruik hier expliciete library()-aanroepen (geen vector met
+# character.only = TRUE): alleen zo detecteert renv de packages.
 # ---------------------------------------------------------
 
-required_packages <- c(
-  "here",
-  "shiny",
-  "shinydashboard",
-  "leaflet",
-  "plotly",
-  "dplyr",
-  "tidyr",
-  "readr",
-  "sf",
-  "yaml",
-  "htmlwidgets",
-  "ggplot2"
-)
-
-.bootstrap_packages <- function(packages) {
-  missing_pkgs <- packages[!packages %in% rownames(installed.packages())]
-  
-  if (length(missing_pkgs) > 0) {
-    message("Ontbrekende packages worden geïnstalleerd: ",
-            paste(missing_pkgs, collapse = ", "))
-    install.packages(missing_pkgs, dependencies = TRUE)
-  }
-  
-  invisible(lapply(packages, function(pkg) {
-    suppressPackageStartupMessages(
-      library(pkg, character.only = TRUE)
-    )
-  }))
-}
-
-.bootstrap_packages(required_packages)
+suppressPackageStartupMessages({
+  library(here)
+  library(shiny)
+  library(shinydashboard)
+  library(leaflet)
+  library(plotly)
+  library(dplyr)
+  library(tidyr)
+  library(readr)
+  library(sf)
+  library(yaml)
+  library(htmlwidgets)
+  library(ggplot2)
+})
