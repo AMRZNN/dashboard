@@ -28,10 +28,7 @@ mod_trend_ui <- function(id) {
     tags$div(
       class = "trend-inner",
       tags$div(class = "trend-plot-area",
-               plotlyOutput(ns("plot"), width = "100%", height = "100%")),
-      tags$div(class = "trend-map-area",
-               tags$div(class = "trend-map-year", textOutput(ns("map_year"))),
-               leafletOutput(ns("mini_map"), width = "100%", height = "100%"))
+               plotlyOutput(ns("plot"), width = "100%", height = "100%"))
     )
   )
 }
@@ -141,75 +138,6 @@ mod_trend_server <- function(id, data, cfg, eenheid = "per100k",
           font = list(family = "Inter")
         ) |>
         plotly::config(displayModeBar = FALSE)
-    })
-    
-    # -------------------------
-    # JAARLABEL MINIMAP
-    # -------------------------
-    output$map_year <- renderText({
-      df <- trend_df()
-      req(nrow(df) > 0)
-      
-      if ("datum" %in% names(df)) {
-        # Maanddata: toon "jan 2026" formaat
-        .maand_nl(max(df$datum, na.rm = TRUE))
-      } else {
-        as.character(max(df$jaar, na.rm = TRUE))
-      }
-    })
-    
-    # -------------------------
-    # MINIMAP via leaflet
-    # -------------------------
-    output$mini_map <- renderLeaflet({
-      d <- .d()
-      req(d$shape)
-      
-      regio_data <- tryCatch(d$regio(), error = function(e) NULL)
-      req(!is.null(regio_data), nrow(regio_data) > 0)
-      
-      noord_nuts3 <- c(
-        "Delfzijl en omgeving", "Oost-Groningen", "Overig Groningen",
-        "Noord-Friesland", "Zuidoost-Friesland", "Zuidwest-Friesland",
-        "Noord-Drenthe", "Zuidoost-Drenthe", "Zuidwest-Drenthe"
-      )
-      
-      # Zorg dat de join-kolom bestaat — regio of nuts3
-      if (!"regio" %in% names(regio_data) && "nuts3" %in% names(regio_data)) {
-        regio_data <- dplyr::rename(regio_data, regio = nuts3)
-      }
-      
-      regio_noord <- dplyr::filter(regio_data, regio %in% noord_nuts3)
-      
-      df <- d$shape |>
-        dplyr::left_join(regio_noord, by = c("nuts3" = "regio")) |>
-        sf::st_transform(4326)
-      
-      pal  <- leaflet::colorBin(cfg$colors$map_bins, df$incidentie,
-                                bins = 4, na.color = "#D0D5DC")
-      bbox <- sf::st_bbox(df)
-      
-      leaflet::leaflet(df,
-                       options = leaflet::leafletOptions(
-                         zoomControl        = FALSE,
-                         scrollWheelZoom    = FALSE,
-                         doubleClickZoom    = FALSE,
-                         dragging           = FALSE,
-                         touchZoom          = FALSE,
-                         attributionControl = FALSE
-                       )
-      ) |>
-        leaflet::addPolygons(
-          fillColor    = ~pal(incidentie),
-          fillOpacity  = 0.9,
-          color        = "white",
-          weight       = 1,
-          smoothFactor = 1
-        ) |>
-        leaflet::fitBounds(
-          lng1 = bbox[["xmin"]], lat1 = bbox[["ymin"]],
-          lng2 = bbox[["xmax"]], lat2 = bbox[["ymax"]]
-        )
     })
   })
 }

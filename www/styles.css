@@ -179,14 +179,8 @@ body, .content-wrapper, .right-side, .wrapper { background: var(--amr-band) !imp
 }
 .trend-inner { flex: 1; min-height: 0; display: flex; gap: 10px; overflow: hidden; }
 .trend-plot-area { flex: 1 1 0; min-width: 0; min-height: 0; overflow: hidden; }
-.trend-map-area { flex: 0 0 140px; min-height: 0; overflow: hidden; display: flex; flex-direction: column; }
-@media (max-width: 900px) { .trend-map-area { display: none; } }
 .trend-plot-area .shiny-html-output,
 .trend-plot-area .js-plotly-plot { width: 100% !important; height: 100% !important; }
-.trend-map-year { font-size: 11px; font-weight: 700; color: var(--amr-muted); text-align: center; margin-bottom: 3px; }
-.trend-map-area .leaflet-container { background: transparent !important; flex: 1; }
-.trend-map-area .shiny-html-output,
-.trend-map-area .leaflet { width: 100% !important; height: 100% !important; }
 
 .amr-row1 .amr-kpi-box {
   height: var(--row1-kpi-height) !important;
